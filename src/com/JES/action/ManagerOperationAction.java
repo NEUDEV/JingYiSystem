@@ -6,6 +6,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 /**
  * 管理员操作类。
+ * 
  * @author 刘鑫伟
  *
  */
@@ -49,7 +50,7 @@ public class ManagerOperationAction extends SuperAction implements
 	public void setResult(String result) {
 		this.result = result;
 	}
-	
+
 	/**
 	 * 管理员登陆。
 	 * 
@@ -58,30 +59,32 @@ public class ManagerOperationAction extends SuperAction implements
 	public String login() {
 		if (managerService.isLoginSuccess(manager)) {
 			manager = (Manager) managerService.getManagerDAO()
-			.findByMname(manager.getMname()).get(0);
-			session.setAttribute("managerId",manager.getUid());
-			session.setAttribute("loginMessage", "您好：" + manager.getMname() + " [管理员]");
+					.findByMname(manager.getMname()).get(0);
+			session.setAttribute("managerId", manager.getUid());
+			session.setAttribute("loginMessage", "您好：" + manager.getMname()
+					+ " [管理员]");
 			session.setAttribute("logout", "注销");
-			
+
 			return "managerLoginSuccess";
 		}
 
 		request.setAttribute("info", "用户名或密码错误！");
 		return "managerLoginFailed";
 	}
-	
+
 	/**
 	 * 管理员注销。
+	 * 
 	 * @return
 	 */
 	public String logout() {
-		
+
 		if (session.getAttribute("managerId") != null) {
 			session.setAttribute("managerId", null);
 		} else {
 			session.setAttribute("agentID", null);
 		}
-		
+
 		session.setAttribute("loginMessage", null);
 		session.setAttribute("logout", null);
 		return "logout";
@@ -96,14 +99,14 @@ public class ManagerOperationAction extends SuperAction implements
 		if (session.getAttribute("managerId") == null) {
 			return "LoginNotYet";
 		}
-		
+
 		request.setAttribute("i", 0);
-		request.setAttribute("manageList", managerService.getManagerDAO()
+		request.setAttribute("managerList", managerService.getManagerDAO()
 				.findAll());
 
 		return "displayManager";
 	}
-	
+
 	/**
 	 * 管理员注册。
 	 * 
@@ -120,8 +123,7 @@ public class ManagerOperationAction extends SuperAction implements
 
 		return "managerRegister";
 	}
-	
-	
+
 	/**
 	 * 管理员删除。
 	 */
@@ -129,15 +131,15 @@ public class ManagerOperationAction extends SuperAction implements
 		if (session.getAttribute("managerId") == null) {
 			return "LoginNotYet";
 		}
-		
+
 		manager = managerService.getManagerDAO().findById(
 				request.getAttribute("uid").toString());
 		managerService.getManagerDAO().delete(manager);
-		request.setAttribute("course", manager);
+		request.setAttribute("manager", manager);
 
-		return "managerCourse";
+		return "deleteManager";
 	}
-	
+
 	/**
 	 * 查看单个管理员信息。
 	 * 
@@ -148,12 +150,15 @@ public class ManagerOperationAction extends SuperAction implements
 			return "LoginNotYet";
 		}
 
-		String uid = request.getParameter("uid");
+		if (manager.getUid() == null) {
+			manager.setUid(session.getAttribute("managerId").toString());
+		}
+
 		request.setAttribute("manager", managerService.getManagerDAO()
-				.findById(uid));
+				.findById(manager.getUid()));
 		return "toDisplayManager";
 	}
-	
+
 	/**
 	 * 修改密码。
 	 * 
@@ -164,10 +169,11 @@ public class ManagerOperationAction extends SuperAction implements
 			return "LoginNotYet";
 		}
 
-		if (manager.getUid() == null) {
+		if (manager.getUid() == null || "".equals(manager.getUid())
+				|| "null".equals(manager.getUid())) {
 			manager.setUid(session.getAttribute("managerId").toString());
 		}
-		
+
 		String chPassword = request.getParameter("chPassword");
 		String confirmPassword = request.getParameter("confirmPassword");
 		if (!chPassword.equals(confirmPassword)) {
@@ -182,7 +188,6 @@ public class ManagerOperationAction extends SuperAction implements
 		return "ManagerchangePasswordFailed";
 	}
 
-	
 	@Override
 	public Manager getModel() {
 

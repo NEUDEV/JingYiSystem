@@ -28,10 +28,10 @@
 						<td>${i = i + 1}</td>
 						<td>${manager.mname}</td>
 						<td><a
-							href="<%=basePath%>Manager/ManagerRegister_deleteManager.action?uid=${manager.uid}">删除
+							href="<%=basePath%>Manager/ManagerOperation_deleteManager.action?uid=${manager.uid}">删除
 						</a>
 						<a
-							href="<%=basePath%>Manager/ManagerRegister_deleteManager.action?uid=${manager.uid}">修改密码
+							href="<%=basePath%>manager/managerOperation/changePassword.jsp?uid=${manager.uid}">修改密码
 						</a></td>
 					</tr>
 				</c:forEach>

@@ -29,7 +29,7 @@
 		</dl>
 
 		<a class="btn btn-default"
-			href="<%=basePath%>Manager/ManagerRegistere_displayManager.action">返回</a>
+			href="<%=basePath%>Manager/ManagerOperation_displayManager.action">返回</a>
 	</div>
 </body>
 </html>

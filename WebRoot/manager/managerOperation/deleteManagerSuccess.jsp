@@ -11,7 +11,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<ul class="breadcrumb">
 			<li><a href="<%=basePath%>/index.jsp">主页</a></li>
-			<li class="<%=basePath%>Manager/ManagerRegistere_displayManager.action">管理员管理</li>
+			<li class="<%=basePath%>Manager/ManagerOperation_displayManager.action">管理员管理</li>
 			<li class="active">管理员删除成功</li>
 		</ul>
 		
@@ -26,7 +26,7 @@
 		</dl>
 
 		<a class="btn btn-default"
-			href="<%=basePath%>Manager/ManagerRegistere_displayManager.action">返回</a>
+			href="<%=basePath%>Manager/ManagerOperation_displayManager.action">返回</a>
 	</div>
 </body>
 </html>

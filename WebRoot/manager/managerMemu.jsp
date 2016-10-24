@@ -83,7 +83,7 @@
 									<a href="<%=basePath%>manager/managerOperation/register.jsp">添加管理员</a>
 								</div>
 								<div class="panel-body">
-									<a href="<%=basePath%>manager/managerOperation/managerInfoDisplay.jsp">查看个人信息</a>
+									<a href="<%=basePath%>Manager/ManagerOperation_toDisplayManager.action">查看个人信息</a>
 								</div>
 								<div class="panel-body">
 									<a href="<%=basePath%>manager/managerOperation/changePassword.jsp">密码修改</a>

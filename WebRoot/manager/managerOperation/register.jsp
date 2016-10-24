@@ -14,7 +14,7 @@
 				alert("密码不能为空");
 			} else {
 			
-			var url = "<%=basePath%>Manager/ManagerRegister_managerRegister.action";
+			var url = "<%=basePath%>Manager/ManagerOperation_managerRegister.action";
 
 			var params = {
 				mname : $("#mname").val(),
@@ -30,7 +30,7 @@
 			function(data) { 
 				var member = eval("(" + data + ")");
 				if (member.info == "OK") {
-					window.location.href="<%=basePath%>Manager/ManagerAgentManage_toDisplay.action?uid="+member.uid;
+					window.location.href="<%=basePath%>Manager/ManagerOperation_toDisplayManager.action?uid="+member.uid;
 				} else if (member.info == "管理员账号已存在"){
 					$("#mname").val("");
 					$("#mnamems").html(member.info);
