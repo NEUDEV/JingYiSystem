@@ -121,9 +121,6 @@
 
 	<!-- action -->
 
-	<bean id="managerAction" class="com.JES.action.ManagerLoginAction"
-		scope="prototype">
-	</bean>
 	<bean id="managerAgentManageAction" class="com.JES.action.ManagerAgentManageAction"
 		scope="prototype">
 	</bean>

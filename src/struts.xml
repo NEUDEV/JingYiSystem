@@ -4,14 +4,20 @@
 	<package name="manager" extends="struts-default,json-default" namespace="/Manager">
 		<action name="*_*" class="com.JES.action.{1}Action" method="{2}">
 			<!-- ManagerLoginNotYet -->
-			<result name="LoginNotYet">/manager/login.jsp</result>
+			<result name="LoginNotYet">/manager/managerOperation/login.jsp</result>
 
-			<!-- ManagerLogin -->
+			<!-- ManagerOperation -->
 			<result name="managerLoginSuccess">/manager/managerMemu.jsp</result>
-			<result name="managerLoginFailed">/manager/login.jsp</result>
-
+			<result name="managerLoginFailed">/manager/managerOperation/login.jsp</result>
 			<result name="logout">/welcome.jsp</result>
-
+			<result type="json" name="managerRegister">
+				<param name="root">result</param>
+			</result>
+			<result name="displayManager">/manager/managerOperation/managerOperation.jsp</result>
+			<result name="deleteManager">/manager/managerOperation/deleteManagerSuccess.jsp</result>
+			<result name="toDisplayManager">/manager/managerOperation/managerInfoDisplay.jsp</result>
+			<result name="ManagerchangePasswordFailed">/manager/managerOperation/changePassword.jsp</result>
+			
 			<!-- ManagerAgentRegister -->
 			<result type="json" name="agentReigster">
 				<param name="root">result</param>

@@ -38,6 +38,10 @@ public class ManagerCourseManageAction extends SuperAction implements
 	 * @return
 	 */
 	public String displayCourse() {
+		if (session.getAttribute("managerId") == null) {
+			return "LoginNotYet";
+		}
+		
 		request.setAttribute("i", 0);
 		request.setAttribute("courseList", managerService.getCourseDAO()
 				.findAll());
@@ -51,6 +55,10 @@ public class ManagerCourseManageAction extends SuperAction implements
 	 * @return
 	 */
 	public String addCourse() {
+		if (session.getAttribute("managerId") == null) {
+			return "LoginNotYet";
+		}
+		
 		course = managerService.addCourse(course);
 		request.setAttribute("course", course);
 
@@ -63,6 +71,10 @@ public class ManagerCourseManageAction extends SuperAction implements
 	 * @return
 	 */
 	public String deleteCourse() {
+		if (session.getAttribute("managerId") == null) {
+			return "LoginNotYet";
+		}
+		
 		course = managerService.getCourseDAO().findById(
 				request.getAttribute("cid").toString());
 		managerService.getCourseDAO().delete(course);

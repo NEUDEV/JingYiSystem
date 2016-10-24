@@ -70,6 +70,26 @@
 								</div>
 							</div>
 						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<a class="panel-title" data-toggle="collapse"
+									data-parent="#panel-659102" href="#panel-element-936981">管理员管理</a>
+							</div>
+							<div id="panel-element-936981" class="panel-collapse collapse">
+								<div class="panel-body">
+									<a href="<%=basePath%>Manager/ManagerOperation_displayManager.action">管理员管理</a>
+								</div>
+								<div class="panel-body">
+									<a href="<%=basePath%>manager/managerOperation/register.jsp">添加管理员</a>
+								</div>
+								<div class="panel-body">
+									<a href="<%=basePath%>manager/managerOperation/managerInfoDisplay.jsp">查看个人信息</a>
+								</div>
+								<div class="panel-body">
+									<a href="<%=basePath%>manager/managerOperation/changePassword.jsp">密码修改</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

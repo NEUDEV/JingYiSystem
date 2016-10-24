@@ -23,6 +23,7 @@ import com.JES.model.Student;
 
 /**
  * 管理员Service。
+ * 
  * @author 刘鑫伟
  *
  */
@@ -41,7 +42,8 @@ public class ManagerService {
 	}
 
 	/**
-	 * @param managerDAO the managerDAO to set
+	 * @param managerDAO
+	 *            the managerDAO to set
 	 */
 	public void setManagerDAO(ManagerDAO managerDAO) {
 		this.managerDAO = managerDAO;
@@ -55,7 +57,8 @@ public class ManagerService {
 	}
 
 	/**
-	 * @param agentDAO the agentDAO to set
+	 * @param agentDAO
+	 *            the agentDAO to set
 	 */
 	public void setAgentDAO(AgentDAO agentDAO) {
 		this.agentDAO = agentDAO;
@@ -69,7 +72,8 @@ public class ManagerService {
 	}
 
 	/**
-	 * @param studentDAO the studentDAO to set
+	 * @param studentDAO
+	 *            the studentDAO to set
 	 */
 	public void setStudentDAO(StudentDAO studentDAO) {
 		this.studentDAO = studentDAO;
@@ -83,7 +87,8 @@ public class ManagerService {
 	}
 
 	/**
-	 * @param reportDAO the reportDAO to set
+	 * @param reportDAO
+	 *            the reportDAO to set
 	 */
 	public void setReportDAO(ReportDAO reportDAO) {
 		this.reportDAO = reportDAO;
@@ -97,7 +102,8 @@ public class ManagerService {
 	}
 
 	/**
-	 * @param courseDAO the courseDAO to set
+	 * @param courseDAO
+	 *            the courseDAO to set
 	 */
 	public void setCourseDAO(CourseDAO courseDAO) {
 		this.courseDAO = courseDAO;
@@ -124,6 +130,36 @@ public class ManagerService {
 
 		return false;
 	}
+
+	/**
+	 * 管理员注册。
+	 * 
+	 * @param manager
+	 * @param confirmPassword
+	 * @return
+	 */
+	public String managerRegister(Manager manager, String confirmPassword) {
+		Map<String, String> map = new HashMap<String, String>();
+
+		manager.setUid("");
+
+		if (managerDAO.findByMname(manager.getMname()).size() >0) {
+			map.put("info", "管理员账号已存在");
+			return JSONObject.fromObject(map).toString();
+		} else if (!manager.getPassword().equals(confirmPassword)) {
+			map.put("info", "两次密码不一致");
+			return JSONObject.fromObject(map).toString();
+		} 
+
+		manager.setUid(UUID.randomUUID().toString());
+		managerDAO.save(manager);
+
+		map.put("info", "OK");
+		map.put("uid", manager.getUid());
+		return JSONObject.fromObject(map).toString();
+	}
+
+	/*********************************** 班主任管理 **************************/
 
 	/**
 	 * 是否存在班主任。
@@ -169,16 +205,13 @@ public class ManagerService {
 			agent.setRole("超级班主任");
 		}
 
-		String reportId = UUID.randomUUID().toString();
-		agent.setReportId(reportId);
-
-		String uid = UUID.randomUUID().toString();
-		agent.setUid(uid);
+		agent.setReportId(UUID.randomUUID().toString());
+		agent.setUid(UUID.randomUUID().toString());
 		agent.setMannager("");
 		agentDAO.save(agent);
 
 		Report report = new Report(0);
-		report.setReportid(reportId);
+		report.setReportid(agent.getReportId());
 		reportDAO.save(report);
 
 		map.put("info", "OK");
@@ -303,7 +336,7 @@ public class ManagerService {
 	 * @param agent
 	 */
 	public void changeAgent(Agent agent) {
-		
+
 		Agent otherAgent = agentDAO.findById(agent.getUid());
 
 		if (!agent.getAname().equals(otherAgent.getAname())) {
@@ -328,6 +361,27 @@ public class ManagerService {
 
 		agentDAO.merge(otherAgent);
 	}
+
+	/**
+	 * 删除班主任。
+	 * 
+	 * @return
+	 */
+	public void deleteAgent(Agent agent) {
+		agentDAO.delete(agent);
+		Report report = reportDAO.findById(agent.getReportId());
+		reportDAO.delete(report);
+
+		ArrayList<Student> students = (ArrayList<Student>) studentDAO
+				.findByMid(agent.getUid());
+		for (Student student : students) {
+			student.setMid(null);
+			student.setMsign(null);
+			studentDAO.merge(student);
+		}
+	}
+
+	/****************************** 报表管理 *********************************/
 
 	/**
 	 * 返回报表。
@@ -364,28 +418,11 @@ public class ManagerService {
 		return reports;
 	}
 
-	/**
-	 * 删除班主任。
-	 * 
-	 * @return
-	 */
-	public void deleteAgent(Agent agent) {
-		agentDAO.delete(agent);
-		Report report = reportDAO.findById(agent.getReportId());
-		reportDAO.delete(report);
-		
-		ArrayList<Student> students = (ArrayList<Student>) studentDAO.findByMid(agent.getUid());
-		for (Student student : students) {
-			student.setMid(null);
-			student.setMsign(null);
-			studentDAO.merge(student);
-		}
-	}
-	
-	/*********************************课程管理*****************************/
-	
+	/********************************* 课程管理 *****************************/
+
 	/**
 	 * 添加课程。
+	 * 
 	 * @param course
 	 */
 	public Course addCourse(Course course) {

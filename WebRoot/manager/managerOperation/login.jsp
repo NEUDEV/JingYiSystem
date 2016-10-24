@@ -13,7 +13,7 @@
 		<div class="row clearfix">
 			<div class="col-md-12 column">
 				<form class="form-signin" role="form"
-					action="<%=basePath%>Manager/ManagerLogin_login.action"
+					action="<%=basePath%>Manager/ManagerOperation_login.action"
 					method="post">
 					<h3 class="form-signin-heading">管理员登录</h3>
 					

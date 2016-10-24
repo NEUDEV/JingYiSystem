@@ -69,7 +69,6 @@
 		</id>
 		<property name="mname" column="mname" type="java.lang.String"></property>
 		<property name="password" column="password" type="java.lang.String"></property>
-		<property name="reportId" column="reportId" type="java.lang.String"></property>
 	</class>
 
 	<class name="com.JES.model.Selection" table="selection">
