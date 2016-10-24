@@ -10,7 +10,7 @@
 <body>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<ul class="breadcrumb">
-			<li><a href="<%=basePath%>/index.jsp">主页</a></li>
+			<li><a href="<%=basePath%>manager/managerMemu.jsp">主页</a></li>
 			<li class="<%=basePath%>manager/courseManage/addCourse.jsp">添加课程</li>
 			<li class="active">课程添加成功</li>
 		</ul>

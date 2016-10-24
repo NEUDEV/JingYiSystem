@@ -55,9 +55,8 @@
 <body>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<ul class="breadcrumb">
-			<li><a href="<%=basePath%>/index.jsp">主页</a></li>
+			<li><a href="<%=basePath%>manager/managerMemu.jsp">主页</a></li>
 			<li class="active">添加管理员</li>
-			<li><a href="#">管理员添加成功</a></li>
 		</ul>
 
 			<div class="form-group">

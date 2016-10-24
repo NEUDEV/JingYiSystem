@@ -30,7 +30,7 @@
 		</nav>
 
 		<ul class="breadcrumb">
-			<li><a href="<%=basePath%>/index.jsp">主页</a></li>
+			<li><a href="<%=basePath%>manager/managerMemu.jsp">主页</a></li>
 			<li class="active">查看系统报表</li>
 		</ul>
 		<table class="table table table-bordered">

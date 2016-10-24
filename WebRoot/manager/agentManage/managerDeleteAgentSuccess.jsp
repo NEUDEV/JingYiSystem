@@ -10,7 +10,7 @@
 <body>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<ul class="breadcrumb">
-			<li><a href="<%=basePath%>/index.jsp">主页</a></li>
+			<li><a href="<%=basePath%>manager/managerMemu.jsp">主页</a></li>
 			<li><a href="#">班主任管理</a></li>
 			<li><a href="#">删除班主任</a></li>
 			<li class="active">删除成功</li>
