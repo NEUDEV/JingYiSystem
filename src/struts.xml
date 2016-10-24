@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="manager" extends="struts-default,json-default" namespace="/Manager">
+		<action name="*_*" class="com.JES.action.{1}Action" method="{2}">
+			<!-- ManagerLoginNotYet -->
+			<result name="LoginNotYet">/manager/login.jsp</result>
+
+			<!-- ManagerLogin -->
+			<result name="managerLoginSuccess">/manager/managerMemu.jsp</result>
+			<result name="managerLoginFailed">/manager/login.jsp</result>
+
+			<result name="logout">/welcome.jsp</result>
+
+			<!-- ManagerAgentRegister -->
+			<result type="json" name="agentReigster">
+				<param name="root">result</param>
+			</result>
+			
+			<!-- ManagerAgentManage -->
+			<result name="agentsDisplay">/manager/agentManage/chooseAgentAdmit.jsp
+			</result>
+			<result name="toDelete">/manager/agentManage/managerDeleteAgent.jsp
+			</result>
+			<result name="toDisplay">/manager/agentManage/mangerAdmitSuccess.jsp
+			</result>
+			<result name="agentDeleteSuccess">/manager/agentManage/managerDeleteAgentSuccess.jsp
+			</result>
+			<result name="agentChangeFaild">/manager/agentManage/mangerAdmitAgent.jsp
+			</result>
+			<result name="agentChangeSuccess">/manager/agentManage/mangerAdmitSuccess.jsp
+			</result>
+			<result name="displayStudentByAgentSuccess">/manager/studentManage/studentManager.jsp
+			</result>
+
+
+			<!-- AgentChangePassword -->
+			<result name="changePasswordSuccess">/manager/managerMemu.jsp</result>
+			<result name="changePasswordFailed">/manager/agentManage/agentChangePassword.jsp
+			</result>
+
+			<!-- ManagerDivideAgent -->
+			<result name="returnCommonAgent">/manager/agentManage/divideAgent/chooseCommonAgent.jsp
+			</result>
+			<result name="returnSuperAgent">/manager/agentManage/divideAgent/chooseSuperAgent.jsp
+			</result>
+			<result name="divideAgentSuccess">/manager/agentManage/divideAgent/divideAgentSuccess.jsp
+			</result>
+
+			<!-- ManagerDivideStudent -->
+			<result name="studentsDisplay">/manager/studentManage/divideStudent/divideStudent.jsp
+			</result>
+			<result name="firstLevelAgentDisplay">/manager/studentManage/divideStudent/chooseFirstLevelAgent.jsp
+			</result>
+			<result name="divideStudentSuccess">/manager/studentManage/divideStudent/divideStudentSuccess.jsp
+			</result>
+
+			<!-- ManagerStudentManage -->
+			<result name="searchStudentSuccess">/manager/studentManage/studentManager.jsp
+			</result>
+			<result name="returnStudentInfo">/manager/studentManage/studentInfoUpdate.jsp
+			</result>
+			<result name="changeStudentInfoSuccess">/manager/managerMemu.jsp
+			</result>
+
+			<!-- ManagerViewReport -->
+			<result name="displayReport">/manager/report/displayReport.jsp</result>
+			
+			<!-- ManagerCourseManage -->
+			<result name="displayCourse">/manager/courseManage/displayCourse.jsp</result>
+			<result name="addCourse">/manager/courseManage/addCourseSuccess.jsp</result>
+			<result name="deleteCourse">/manager/courseManage/deleteCourseSuccess.jsp</result>
+
+		</action>
+	</package>
+
+	<package name="Agent" extends="struts-default" namespace="/Agent">
+		<action name="*_*" class="com.JES.action.{1}Action" method="{2}">
+			<!-- AgentLogin -->
+			<result name="agentLoginSuccess">/agent/agentMemu.jsp</result>
+			<result name="agentLoginFailed">/agent/agentLogin.jsp</result>
+
+			<!-- AgentChangePassword -->
+			<result name="changePasswordSuccess">/agent/agentMemu.jsp</result>
+			<result name="changePasswordFailed">/agent/agentChangePassword.jsp</result>
+
+			<!-- agentInfoManage -->
+			<result name="displayAgentInfo">/agent/agentInfo.jsp</result>
+			<result name="returnAgentInfo">/agent/agentChangeInfo.jsp</result>
+			<result name="changeAgentInfoSuccess">/agent/agentMemu.jsp</result>
+			<result name="changeAgentInfoFailed">/agent/agentChangeInfo.jsp</result>
+
+			<!-- accountManage -->
+			<result name="displayAccountInfo">/agent/agentAccoutInfo.jsp</result>
+			<result name="deleteAccountSuccess">/agent/agentAccoutInfo.jsp</result>
+			<result name="addAccountSuccess">/agent/agentAccoutInfo.jsp</result>
+			<result name="addAccountFaild">/agent/agentAccoutInfo.jsp</result>
+
+		</action>
+	</package>
+
+
+	<package name="agent" extends="struts-default" namespace="/agent">
+		<action name="AgentStudentsAction" class="com.JES.action.AgentStudentsAction"
+			method="Mystudents">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<result name="show">/agent/studentShow.jsp</result>
+			<result name="noshow">/test.jsp</result>
+		</action>
+		<action name="AgentAddStudentsAction" class="com.JES.action.AgentAddStuAction"
+			method="AddStudent">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<result name="haveadd">/agent/studentAdmit.jsp</result>
+		</action>
+		<action name="AgentUpStudentAction" class="com.JES.action.AgentUpStudentAction"
+			method="execute">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<result name="success">/agent/studentAdmit.jsp</result>
+			<!-- <result name="error">/error.jsp</result> <result name="input">/index.jsp</result> 
+				<param name="savePath">/upload</param> -->
+		</action>
+		<action name="AgentNoteAction" class="com.JES.action.AgentNoteAction"
+			method="agentnote">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<result name="success">/agent/agentNote.jsp</result>
+		</action>
+		<action name="ShowviewAction" class="com.JES.action.ShowviewAction"
+			method="viewImages">
+
+		</action>
+		<action name="StudentMassageFileOutAction" class="com.JES.action.StudentMassageFileOutAction"
+			method="massageout">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+		</action>
+
+		<action name="studentList" class="com.JES.action.AgentStudentsAction"
+			method="Mystudents">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<!--plaintext用于显示页面原始代码的结果类型 -->
+			<result name="SUCCESS">/agent/studentShow.jsp</result>
+		</action>
+		<action name="AgentBillAction" class="com.JES.action.AgentBillAction"
+			method="billup">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<!--plaintext用于显示页面原始代码的结果类型 -->
+			<result name="SUCCESS">/agent/studentShow.jsp</result>
+		</action>
+		
+		<action name="downestudents" class="com.JES.action.StudentUpAction"
+			method="download">
+			<param name="inputPath">/WEB-INF/downloadfile/StudentModel.xlsx</param>
+			<result name="success" type="stream">
+				<param name="contentType">application/xlsx</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">filename="StudentModel.xlsx"</param>
+				<param name="bufferSize">2048</param>
+			</result>
+		</action>
+		
+		<action name="upstudents" class="com.JES.action.StudentUpAction"
+			method="upload">
+
+			<result name="success">/agent/upanddownload.jsp</result>
+
+			<result name="fail">/agent/showms.jsp</result>
+
+		</action>
+		
+	</package>
+
+	<package name="ajax" extends="json-default">
+		<action name="cheakqq" class="com.JES.action.CheakQqAction"
+			method="execute">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<!-- <result>/agent/studentAdmit.jsp</result> -->
+			<result name="success" type="json">
+			</result>
+		</action>
+		<action name="AgentStudentsAction1" class="com.JES.action.AgentStudentsAction"
+			method="Mystudents">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<result type="json">
+			</result>
+		</action>
+		<action name="GetCourseAction" class="com.JES.action.GetCourseAction"
+			method="courses">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<result type="json">
+			</result>
+		</action>
+		<action name="MyCpReportAction" class="com.JES.action.MyCpReportAction"
+			method="MyCps">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<result type="json">
+			</result>
+		</action>
+		<action name="MyReportAction" class="com.JES.action.MyReportAction"
+			method="MyReport">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<result type="json">
+			</result>
+		</action>
+		<action name="AllReportAction" class="com.JES.action.AllReportAction"
+			method="AllReport">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<result type="json">
+			</result>
+		</action>
+		<action name="MyCompanyAction" class="com.JES.action.MyCompanyAction"
+			method="Myagents">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<result type="json">
+			</result>
+		</action>
+	</package>
+	<!-- <package name="upload" namespace="/file" extends="struts-default"> 
+		<action name="upload" class="com.JES.action.AgentUpStudentAction"> <result 
+		name="success">/test.jsp</result> <result name="error">/error.jsp</result> 
+		<result name="input">/index.jsp</result> <param name="savePath">/upload</param> 
+		</action> </package> -->
+</struts>    

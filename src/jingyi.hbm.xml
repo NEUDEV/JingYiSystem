@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+        '-//Hibernate/Hibernate Mapping DTD 3.0//EN'  
+        'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+	<class name="com.JES.model.Student" table="student">
+		<id name="uid" type="java.lang.String">
+            <column name="uid" />
+            <generator class="assigned" />
+        </id>
+        <property name="msign" type="java.lang.String">
+            <column name="msign" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="name" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="phone" />
+        </property>
+        <property name="qq" type="java.lang.String">
+            <column name="qq" />
+        </property>
+        <property name="weixin" type="java.lang.String">
+            <column name="weixin" />
+        </property>
+        <property name="mid" type="java.lang.String">
+            <column name="mid" />
+        </property>
+        <property name="sign" type="java.lang.String">
+            <column name="sign" />
+        </property>
+        <property name="stuid" type="java.lang.String">
+            <column name="stuid" length="45" />
+        </property>
+        <property name="sfrom" type="java.lang.String">
+            <column name="sfrom" length="45" />
+        </property>
+        <property name="mark" type="java.lang.Integer">
+            <column name="mark" />
+        </property>
+        <property name="intime" type="java.lang.String">
+            <column name="intime" length="45" />
+        </property>
+        <property name="note" type="java.lang.String">
+            <column name="note" />
+        </property>
+	</class>
+	<class name="com.JES.model.Agent" table="agent">
+		<id name="uid" column="uid" type="java.lang.String">
+			<generator class="assigned"></generator>
+		</id>
+		<property name="aname" column="aname" type="java.lang.String"></property>
+		<property name="name" column="name" type="java.lang.String"></property>
+		<property name="phone" column="phone" type="java.lang.String"></property>
+		<property name="qq" column="qq" type="java.lang.String"></property>
+		<property name="password" column="password" type="java.lang.String"></property>
+		<property name="aid" column="aid" type="java.lang.String"></property>
+		<property name="idcard" column="idcard" type="java.lang.String"></property>
+		<property name="cname" column="cname" type="java.lang.String"></property>
+		<property name="bank" column="bank" type="java.lang.String"></property>
+		<property name="account" column="account" type="java.lang.String"></property>
+		<property name="role" column="role" type="java.lang.String"></property>
+		<property name="mannager" column="mannager" type="java.lang.String"></property>
+		<property name="reportId" column="reportId" type="java.lang.String"></property>
+	</class>
+	<class name="com.JES.model.Manager" table="manager">
+		<id name="uid" column="uid" type="java.lang.String">
+			<generator class="assigned"></generator>
+		</id>
+		<property name="mname" column="mname" type="java.lang.String"></property>
+		<property name="password" column="password" type="java.lang.String"></property>
+		<property name="reportId" column="reportId" type="java.lang.String"></property>
+	</class>
+
+	<class name="com.JES.model.Selection" table="selection">
+		<id name="id" type="java.lang.String">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="uid" type="java.lang.String">
+            <column name="uid" />
+        </property>
+        <property name="cname" type="java.lang.String">
+            <column name="cname" />
+        </property>
+        <property name="bill" type="java.lang.Integer">
+            <column name="bill" />
+        </property>
+        <property name="selecttime" type="java.lang.String">
+            <column name="selecttime" length="45" />
+        </property>
+	</class>
+
+	<class name="com.JES.model.Course" table="course" catalog="jingyieducationsystem">
+        <id name="cid" type="java.lang.String">
+            <column name="cid" />
+            <generator class="assigned" />
+        </id>
+        <property name="cname" type="java.lang.String">
+            <column name="cname" />
+        </property>
+        <property name="starttime" type="java.util.Date">
+            <column name="starttime" length="10" />
+        </property>
+        <property name="endtime" type="java.util.Date">
+            <column name="endtime" length="10" />
+        </property>
+        <property name="referencebill" type="java.lang.Integer">
+            <column name="referencebill" />
+        </property>
+    </class>
+	<class name="com.JES.model.Agentupstudent" table="agentupstudent"
+		catalog="jingyieducationsystem">
+		<id name="qq" type="java.lang.String">
+			<column name="qq" length="45" />
+			<generator class="assigned" />
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="name" length="45" />
+		</property>
+		<property name="weixin" type="java.lang.String">
+			<column name="weixin" length="45" />
+		</property>
+		<property name="phone" type="java.lang.String">
+			<column name="phone" length="45" />
+		</property>
+		<property name="class_" type="java.lang.String">
+			<column name="class" />
+		</property>
+		<property name="photo" type="binary">
+			<column name="photo"/>
+		</property>
+	</class>
+
+	<class name="com.JES.model.AgentNote" table="agent_note"
+		catalog="jingyieducationsystem">
+		<id name="noteid" type="java.lang.String">
+			<column name="noteid" length="45" />
+			<generator class="assigned" />
+		</id>
+		<property name="notetime" type="java.lang.String">
+			<column name="notetime" length="45" />
+		</property>
+		<property name="note" type="java.lang.String">
+			<column name="note" />
+		</property>
+		<property name="agentid" type="java.lang.String">
+			<column name="agentid" length="45" />
+		</property>
+	</class>
+	<class name="com.JES.model.Report" table="report" catalog="jingyieducationsystem">
+		<id name="reportid" type="java.lang.String">
+            <column name="reportid" />
+            <generator class="assigned" />
+        </id>
+        <property name="informalstu" type="java.lang.Integer">
+            <column name="informalstu" />
+        </property>
+        <property name="platestu" type="java.lang.Integer">
+            <column name="platestu" />
+        </property>
+        <property name="typefacestu" type="java.lang.Integer">
+            <column name="typefacestu" />
+        </property>
+        <property name="brandstu" type="java.lang.Integer">
+            <column name="brandstu" />
+        </property>
+        <property name="fullstu" type="java.lang.Integer">
+            <column name="fullstu" />
+        </property>
+        <property name="illustration" type="java.lang.Integer">
+            <column name="illustration" />
+        </property>
+        <property name="onlinestu" type="java.lang.Integer">
+            <column name="onlinestu" />
+        </property>
+        <property name="lifetimestu" type="java.lang.Integer">
+            <column name="lifetimestu" />
+        </property>
+        <property name="transrate" type="java.lang.Double">
+            <column name="transrate" precision="22" scale="0" />
+        </property>
+        <property name="allinnum" type="java.lang.Integer">
+            <column name="allinnum" />
+        </property>
+        <property name="allbills" type="java.lang.Double">
+            <column name="allbills" precision="22" scale="0" />
+        </property>
+
+	</class>
+	 <class name="com.JES.model.Account" table="account" catalog="jingyieducationsystem">
+        <id name="bid" type="java.lang.String">
+            <column name="bid" length="45" />
+            <generator class="assigned" />
+        </id>
+        <property name="bank" type="java.lang.String">
+            <column name="bank" length="20" not-null="true" />
+        </property>
+        <property name="account" type="java.lang.String">
+            <column name="account" length="45" not-null="true" />
+        </property>
+        <property name="agent" type="java.lang.String">
+            <column name="agent" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping> 

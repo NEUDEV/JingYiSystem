@@ -1,0 +1,11 @@
+@charset "GB2312"
+
+*{
+	margin: 0;
+	padding: 0;
+	font-size: 12px; 
+}
+
+body{
+	background-color:#f5f5f5; 
+}

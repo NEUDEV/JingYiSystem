@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd"
+	xmlns:tx="http://www.springframework.org/schema/tx">
+
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/jingyieducationsystem">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>jingyi.hbm.xml</value>
+				</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- dao -->
+
+	<bean id="AgentDAO" class="com.JES.dao.AgentDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="courseDAO" class="com.JES.dao.CourseDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ManagerDAO" class="com.JES.dao.ManagerDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="SelectionDAO" class="com.JES.dao.SelectionDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ReportDAO" class="com.JES.dao.ReportDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="AccountDAO" class="com.JES.dao.AccountDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="studentDAO" class="com.JES.dao.StudentDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="agentupstudentDAO" class="com.JES.dao.AgentupstudentDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="agentNoteDAO" class="com.JES.dao.AgentNoteDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- service -->
+
+	<bean id="managerService" class="com.JES.service.ManagerService"
+		scope="prototype">
+		<property name="managerDAO" ref="ManagerDAO"></property>
+		<property name="agentDAO" ref="AgentDAO"></property>
+		<property name="studentDAO" ref="studentDAO"></property>
+		<property name="reportDAO" ref="ReportDAO"></property>
+		<property name="courseDAO" ref="courseDAO"></property>
+	</bean>
+
+	<bean id="agentservice" class="com.JES.service.AgentService"
+		>
+		<property name="agentDAO" ref="AgentDAO"></property>
+		<property name="agentupstudentDAO" ref="agentupstudentDAO"></property>
+		<property name="studentDAO" ref="studentDAO"></property>
+		<property name="agentnoteDAO" ref="agentNoteDAO"></property>
+		<property name="accountDAO" ref="AccountDAO"></property>
+		<property name="courseDAO" ref="courseDAO"></property>
+		<property name="selectionDAO" ref="SelectionDAO"></property>
+		<property name="reportDAO" ref="ReportDAO"></property>
+	</bean>
+
+	<bean id="studentservice" class="com.JES.service.StudentService">
+		<property name="studentDAO">
+			<ref bean="studentDAO" />
+		</property>
+	</bean>
+
+	<!-- action -->
+
+	<bean id="managerAction" class="com.JES.action.ManagerLoginAction"
+		scope="prototype">
+	</bean>
+	<bean id="managerAgentManageAction" class="com.JES.action.ManagerAgentManageAction"
+		scope="prototype">
+	</bean>
+	<bean id="ManagerViewReportAction" class="com.JES.action.ManagerAgentManageAction"
+		scope="prototype">
+	</bean>
+	<bean id="agentUpStudentAction" class="com.JES.action.AgentUpStudentAction"
+		scope="prototype">
+		<property name="agentservice" ref="agentservice"></property>
+	</bean>
+	<bean id="agentNoteAction" class="com.JES.action.AgentNoteAction"
+		scope="prototype">
+		<property name="agentservice" ref="agentservice"></property>
+	</bean>
+	<bean id="showviewAction" class="com.JES.action.ShowviewAction"
+		scope="prototype">
+		<property name="agentupstudentDAO" ref="agentupstudentDAO"></property>
+	</bean>
+</beans>
