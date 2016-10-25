@@ -66,7 +66,7 @@
 									class="list-group-item">添加学员</a> <a
 									href="<%=basePath%>agent/studentShow.jsp"
 									class="list-group-item">我的学员</a> <a
-									href="StudentMassageFileOutAction.action"
+									href="<%=basePath%>agent/StudentMassageFileOutAction.action"
 									class="list-group-item">导出学员</a>
 							</div>
 						</div>
