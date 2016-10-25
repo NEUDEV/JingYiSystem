@@ -5,7 +5,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <script src="<%=basePath%>resource/jquery/jquery.min.js"></script>
@@ -15,23 +15,28 @@
 <script src="<%=basePath%>resource/ie10-viewport-bug-workaround.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse"
-			data-target="#bs-example-navbar-collapse-1">
-			<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
-				class="icon-bar"></span><span class="icon-bar"></span>
-		</button>
-		<img class="navbar-brand img-thumbnail"
-			src="<%=basePath%>image/logo.jpg" />
-	</div>
+	<header>
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span><span
+						class="icon-bar"></span><span class="icon-bar"></span><span
+						class="icon-bar"></span>
+				</button>
+				<img class="navbar-brand img-thumbnail"
+					src="<%=basePath%>image/logo.jpg" />
+			</div>
 
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#">${session.loginMessage}</a></li>
-			<li><a href="<%=basePath%>Manager/ManagerOperation_logout.action">${session.logout}</a></li>
-		</ul>
-	</div>
-	</nav>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">${session.loginMessage}</a></li>
+					<li><a
+						href="<%=basePath%>Manager/ManagerOperation_logout.action">${session.logout}</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
 </body>
 </html>
