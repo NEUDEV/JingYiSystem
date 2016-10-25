@@ -73,6 +73,10 @@
 </head>
 <body onload="getJSONData('全部')">
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<ul class="breadcrumb">
+			<li><a href="<%=basePath%>agent/agentMemu.jsp">主页</a></li>
+			<li class="active">业绩汇总</li>
+		</ul>
 		<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">

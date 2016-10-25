@@ -10,6 +10,10 @@
 </head>
 <body>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<ul class="breadcrumb">
+			<li><a href="<%=basePath%>agent/agentMemu.jsp">主页</a></li>
+			<li class="active">学员信息</li>
+		</ul>
 		<form action="" id="form" method="post" enctype="multipart/form-data">
 			<!-- <div class="form-group">
 				<label for="qq">输入QQ：</label><input class="form-control" id="qq"

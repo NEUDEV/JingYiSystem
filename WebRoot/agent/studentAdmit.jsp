@@ -63,10 +63,14 @@
 </head>
 <body>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<ul class="breadcrumb">
+			<li><a href="<%=basePath%>agent/agentMemu.jsp">主页</a></li>
+			<li class="active">添加学员</li>
+		</ul>
 		<form action="AgentUpStudentAction" name="form" id="form" method="post" enctype="multipart/form-data" >
 			<div class="form-group">
 				<label >电子表格录入</label><br>
-				<a href=""></a>
+				<a href="<%=basePath%>agent/studentmsUp.jsp">点击这里录入</a>
 			</div>
 			<div>
 			<label >手动录入</label><br>

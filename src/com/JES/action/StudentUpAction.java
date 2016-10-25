@@ -4,31 +4,22 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
-import javax.swing.JOptionPane;
+import java.util.Date;
+import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.struts2.ServletActionContext;
 
 import com.JES.model.Student;
 import com.JES.service.AgentService;
 import com.opensymphony.xwork2.ActionSupport;
 
+@SuppressWarnings("serial")
 public class StudentUpAction extends SuperAction{
 	private File[] upstudents;
 	private String[] upstudentsContentType;
@@ -93,60 +84,73 @@ public class StudentUpAction extends SuperAction{
 		File file = new File(realpath); 
 		if(!file.exists()) file.mkdirs();
 		if(upstudents!=null){
-		for(int i=0 ;i<upstudents.length; i++){ 
+		for(int i=0 ;i<upstudents.length; i++){
+			String mid=session.getAttribute("agentID").toString();
 			File uploadImage = upstudents[i]; 
 			FileUtils.copyFile(uploadImage, new File(file, upstudentsFileName[i]));
-			loadstudentsecxel(upstudentsFileName[i]);
+			loadstudentsecxel(upstudentsFileName[i],mid);
 			}
 		return "success"; 
 		}
 		else {
+			request.setAttribute("studentupms", "err:信息录入失败！");
     		return "fail";
 		}
 		}
 	
-	public void loadstudentsecxel(String uploadFileFileName){  
+	@SuppressWarnings("resource")
+	public void loadstudentsecxel(String uploadFileFileName,String mid){  
         String targetDirectory = ServletActionContext.getServletContext().getRealPath("/students");  
         File target = new File(targetDirectory,uploadFileFileName);
         String errstudentms="以下学员信息中QQ信息数据库已存在，导致信息录入失败：&#13;&#10;";
         Integer errmsnum=0;
         try{  
             FileInputStream fi = new FileInputStream(target);  
-            Workbook wb =(Workbook) new HSSFWorkbook(fi);  
-            Sheet sheet = wb.getSheetAt(0);    
+            HSSFWorkbook wb = new HSSFWorkbook(fi);  
+            HSSFSheet sheet = wb.getSheetAt(0);    
             int rowNum = sheet.getLastRowNum()+1;  
             for(int i=1;i<rowNum;i++){  
                 Student student = new Student();
                 student.setUid(UUID.randomUUID().toString());
-                Row row = sheet.getRow(i);
+                HSSFRow row = sheet.getRow(i);
                 int cellNum = row.getLastCellNum();
                 boolean isenabel=true;
-                for(int j=0;j<cellNum;j++){  
-                    Cell cell = row.getCell(j);  
-                    String cellValue = cell.getStringCellValue() ;      
-                    switch(j){//通过列数来判断对应插如的字段   
-                        case 0 : 
+                for(int len=0;len<cellNum;len++){  
+                	HSSFCell cell = row.getCell((short)len);  
+                    String cellValue = cell.getRichStringCellValue().toString() ;      
+                    switch(len){//通过列数来判断对应插如的字段   
+                        case 0 :
                         	if(agentservice.cheakQq(cellValue)){
                         		errmsnum++;
-                        		errstudentms+=errmsnum.toString()+": "+cellValue;
-                        		for(int k=1;k<4;k++){
-                        			cell = row.getCell(k);
-                        			errstudentms+=" , "+cell.getStringCellValue();
+                        		errstudentms+="<"+errmsnum.toString()+">"+": "+cellValue;
+                        		for(int k=1;k<6;k++){
+                        			cell = row.getCell((short)k);
+                        			errstudentms+=" , "+cell.getRichStringCellValue().toString();
                         		}
                         		errstudentms+="&#13;&#10;";
                         		isenabel=false;
-                        		j=Integer.MAX_VALUE;
+                        		len=cellNum;
                         	}
                         	else student.setQq(cellValue);
-                        	break;  
-                        case 1 : student.setName(cellValue);break;
-                        case 2 : student.setWeixin(cellValue);break;
-                        case 3 : student.setPhone(cellValue);break;
-                        case 4 : student.setNote(cellValue);break;
+                        	break;
+                        case 1 : student.setStuid(cellValue);break;
+                        case 2 : student.setName(cellValue);break;
+                        case 3 : student.setWeixin(cellValue);break;
+                        case 4 : student.setPhone(cellValue);break;
+                        case 5 : student.setNote(cellValue);break;
                     }
                 }   
-                	if(isenabel)
+                	if(isenabel){
+                		Date nDate = new Date();
+                		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                		String sDate = sdf.format(nDate);
+                		student.setMid(mid);
+                		student.setIntime(sDate);
+                		student.setMark(1);
+                		student.setSign("非正式学员");
                 		agentservice.updateorsaveStudent(student);
+                		agentservice.updateReportAddNewOne(mid);;
+                	}
             }  
               
         }catch(IOException e){  

@@ -54,6 +54,10 @@
 </head>
 <body onload="course()">
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<ul class="breadcrumb">
+			<li><a href="<%=basePath%>agent/agentMemu.jsp">主页</a></li>
+			<li class="active">提单</li>
+		</ul>
 		<form action="AgentBillAction" name="form" id="form" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="uid" value=<%=request.getParameter("uid") %>></input>
 			<div class="form-group">

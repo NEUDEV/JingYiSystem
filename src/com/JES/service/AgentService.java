@@ -168,7 +168,7 @@ public class AgentService {
 
 	public boolean upPhoto(FileInputStream input,Integer length,
 			Agentupstudent upstudent,Student student,String mid){
-		Report report=new Report();
+		/*Report report=new Report();*/
 		byte[] bFile = new byte[length];
 		try {
 			input.read(bFile);
@@ -189,10 +189,18 @@ public class AgentService {
 		upstudent.setPhoto(bFile);
 		agentupstudentDAO.save(upstudent);
 		studentDAO.save(student);
+		/*report=reportDAO.findById(agentDAO.findById(mid).getReportId());
+		report.setInformalstu(report.getInformalstu()+1);
+		reportDAO.merge(report);*/
+		updateReportAddNewOne(mid);
+		return true;
+	}
+	
+	public void updateReportAddNewOne(String mid){
+		Report report=new Report();
 		report=reportDAO.findById(agentDAO.findById(mid).getReportId());
 		report.setInformalstu(report.getInformalstu()+1);
 		reportDAO.merge(report);
-		return true;
 	}
 
 	public boolean agentNote(String note) {
@@ -348,9 +356,11 @@ public class AgentService {
 		default:
 			break;
 		}
-		report.setAllbills(report.getAllbills()+1);
+		report.setAllbills(report.getAllbills()+bill);
+		report.setInformalstu(report.getInformalstu()-1);
 		report.setAllinnum(report.getAllinnum()+1);
 		report.setTransrate(Double.parseDouble(report.getAllinnum().toString())/(report.getInformalstu()+report.getAllinnum()));
+		reportDAO.merge(report);
 		return true;
 	}
 	
@@ -400,36 +410,47 @@ public class AgentService {
 	}
 	
 	
-	public List<Report> MyReports(String selecttype,String aid){
+	public List<Report> MyReports(String selecttype,String mid){
 		List<Report> reportList=new ArrayList<Report>();
 		switch (selecttype) {
 		case "全部":
-			reportList.add(reportDAO.findById(agentDAO.findById(aid).getReportId()));
+			reportList.add(reportDAO.findById(agentDAO.findById(mid).getReportId()));
 			return reportList;
 		case "周业绩":
-			return achieve(0);
+			return FindByTime(0,mid,"","");
 		case "月业绩":
-			return achieve(1);
+			return FindByTime(1,mid,"","");
 		}
 		return null;
 	}
 	
-	public List<Report> achieve(Integer subday){
+	
+	@SuppressWarnings("unchecked")
+	public List<Report> FindByTime(Integer subday,String mid,String sTime,String eTime){
 		List<Report> reportList=new ArrayList<Report>();
 		Report report=new Report(0);
 		SimpleDateFormat dft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date beginDate = new Date();
 		Calendar date = Calendar.getInstance();
 		date.setTime(beginDate);
-		if(subday.equals(0))
-			date.set(Calendar.DATE, date.get(Calendar.DATE) - 1);
-		else if(subday.equals(1))
+		String stime="",etime="";
+		if(subday.equals(0)){
+			date.set(Calendar.DATE, date.get(Calendar.DATE) - 7);
+			stime=dft.format(date.getTime());
+			etime=dft.format(beginDate);
+		}
+		else if(subday.equals(1)){
 			date.add(Calendar.MONTH, -1);
-		//System.out.println(dft.format(beginDate)+"-"+dft.format(date.getTime()));
-		String selectiontime=dft.format(date.getTime());
+			stime=dft.format(date.getTime());
+			etime=dft.format(beginDate);
+		}
+		else if(subday.equals(2)){
+			stime=sTime;
+			etime=eTime;
+		}
 		List<Object> cList=new ArrayList<Object>();
-		cList.addAll(selectionDAO.countclasstype("001", selectiontime));
-		report.setInformalstu(studentDAO.countunifStudentbyTime("001", selectiontime));
+		cList.addAll(selectionDAO.countclasstype(mid, stime,etime));
+		report.setInformalstu(studentDAO.countunifStudentbyTime(mid, stime,etime));
 		for(int i=0;i<cList.size();i++){
 			Object[] obj=(Object[])cList.get(i);
 			Integer num=Integer.parseInt(String.valueOf(obj[1]));
@@ -467,8 +488,10 @@ public class AgentService {
 			}
 			//System.out.println(obj[0].toString()+Integer.parseInt(String.valueOf(obj[1])));
 		}
-		report.setAllbills(Double.parseDouble(String.valueOf(selectionDAO.sumbills("001", selectiontime))));
-		report.setTransrate(Double.parseDouble(report.getAllinnum().toString())/(report.getInformalstu()+report.getAllinnum()));
+		report.setAllbills(Double.parseDouble((selectionDAO.sumbills(mid, stime,etime).toString())));
+		if((report.getInformalstu()+report.getAllinnum())!=0)
+			report.setTransrate(Double.parseDouble(report.getAllinnum().toString())/(report.getInformalstu()+report.getAllinnum()));
+		else report.setTransrate(0.0);
 		reportList.add(report);
 		return reportList;
 	}

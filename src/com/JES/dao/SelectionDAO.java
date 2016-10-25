@@ -109,24 +109,27 @@ public class SelectionDAO  {
       }
 	}
     
-    public Object sumbills(String mid,String selecttime){
+    public Object sumbills(String mid,String stime,String etime){
     	try {
             String queryString = "select sum(model.bill) from Selection as model, Student as stu"
-            						+" where  stu.mid=? and stu.uid=model.uid and cast(model.selecttime as date)>=cast('"+selecttime+"' as date)";
-    		/*String queryString = "select sum(model.bill) from Selection as model, Student as stu"
-					+" where stu.uid=model.uid and model.selecttime>='"+selecttime+"' and stu.mid=?";*/
+            						+" where  stu.mid=? and stu.uid=model.uid "
+            		+" and cast(model.selecttime as date)>=cast('"+stime+"' as date)"
+            		+" and cast(model.selecttime as date)<=cast('"+etime+"' as date)";
     		Query queryObject = getCurrentSession().createQuery(queryString);
    		 queryObject.setParameter(0, mid);
-   		 return queryObject.list().get(0);
+   		 if(queryObject.list().get(0)!=null)
+   			 return queryObject.list().get(0);
+   		 else return 0;
          } catch (RuntimeException re) {
             throw re;
          }
     }
     
-    public List countclasstype(String mid,String selecttime){
+    public List countclasstype(String mid,String stime,String etime){
     	try {
             String queryString = "select model.cname,count(model) from Selection as model, Student as stu"
-            						+" where stu.mid=? and  stu.uid=model.uid and cast(model.selecttime as date)>=cast('"+selecttime+"' as date) "
+            						+" where stu.mid=? and  stu.uid=model.uid and cast(model.selecttime as date)>=cast('"+stime+"' as date) "
+            						+"and cast(model.selecttime as date)<=cast('"+etime+"' as date) "
             						+"group by model.cname";
     		Query queryObject = getCurrentSession().createQuery(queryString);
    		 queryObject.setParameter(0, mid);

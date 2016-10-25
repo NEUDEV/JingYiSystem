@@ -142,10 +142,11 @@ public class StudentDAO {
 		}
 	}
 	*/
-	public Integer countunifStudentbyTime(String mid,String limittime){
+	public Integer countunifStudentbyTime(String mid,String stime,String etime){
 		try {
 			String queryString = "select count(*) from Student as model where model.sign='非正式学员' and model.mid= ?"
-					+" and cast(model.intime as date)>=cast('"+limittime+"' as date)";
+					+" and cast(model.intime as date)>=cast('"+stime+"' as date)"
+					+" and cast(model.intime as date)<=cast('"+etime+"' as date)";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			queryObject.setParameter(0, mid);
 			return Integer.parseInt(String.valueOf(queryObject.list().get(0)));

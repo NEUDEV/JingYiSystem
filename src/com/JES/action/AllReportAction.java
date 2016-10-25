@@ -32,7 +32,7 @@ public class AllReportAction extends SuperAction{
 		}
 		try{
 		List<Report> reportList = new ArrayList<Report>();
-		String aid="1";
+		String aid=session.getAttribute("agentID").toString();
 		reportList=agentservice.allreport(aid);
 		jsonResult = JsonUtil.listToJson(reportList); 
         ServletActionContext.getResponse().setContentType("text/xml");  

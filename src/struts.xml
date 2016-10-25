@@ -234,10 +234,12 @@
 			<result type="json">
 			</result>
 		</action>
+		<action name="MyReportFindByTimeAction" method="MyReport"
+			class="com.JES.action.MyReportFindByTimeAction">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<result type="json">
+			</result>
+
+		</action>
 	</package>
-	<!-- <package name="upload" namespace="/file" extends="struts-default"> 
-		<action name="upload" class="com.JES.action.AgentUpStudentAction"> <result 
-		name="success">/test.jsp</result> <result name="error">/error.jsp</result> 
-		<result name="input">/index.jsp</result> <param name="savePath">/upload</param> 
-		</action> </package> -->
 </struts>    

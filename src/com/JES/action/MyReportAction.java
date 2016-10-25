@@ -40,8 +40,8 @@ public class MyReportAction extends SuperAction{
 		}
 		try{
 		List<Report> reportList = new ArrayList<Report>();
-		String aid = session.getAttribute("agentID").toString();
-		reportList=agentservice.MyReports(selecttype,aid);
+		String mid = session.getAttribute("agentID").toString();
+		reportList=agentservice.MyReports(selecttype,mid);
 		jsonResult = JsonUtil.listToJson(reportList); 
         ServletActionContext.getResponse().setContentType("text/xml");  
         }catch(Exception e){    
