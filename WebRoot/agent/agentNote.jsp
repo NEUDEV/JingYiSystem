@@ -8,16 +8,25 @@
 <head>
 </head>
 <body>
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		<form action="AgentNoteAction" id="form" method="post" enctype="multipart/form-data">
-			<div class="form-group">
-				<label for="name">记事：</label>
+	<div class="body slide">
+		<div class="container-fluid left-border">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<br>set-2 main">
+					<form action="AgentNoteAction" id="form" method="post"
+						enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="name">记事：</label>
+						</div>
+						<div class="form-group">
+							<textarea name="note" style="height:80px;" maxlength=100
+								draggable=false>这里写内容</textarea>
+						</div>
+						<button type="submit" class="btn btn-default" id="button">提交</button>
+					</form>
+				</div>
 			</div>
-			<div class="form-group">
-				<textarea name="note" style="height:80px;" maxlength=100 draggable=false>这里写内容</textarea>
-			</div>
-			<button type="submit" class="btn btn-default" id="button">提交</button>
-		</form>
+		</div>
 	</div>
 </body>
 </html>

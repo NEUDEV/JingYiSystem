@@ -7,35 +7,44 @@
 <html>
 <head>
 </head>
-<body >
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<ul class="breadcrumb">
-			<li><a href="<%=basePath%>agent/agentMemu.jsp">主页</a></li>
-			<li class="active">电子表格录入结果</li>
-		</ul>
-		<nav class="navbar navbar-default navbar-static-top" role="navigation">
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<form class="navbar-form navbar-left" role="search" 
-				action="upstudents.action" enctype="multipart/form-data" method="post">
-				<tr>
-				
-				<td style="padding-left:30;padding-top:10;color:black;">
-				
-				             提示：<br>
-					<textarea readonly="readonly"  name="fileinfo2" style="border:1px solid black;height: 500pt;width: 700pt"><%=request.getAttribute("studentupms") %>>
+<body>
+	<div class="body slide">
+		<div class="container-fluid left-border">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<br>
+					<ul class="breadcrumb">
+						<li><a href="<%=basePath%>agent/agentMemu.jsp">主页</a></li>
+						<li class="active">电子表格录入结果</li>
+					</ul>
+					<nav class="navbar navbar-default navbar-static-top"
+						role="navigation">
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-1">
+						<form class="navbar-form navbar-left" role="search"
+							action="upstudents.action" enctype="multipart/form-data"
+							method="post">
+							<tr>
+
+								<td style="padding-left:30;padding-top:10;color:black;">
+
+									提示：<br> <textarea readonly="readonly" name="fileinfo2"
+										style="border:1px solid black;height: 500pt;width: 700pt"><%=request.getAttribute("studentupms")%>>
 								</textarea><br>
-				</td>
-			</tr>
-			</form>
+								</td>
+							</tr>
+						</form>
+					</div>
+					</nav>
+					<table class="table" id="courseList">
+
+						<tbody id="courseList">
+
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
-		</nav>
-		<table class="table" id="courseList">
-			
-			<tbody id="courseList">
-				
-			</tbody>
-		</table>
 	</div>
 </body>
 </html>

@@ -72,39 +72,47 @@
 </script>
 </head>
 <body onload="getJSONData('全部')">
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<ul class="breadcrumb">
-			<li><a href="<%=basePath%>agent/agentMemu.jsp">主页</a></li>
-			<li class="active">业绩汇总</li>
-		</ul>
-		<nav class="navbar navbar-default navbar-static-top" role="navigation">
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<form class="navbar-form navbar-left" role="search" method="post">
-				<!-- <div>
+	<div class="body slide">
+		<div class="container-fluid left-border">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<br>
+					<ul class="breadcrumb">
+						<li><a href="<%=basePath%>agent/agentMemu.jsp">主页</a></li>
+						<li class="active">业绩汇总</li>
+					</ul>
+					<nav class="navbar navbar-default navbar-static-top"
+						role="navigation">
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-1">
+						<form class="navbar-form navbar-left" role="search" method="post">
+							<!-- <div>
 				<input type="radio" checked="checked" name="selecttype" value="全部" onclick="getJSONData(this.value)"/>全部<br />
 				<input type="radio"  name="selecttype" value="周业绩" onclick="getJSONData(this.value)"/>周业绩<br />
 				<input type="radio"  name="selecttype" value="月业绩" onclick="getJSONData(this.value)" />月业绩<br />
 				</div> -->
-				
-			</form>
-		</div>
-		</nav>
-		<table class="table" id="courseList">
 
-			<tbody id="courseList">
+						</form>
+					</div>
+					</nav>
+					<table class="table" id="courseList">
 
-			</tbody>
-		</table>
+						<tbody id="courseList">
 
-		<div>
-			<!-- <input id="firstPage" name="firstPage" type="button" value="第一页" /> <input
+						</tbody>
+					</table>
+
+					<div>
+						<!-- <input id="firstPage" name="firstPage" type="button" value="第一页" /> <input
 				id="prev" name="prev" type="button" value="上一页" /> <input id="next"
 				name="next" type="button" value="下一页" /> <input id="lastPage"
 				name="lastPage" type="button" value="最后一页     " /> <input
 				id=".page-num" name=".page-num" type="text" /> <input
 				id="page-jump" name="page-jump" type="button" value="跳转—>" /> <label
 				id=".page-count" name=".page-count"></label> -->
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

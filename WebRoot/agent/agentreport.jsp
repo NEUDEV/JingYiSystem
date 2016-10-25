@@ -83,44 +83,52 @@
 </script>
 </head>
 <body onload="getJSONData()">
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<ul class="breadcrumb">
-			<li><a href="<%=basePath%>agent/agentMemu.jsp">主页</a></li>
-			<li class="active">班主任业绩</li>
-		</ul>
-		<nav class="navbar navbar-default navbar-static-top" role="navigation">
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<form class="navbar-form navbar-left" role="search" method="post">
-				<select name="searchtype" id="searchtype" class="form-control">
-					<option>班主任姓名</option>
-					<option>班主任QQ</option>
-					<option>班主任手机号</option>
-				</select>
-				<div class="form-group">
-					<input class="form-control" name="searchvalue" id="searchvalue"
-						type="text" />
-				</div>
-				<button type="button" class="btn btn-default"
-					onclick="getJSONData()">Submit</button>
-			</form>
-		</div>
-		</nav>
-		<table class="table" id="courseList">
+	<div class="body slide">
+		<div class="container-fluid left-border">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<br>
+					<ul class="breadcrumb">
+						<li><a href="<%=basePath%>agent/agentMemu.jsp">主页</a></li>
+						<li class="active">班主任业绩</li>
+					</ul>
+					<nav class="navbar navbar-default navbar-static-top"
+						role="navigation">
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-1">
+						<form class="navbar-form navbar-left" role="search" method="post">
+							<select name="searchtype" id="searchtype" class="form-control">
+								<option>班主任姓名</option>
+								<option>班主任QQ</option>
+								<option>班主任手机号</option>
+							</select>
+							<div class="form-group">
+								<input class="form-control" name="searchvalue" id="searchvalue"
+									type="text" />
+							</div>
+							<button type="button" class="btn btn-default"
+								onclick="getJSONData()">Submit</button>
+						</form>
+					</div>
+					</nav>
+					<table class="table" id="courseList">
 
-			<tbody id="courseList">
+						<tbody id="courseList">
 
-			</tbody>
-		</table>
+						</tbody>
+					</table>
 
-		<div>
-			<!-- <input id="firstPage" name="firstPage" type="button" value="第一页" /> <input
+					<div>
+						<!-- <input id="firstPage" name="firstPage" type="button" value="第一页" /> <input
 				id="prev" name="prev" type="button" value="上一页" /> <input id="next"
 				name="next" type="button" value="下一页" /> <input id="lastPage"
 				name="lastPage" type="button" value="最后一页     " /> <input
 				id=".page-num" name=".page-num" type="text" /> <input
 				id="page-jump" name="page-jump" type="button" value="跳转—>" /> <label
 				id=".page-count" name=".page-count"></label> -->
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

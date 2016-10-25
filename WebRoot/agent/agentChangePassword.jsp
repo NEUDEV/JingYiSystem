@@ -8,31 +8,39 @@
 </head>
 
 <body>
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		<ul class="breadcrumb">
-			<li><a href="<%=basePath%>/agent/agentMemu.jsp">主页</a></li>
-			<li class="active">密码修改</li>
-		</ul>
-		<form
-			action="<%=basePath%>Agent/AgentLoginAndInfo_changePassword.action"
-			id="form" method="post">
-			<div class="form-group">
-				<label for="Password">原密码:</label> <input class="form-control"
-					id="chPassword" type="password" name="password" />
+	<div class="body slide">
+		<div class="container-fluid left-border">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<br>
+					<ul class="breadcrumb">
+						<li><a href="<%=basePath%>/agent/agentMemu.jsp">主页</a></li>
+						<li class="active">密码修改</li>
+					</ul>
+					<form
+						action="<%=basePath%>Agent/AgentLoginAndInfo_changePassword.action"
+						id="form" method="post">
+						<div class="form-group">
+							<label for="Password">原密码:</label> <input class="form-control"
+								id="chPassword" type="password" name="password" />
+						</div>
+						<div class="form-group">
+							<label for="Password">新密码:</label> <input class="form-control"
+								id="chPassword" type="password" name="chPassword" />
+						</div>
+						<div class="form-group">
+							<label for="Password">确认密码:</label> <input class="form-control"
+								id="chPassword" type="password" name="confirmPassword" />
+						</div>
+						<div class="row clearfix">
+							<div class="col-md-12 column">${request.info}</div>
+							</br>
+						</div>
+						<button type="submit" class="btn btn-default">提交</button>
+					</form>
+				</div>
 			</div>
-			<div class="form-group">
-				<label for="Password">新密码:</label> <input class="form-control"
-					id="chPassword" type="password" name="chPassword" />
-			</div>
-			<div class="form-group">
-				<label for="Password">确认密码:</label> <input class="form-control"
-					id="chPassword" type="password" name="confirmPassword" />
-			</div>
-			<div class="row clearfix">
-				<div class="col-md-12 column">${request.info}</div></br>
-			</div>
-			<button type="submit" class="btn btn-default">提交</button>
-		</form>
+		</div>
 	</div>
 </body>
 </html>
