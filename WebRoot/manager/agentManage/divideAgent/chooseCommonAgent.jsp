@@ -67,6 +67,10 @@
 				</tbody>
 			</table>
 		</form>
+		<div class="row clearfix">
+			<div class="col-md-12 column">${request.info}</div>
+			</br>
+		</div>
 		<input type="button" class="btn btn-default " value="选择完成"
 			onclick="document.getElementById('selectCommonAgentForm').submit();"
 			style="margin-right;" /><br>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
-	<package name="manager" extends="struts-default,json-default" namespace="/Manager">
+	<package name="manager" extends="struts-default,json-default"
+		namespace="/Manager">
 		<action name="*_*" class="com.JES.action.{1}Action" method="{2}">
 			<!-- ManagerLoginNotYet -->
 			<result name="LoginNotYet">/manager/managerOperation/login.jsp</result>
@@ -13,16 +14,20 @@
 			<result type="json" name="managerRegister">
 				<param name="root">result</param>
 			</result>
-			<result name="displayManager">/manager/managerOperation/managerOperation.jsp</result>
-			<result name="deleteManager">/manager/managerOperation/deleteManagerSuccess.jsp</result>
-			<result name="toDisplayManager">/manager/managerOperation/managerInfoDisplay.jsp</result>
-			<result name="ManagerchangePasswordFailed">/manager/managerOperation/changePassword.jsp</result>
-			
+			<result name="displayManager">/manager/managerOperation/managerOperation.jsp
+			</result>
+			<result name="deleteManager">/manager/managerOperation/deleteManagerSuccess.jsp
+			</result>
+			<result name="toDisplayManager">/manager/managerOperation/managerInfoDisplay.jsp
+			</result>
+			<result name="ManagerchangePasswordFailed">/manager/managerOperation/changePassword.jsp
+			</result>
+
 			<!-- ManagerAgentRegister -->
 			<result type="json" name="agentReigster">
 				<param name="root">result</param>
 			</result>
-			
+
 			<!-- ManagerAgentManage -->
 			<result name="agentsDisplay">/manager/agentManage/chooseAgentAdmit.jsp
 			</result>
@@ -39,7 +44,6 @@
 			<result name="displayStudentByAgentSuccess">/manager/studentManage/studentManager.jsp
 			</result>
 
-
 			<!-- AgentChangePassword -->
 			<result name="changePasswordSuccess">/manager/managerMemu.jsp</result>
 			<result name="changePasswordFailed">/manager/agentManage/agentChangePassword.jsp
@@ -52,6 +56,10 @@
 			</result>
 			<result name="divideAgentSuccess">/manager/agentManage/divideAgent/divideAgentSuccess.jsp
 			</result>
+			<result name="selectCommonAgentsFailed">/manager/agentManage/divideAgent/chooseCommonAgent.jsp
+			</result>
+			<result name="selectSuperAgentsFailed">/manager/agentManage/divideAgent/chooseSuperAgent.jsp
+			</result>
 
 			<!-- ManagerDivideStudent -->
 			<result name="studentsDisplay">/manager/studentManage/divideStudent/divideStudent.jsp
@@ -60,6 +68,12 @@
 			</result>
 			<result name="divideStudentSuccess">/manager/studentManage/divideStudent/divideStudentSuccess.jsp
 			</result>
+			<result name="selectStudentFaild">/manager/studentManage/divideStudent/chooseFirstLevelAgent.jsp
+			</result>
+			<result name="selectJingyiStudent">/manager/studentManage/divideStudent/divideStudent.jsp
+			</result>
+
+
 
 			<!-- ManagerStudentManage -->
 			<result name="searchStudentSuccess">/manager/studentManage/studentManager.jsp
@@ -71,11 +85,13 @@
 
 			<!-- ManagerViewReport -->
 			<result name="displayReport">/manager/report/displayReport.jsp</result>
-			
+
 			<!-- ManagerCourseManage -->
 			<result name="displayCourse">/manager/courseManage/displayCourse.jsp</result>
-			<result name="addCourse">/manager/courseManage/addCourseSuccess.jsp</result>
-			<result name="deleteCourse">/manager/courseManage/deleteCourseSuccess.jsp</result>
+			<result name="addCourse">/manager/courseManage/addCourseSuccess.jsp
+			</result>
+			<result name="deleteCourse">/manager/courseManage/deleteCourseSuccess.jsp
+			</result>
 
 		</action>
 	</package>
@@ -151,7 +167,7 @@
 			<!--plaintext用于显示页面原始代码的结果类型 -->
 			<result name="SUCCESS">/agent/studentShow.jsp</result>
 		</action>
-		
+
 		<action name="downestudents" class="com.JES.action.StudentUpAction"
 			method="download">
 			<param name="inputPath">/WEB-INF/downloadfile/StudentModel.xlsx</param>
@@ -162,7 +178,7 @@
 				<param name="bufferSize">2048</param>
 			</result>
 		</action>
-		
+
 		<action name="upstudents" class="com.JES.action.StudentUpAction"
 			method="upload">
 
@@ -171,7 +187,7 @@
 			<result name="fail">/agent/showms.jsp</result>
 
 		</action>
-		
+
 	</package>
 
 	<package name="ajax" extends="json-default">

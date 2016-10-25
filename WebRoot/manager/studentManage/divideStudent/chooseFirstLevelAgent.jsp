@@ -11,8 +11,8 @@
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<ul class="breadcrumb">
 			<li><a href="<%=basePath%>manager/managerMemu.jsp">主页</a></li>
-			<li class="active">选择班主任</li>
-			<li><a href="#">划分</a></li>
+			<li><a href="#">选择班主任</a></li>
+			<li class="active">划分</li>
 			<li><a href="#">划分成功</a></li>
 		</ul>
 		<nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -36,10 +36,9 @@
 		</nav>
 
 		<a>请选择目的班主任：</a>
-		<input type="button" class="btn btn-default " value="选择完成"
-			onclick="document.getElementById('selectStudentForm').submit();"/><br>
 
-		<form action="<%=basePath%>Manager/ManagerDivideStudent_divideJingyiToFirstLevelAgent.action"
+		<form
+			action="<%=basePath%>Manager/ManagerDivideStudent_divideJingyiToFirstLevelAgent.action"
 			method="post" id="selectStudentForm">
 			<table class="table table-striped">
 				<thead>
@@ -67,6 +66,12 @@
 				</tbody>
 			</table>
 		</form>
+		<div class="row clearfix">
+			<div class="col-md-12 column">${request.info}</div>
+			</br>
+		</div>
+		<input type="button" class="btn btn-default " value="选择完成"
+			onclick="document.getElementById('selectStudentForm').submit();" /><br>
 	</div>
 </body>
 </html>

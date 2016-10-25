@@ -18,7 +18,7 @@
 		<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
-			
+
 			<form class="navbar-form navbar-left" role="search"
 				action="<%=basePath%>Manager/ManagerDivideStudent_searchStudent.action"
 				method="post">
@@ -37,10 +37,9 @@
 		</nav>
 
 		<a>请选择班主任学员：</a>
-		<input type="button" class="btn btn-default " value="选择完成"
-			onclick="document.getElementById('selectStudentForm').submit();" style="margin-right;"/><br>
 
-		<form action="<%=basePath%>Manager/ManagerDivideStudent_selectJingyiStudent.action"
+		<form
+			action="<%=basePath%>Manager/ManagerDivideStudent_selectJingyiStudent.action"
 			method="post" id="selectStudentForm">
 			<table class="table table-striped">
 				<thead>
@@ -68,6 +67,13 @@
 				</tbody>
 			</table>
 		</form>
+		<div class="row clearfix">
+			<div class="col-md-12 column">${request.info}</div>
+			</br>
+		</div>
+		<input type="button" class="btn btn-default " value="选择完成"
+			onclick="document.getElementById('selectStudentForm').submit();"
+			style="margin-right;" /><br>
 	</div>
 </body>
 </html>

@@ -13,6 +13,7 @@ import freemarker.core.ReturnInstruction.Return;
 
 /**
  * 管理员管理班主任类。
+ * 
  * @author 刘鑫伟
  *
  */
@@ -42,6 +43,7 @@ public class ManagerAgentManageAction extends SuperAction implements
 
 	/**
 	 * 班主任注册。
+	 * 
 	 * @return
 	 */
 	public String register() {
@@ -135,9 +137,10 @@ public class ManagerAgentManageAction extends SuperAction implements
 		request.setAttribute("agentList", managerService.getAgents());
 		return "agentsDisplay";
 	}
-	
+
 	/**
 	 * 班主任删除。
+	 * 
 	 * @return
 	 */
 	public String delete() {
@@ -151,6 +154,7 @@ public class ManagerAgentManageAction extends SuperAction implements
 
 	/**
 	 * 班主任修改信息。
+	 * 
 	 * @return
 	 */
 	public String change() {
@@ -266,6 +270,13 @@ public class ManagerAgentManageAction extends SuperAction implements
 			return "LoginNotYet";
 		}
 
+		if (request.getParameterValues("check") == null) {
+			request.setAttribute("agentList", managerService.getAgentDAO()
+					.findByRole("班主任"));
+			request.setAttribute("info", "班主任选择不能为空");
+			return "selectCommonAgentsFailed";
+		}
+
 		session.setAttribute("checkCommonAgents",
 				request.getParameterValues("check"));
 
@@ -283,6 +294,13 @@ public class ManagerAgentManageAction extends SuperAction implements
 	public String divideAgent() {
 		if (session.getAttribute("managerId") == null) {
 			return "LoginNotYet";
+		}
+
+		if (request.getParameterValues("radio") == null) {
+			request.setAttribute("agentList", managerService.getAgentDAO()
+					.findByRole("超级班主任"));
+			request.setAttribute("info", "超级班主任选择不能为空");
+			return "selectSuperAgentsFailed";
 		}
 
 		String superAgentID = request.getParameter("radio");

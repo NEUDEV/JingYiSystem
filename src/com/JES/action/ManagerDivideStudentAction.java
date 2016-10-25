@@ -35,9 +35,14 @@ public class ManagerDivideStudentAction extends SuperAction implements
 			return "LoginNotYet";
 		}
 		
+		if (request.getParameterValues("check") == null) {
+			request.setAttribute("info", "学员选择不能为空");
+			return "selectJingyiStudent";
+		}
+		
 		session.setAttribute("checkStudents",
 				request.getParameterValues("check"));
-		request.setAttribute("firstLevelAgents", managerService.searchAgent("代理商类别", "1级代理商"));
+		request.setAttribute("Agents", managerService.getAgentDAO().findAll());
 		return "firstLevelAgentDisplay";
 	}
 	
@@ -57,6 +62,11 @@ public class ManagerDivideStudentAction extends SuperAction implements
 	public String divideJingyiToFirstLevelAgent() {
 		if (session.getAttribute("managerId") == null) {
 			return "LoginNotYet";
+		}
+		
+		if (request.getParameterValues("radio") == null) {
+			request.setAttribute("info", "班主任选择不能为空");
+			return "selectStudentFaild";
 		}
 		
 		String agentID = request.getParameter("radio");

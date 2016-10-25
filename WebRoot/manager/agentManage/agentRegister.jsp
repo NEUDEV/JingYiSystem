@@ -108,9 +108,6 @@
 					<option>超级班主任</option>
 				</select>
 			</div>
-			<div class="row clearfix">
-				<div class="col-md-12 column">${request.info}</div></br>
-			</div>
 			<input type="button" class="btn btn-default" value="提交" id="commit">
 	</div>
 </body>
