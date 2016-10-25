@@ -191,7 +191,7 @@ public class AgentService {
 	}
 	
 	public void updateReportAddNewOne(String mid){
-		Report report=new Report();
+		Report report=new Report(0);
 		report=reportDAO.findById(agentDAO.findById(mid).getReportId());
 		report.setInformalstu(report.getInformalstu()+1);
 		reportDAO.merge(report);

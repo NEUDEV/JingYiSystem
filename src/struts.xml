@@ -165,7 +165,7 @@
 			method="billup">
 			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
 			<!--plaintext用于显示页面原始代码的结果类型 -->
-			<result name="SUCCESS">/agent/studentShow.jsp</result>
+			<result name="SUCCESS">/agent/agentMemu.jsp</result>
 		</action>
 
 		<action name="downestudents" class="com.JES.action.StudentUpAction"
@@ -182,9 +182,9 @@
 		<action name="upstudents" class="com.JES.action.StudentUpAction"
 			method="upload">
 
-			<result name="success">/agent/upanddownload.jsp</result>
+			<result name="success">/agent/resultOfStudentMsUp.jsp</result>
 
-			<result name="fail">/agent/showms.jsp</result>
+			<result name="fail">/agent/resultOfStudentMsUp.jsp</result>
 
 		</action>
 
@@ -239,7 +239,20 @@
 			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
 			<result type="json">
 			</result>
-
+		</action>
+		
+		<action name="SuperReportFindAgentByTimeAction" method="MyReport"
+			class="com.JES.action.SuperReportFindAgentByTimeAction">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<result type="json">
+			</result>
+		</action>
+		
+		<action name="SuperAgentLookAgentYejiAction" method="MyReport"
+			class="com.JES.action.SuperAgentLookAgentYejiAction">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<result type="json">
+			</result>
 		</action>
 	</package>
 </struts>    

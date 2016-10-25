@@ -47,6 +47,7 @@
 				result += "<th>电商学员</th>";
 				result += "<th>终身学员</th>";
 				result += "<th>转化率</th>";
+				result += "<th>操作</th>";
 				result += "<th>业绩</th>";
 				result += "</tr>";
 				result += "</thead>";
@@ -66,9 +67,7 @@
 					result += "<td >" + order[i].onlinestu + "</td>";
 					result += "<td >" + order[i].lifetimestu + "</td>";
 					result += "<td >" + order[i].transrate + "</td>";
-					/* result += "<td ><a href=\"showstudentmassage.jsp?qq=" + order[i].qq + "\">查看|</a>";
-					result += "<a href=\"billstudent.jsp?stuid=" + order[i].stuid + "&uid="+order[i].uid+ "&name="
-						+order[i].name+"&qq="+order[i].qq+"&weixin="+order[i].weixin+"&phone="+order[i].phone+"\">提单</a></td>"; */
+					result += "<td ><a href=\"superagentLookAgentReport.jsp?mid=" + order[i].mid + "\""+">查看详细报表</a></td>";
 					result += "<td >" + order[i].allbills + "</td>";
 					result += "</tr>";
 				}
@@ -119,13 +118,6 @@
 					</table>
 
 					<div>
-						<!-- <input id="firstPage" name="firstPage" type="button" value="第一页" /> <input
-				id="prev" name="prev" type="button" value="上一页" /> <input id="next"
-				name="next" type="button" value="下一页" /> <input id="lastPage"
-				name="lastPage" type="button" value="最后一页     " /> <input
-				id=".page-num" name=".page-num" type="text" /> <input
-				id="page-jump" name="page-jump" type="button" value="跳转—>" /> <label
-				id=".page-count" name=".page-count"></label> -->
 					</div>
 				</div>
 			</div>

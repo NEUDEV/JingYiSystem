@@ -4,6 +4,7 @@ public class ReportShowItem {
 	private String Aname;
 	private String Aqq;
 	private String Aphone;
+	private String Mid;
 	private Integer informalstu;
 	private Integer platestu;
 	private Integer typefacestu;
@@ -32,7 +33,17 @@ public class ReportShowItem {
 		this.Aname=agent.getName();
 		this.Aphone=agent.getPhone();
 		this.Aqq=agent.getQq();
+		this.Mid=agent.getUid();
 	}
+	
+	public String getMid() {
+		return Mid;
+	}
+
+	public void setMid(String mid) {
+		Mid = mid;
+	}
+
 	public String getAname() {
 		return Aname;
 	}

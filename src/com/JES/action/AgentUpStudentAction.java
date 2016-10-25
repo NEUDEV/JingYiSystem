@@ -2,6 +2,7 @@ package com.JES.action;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -105,7 +106,7 @@ public class AgentUpStudentAction extends SuperAction{
 	upstudent.setPhone(phone);
 	upstudent.setQq(qq);
 	upstudent.setWeixin(weixin);
-	student.setUid(qq);
+	student.setUid(UUID.randomUUID().toString());
 	student.setQq(qq);
 	student.setName(name);
 	student.setPhone(phone);
