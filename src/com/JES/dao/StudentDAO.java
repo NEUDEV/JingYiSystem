@@ -230,7 +230,7 @@ public class StudentDAO {
 	}
 	
 	public List findByNameWithMid(Object name,String mid){
-		return findByPropertyWithMid(MARK, name,mid);
+		return findByPropertyWithMid(NAME, name,mid);
 	}
 	
 	public List findByPhoneWithMid(Object phone,String mid){

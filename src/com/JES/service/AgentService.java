@@ -120,13 +120,7 @@ public class AgentService {
 	public List<Student> searchStudents(String type, String value,String mid) {
 		if(value.equals("")||value==null) 
 			return (List<Student>) studentDAO.findByMid(mid);
-		List<Student> slist = new ArrayList<Student>();
 		switch (type) {
-		case "学员UID":
-			Student student = studentDAO.findById(value);
-			if (student != null)
-				slist.add(student);
-			return slist;
 		case "真实姓名":
 			return (List<Student>) studentDAO.findByNameWithMid(value,mid);
 		case "手机号":
