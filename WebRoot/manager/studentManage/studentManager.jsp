@@ -39,11 +39,10 @@
 					</div>
 
 					</nav>
-					<table class="table table-striped">
+					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
 								<th>序号</th>
-								<th>UID</th>
 								<th>学号</th>
 								<th>姓名</th>
 								<th>手机号</th>
@@ -52,6 +51,7 @@
 								<th>来源</th>
 								<th>状态</th>
 								<th>录入时间</th>
+								<th>转化指数</th>
 								<th>操作</th>
 							</tr>
 						</thead>
@@ -60,7 +60,6 @@
 							<c:forEach items="${request.studentList}" var="student">
 								<tr>
 									<td>${i=i+1}</td>
-									<td>${student.uid}</td>
 									<td>${student.stuid}</td>
 									<td>${student.name}</td>
 									<td>${student.phone}</td>

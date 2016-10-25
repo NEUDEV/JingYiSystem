@@ -38,7 +38,7 @@
 					</div>
 					</nav>
 
-					<table class="table table table-bordered">
+					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
 								<th>序号</th>

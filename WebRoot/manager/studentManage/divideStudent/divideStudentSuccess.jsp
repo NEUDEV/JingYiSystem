@@ -20,7 +20,7 @@
 						<li class="active">划分成功</li>
 					</ul>
 					<a>从班主任划分至其他班主任学员如下：</a>
-					<table class="table table-striped">
+					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
 								<th>UID</th>

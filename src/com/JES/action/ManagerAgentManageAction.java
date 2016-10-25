@@ -53,7 +53,6 @@ public class ManagerAgentManageAction extends SuperAction implements
 
 		result = managerService.agentRegister(agent,
 				request.getParameter("confirmPassword"));
-		System.out.println(result);
 		return "agentReigster";
 	}
 

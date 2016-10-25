@@ -23,7 +23,7 @@
 					<form
 						action="<%=basePath%>Manager/ManagerStudentManage_changeStudentInfo.action"
 						id="form" method="post">
-						<table class="table table-striped">
+						<table class="table table-bordered table-hover">
 							<thead>
 								<tr>
 									<th>字段</th>

@@ -39,7 +39,7 @@
 						</form>
 					</div>
 					</nav>
-					<table class="table table-striped">
+					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
 								<th>账户名</th>

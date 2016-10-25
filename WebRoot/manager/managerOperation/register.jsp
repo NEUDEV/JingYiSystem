@@ -30,29 +30,28 @@
 			function(data) { 
 				var member = eval("(" + data + ")");
 				if (member.info == "OK") {
-					window.location.href="<%=basePath%>
-	Manager/ManagerOperation_toDisplayManager.action?uid="
-																+ member.uid;
-													} else if (member.info == "管理员账号已存在") {
-														$("#mname").val("");
-														$("#mnamems").html(
-																member.info);
-													} else if (member.info == "两次密码不一致") {
-														$("#password").val("");
-														$("#confirmPassword")
-																.val("");
-														$("#passwordms").html(
-																member.info);
-													}
+					window.location.href="<%=basePath%>Manager/ManagerOperation_toDisplayManager.action?uid="
+							+ member.uid;
+				} else if (member.info == "管理员账号已存在") {
+					$("#mname").val("");
+					$("#mnamems").html(
+							member.info);
+				} else if (member.info == "两次密码不一致") {
+					$("#password").val("");
+					$("#confirmPassword")
+							.val("");
+					$("#passwordms").html(
+							member.info);
+				}
 
-												},
+			},
 
-												'json' //数据传递的类型  json
+			'json' //数据传递的类型  json
 
-										);
+			);
 
-							}
-						});
+			}
+		});
 	});
 </script>
 </head>

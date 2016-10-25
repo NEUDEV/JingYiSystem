@@ -44,7 +44,7 @@
 					<form
 						action="<%=basePath%>Manager/ManagerAgentManage_displaySuperAgents.action"
 						method="post" id="selectCommonAgentForm">
-						<table class="table table-striped">
+						<table class="table table-bordered table-hover">
 							<thead>
 								<tr>
 									<th>序号</th>

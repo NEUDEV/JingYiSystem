@@ -119,7 +119,6 @@ public class ManagerOperationAction extends SuperAction implements
 
 		result = managerService.managerRegister(manager,
 				request.getParameter("confirmPassword"));
-		System.out.println(result);
 
 		return "managerRegister";
 	}

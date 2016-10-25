@@ -18,7 +18,7 @@
 						<li class="active">课程管理</li>
 					</ul>
 
-					<table class="table table-striped">
+					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
 								<th>序号</th>
