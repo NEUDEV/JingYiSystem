@@ -53,7 +53,7 @@
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
 								href="#collapse2" aria-expanded="true" aria-controls="collapse2">
-								<i class="fa"></i> 班主任管理
+								<i class="fa"></i> 我的学员
 							</a>
 						</h4>
 					</div>
@@ -61,12 +61,12 @@
 					<div id="collapse2" class="panel-collapse collapse" role="tabpanel"
 						aria-labelledby="heading2">
 						<div>
-							<a href="<%=basePath%>Manager/ManagerAgentManage_display.action"
-								class="list-group-item">班主任管理</a> <a
-								href="<%=basePath%>manager/agentManage/agentRegister.jsp"
-								class="list-group-item">开设班主任账户</a> <a
-								href="<%=basePath%>Manager/ManagerAgentManage_displayCommonAgents.action"
-								class="list-group-item">班主任划分至超级班主任</a>
+							<a href="<%=basePath%>agent/studentAdmit.jsp"
+								class="list-group-item">添加学员</a> <a
+								href="<%=basePath%>agent/studentShow.jsp"
+								class="list-group-item">我的学员</a> <a
+								href="StudentMassageFileOutAction.action"
+								class="list-group-item">导出学员</a>
 						</div>
 					</div>
 				</div>
@@ -76,7 +76,7 @@
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
 								href="#collapse3" aria-expanded="true" aria-controls="collapse3">
-								<i class="fa"></i> 报表
+								<i class="fa"></i> 我的团队
 							</a>
 						</h4>
 					</div>
@@ -85,8 +85,8 @@
 						aria-labelledby="heading3">
 						<div>
 							<a
-								href="<%=basePath%>Manager/ManagerViewReport_displayReport.action"
-								class="list-group-item">查看系统报表 </a>
+								href="<%=basePath%>agent/agentShow.jsp"
+								class="list-group-item">团队成员 </a>
 						</div>
 					</div>
 				</div>
@@ -96,7 +96,7 @@
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
 								href="#collapse4" aria-expanded="true" aria-controls="collapse4">
-								<i class="fa"></i> 学员管理
+								<i class="fa"></i>我的业绩
 							</a>
 						</h4>
 					</div>
@@ -105,10 +105,12 @@
 						aria-labelledby="heading4">
 						<div>
 							<a
-								href="<%=basePath%>manager/studentManage/divideStudent/divideStudent.jsp"
-								class="list-group-item">学员划分</a> <a
-								href="<%=basePath%>manager/studentManage/studentManager.jsp"
-								class="list-group-item">学员管理</a>
+								href="<%=basePath%>agent/myreport.jsp"
+								class="list-group-item">我的业绩</a> <a
+								href="<%=basePath%>agent/agentreport.jsp"
+								class="list-group-item">班主任业绩</a><a
+								href="<%=basePath%>agent/all_report.jsp""
+								class="list-group-item">业绩汇总</a>
 						</div>
 					</div>
 				</div>
@@ -118,7 +120,7 @@
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
 								href="#collapse5" aria-expanded="true" aria-controls="collapse5">
-								<i class="fa"></i> 课程管理
+								<i class="fa"></i> 我的账户
 							</a>
 						</h4>
 					</div>
@@ -127,36 +129,12 @@
 						aria-labelledby="heading5">
 						<div>
 							<a
-								href="<%=basePath%>Manager/ManagerCourseManage_displayCourse.action"
-								class="list-group-item">课程管理</a> <a
-								href="<%=basePath%>manager/courseManage/addCourse.jsp"
-								class="list-group-item">增加课程</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="panel panel-default">
-					<div class="panel-heading" role="tab" id="heading6">
-						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse6" aria-expanded="true" aria-controls="collapse6">
-								<i class="fa"></i> 管理员管理
-							</a>
-						</h4>
-					</div>
-
-					<div id="collapse6" class="panel-collapse collapse" role="tabpanel"
-						aria-labelledby="heading6">
-						<div>
-							<a
-								href="<%=basePath%>Manager/ManagerOperation_displayManager.action"
-								class="list-group-item">管理员管理</a> <a
-								href="<%=basePath%>manager/managerOperation/register.jsp"
-								class="list-group-item">添加管理员</a> <a
-								href="<%=basePath%>Manager/ManagerOperation_toDisplayManager.action"
-								class="list-group-item">查看个人信息</a> <a
-								href="<%=basePath%>manager/managerOperation/changePassword.jsp"
-								class="list-group-item">密码修改</a>
+								href="<%=basePath%>Agent/AgentLoginAndInfo_displayAgentInfo.action"
+								class="list-group-item">个人信息</a> <a
+								href="<%=basePath%>Agent/AgentLoginAndInfo_getAccountInfo.action"
+								class="list-group-item">银行卡信息</a><a
+								href="<%=basePath%>agent/agentChangePassword.jsp"
+								class="list-group-item">修改密码</a>
 						</div>
 					</div>
 				</div>
