@@ -273,6 +273,12 @@ public class AgentService {
 		else return false;
 	}
 	
+	public boolean cheackPower(String mid){
+		if(agentDAO.findById(mid).getRole().equals("³¬¼¶°àÖ÷ÈÎ"))
+			return true;
+		else return false;
+	}
+	
 	public void updateorsaveStudent(Student student){
 		studentDAO.merge(student);
 	}
@@ -363,12 +369,22 @@ public class AgentService {
 		List<Agent> agentList=new ArrayList<Agent>();
 		List<ReportShowItem> rItemList=new ArrayList<ReportShowItem>();
 		Integer len;
-		ReportShowItem rItem=new ReportShowItem();
+		if(mid.equals("")){
+			agentList.addAll((List<Agent>)agentDAO.findAll());
+			len=agentList.size();
+			for(int i=0;i<len;i++){
+				ReportShowItem rItem=new ReportShowItem();
+				rItem.setReportShowITEM(reportDAO.findById(agentList.get(i).getReportId()),agentList.get(i));
+				rItemList.add(rItem);
+			}
+			return rItemList;
+		}else{
 		if(value.equals("")||value==null) {
 			
 			agentList.addAll((List<Agent>)agentDAO.findByMannager(mid));
 			len=agentList.size();
 			for(int i=0;i<len;i++){
+				ReportShowItem rItem=new ReportShowItem();
 				rItem.setReportShowITEM(reportDAO.findById(agentList.get(i).getReportId()),agentList.get(i));
 				rItemList.add(rItem);
 			}
@@ -379,6 +395,7 @@ public class AgentService {
 			agentList.addAll((List<Agent>)agentDAO.findReportByName(value, mid));
 			len=agentList.size();
 			for(int i=0;i<len;i++){
+				ReportShowItem rItem=new ReportShowItem();
 				rItem.setReportShowITEM(reportDAO.findById(agentList.get(i).getReportId()),agentList.get(i));
 				rItemList.add(rItem);
 			}
@@ -387,6 +404,7 @@ public class AgentService {
 			agentList.addAll((List<Agent>)agentDAO.findReportByQq(value, mid));
 			len=agentList.size();
 			for(int i=0;i<len;i++){
+				ReportShowItem rItem=new ReportShowItem();
 				rItem.setReportShowITEM(reportDAO.findById(agentList.get(i).getReportId()),agentList.get(i));
 				rItemList.add(rItem);
 			}
@@ -395,10 +413,12 @@ public class AgentService {
 			agentList.addAll((List<Agent>)agentDAO.findReportByPhone(value, mid));
 			len=agentList.size();
 			for(int i=0;i<len;i++){
+				ReportShowItem rItem=new ReportShowItem();
 				rItem.setReportShowITEM(reportDAO.findById(agentList.get(i).getReportId()),agentList.get(i));
 				rItemList.add(rItem);
 			}
 			return rItemList;
+		}
 		}
 		return null;
 	}

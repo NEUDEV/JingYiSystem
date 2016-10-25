@@ -87,7 +87,7 @@
 									href="<%=basePath%>Manager/ManagerViewReport_displayReport.action"
 									class="list-group-item">业绩汇总 </a>
 									<a
-									href="<%=basePath%>Manager/ManagerViewReport_displayReport.action"
+									href="<%=basePath%>manager/report/manageragentreport.jsp"
 									class="list-group-item">班主任业绩查询 </a>
 							</div>
 						</div>

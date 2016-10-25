@@ -46,10 +46,10 @@
 							<label for="sign">状态：</label> <label id="sign" name="sign"><%=request.getParameter("sign")%></label>
 						</div>
 						<div class="form-group">
-							<label for="sfrom">状态：</label> <label id="sign" name="sfrom"><%=request.getParameter("sfrom")%></label>
+							<label for="sfrom">来源：</label> <label id="sfrom" name="sfrom"><%=request.getParameter("sfrom")%></label>
 						</div>
 						<div class="form-group">
-							<label for="intime">状态：</label> <label id="intime" name="intime"><%=request.getParameter("intime")%></label>
+							<label for="intime">录入时间：</label> <label id="intime" name="intime"><%=request.getParameter("intime")%></label>
 						</div>
 						<div class="form-group">
 							<img alt="显示图片" style="height:200px;width: 300px "

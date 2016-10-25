@@ -181,13 +181,15 @@
 
 		<action name="upstudents" class="com.JES.action.StudentUpAction"
 			method="upload">
-
 			<result name="success">/agent/resultOfStudentMsUp.jsp</result>
-
 			<result name="fail">/agent/resultOfStudentMsUp.jsp</result>
-
 		</action>
 
+		<action name="AgentPowerAction" class="com.JES.action.AgentPowerAction"
+			method="Power">
+			<result name="super">/agent/studentShow.jsp</result>
+			<result name="nonsuper">/agent/studentShownotBill.jsp</result>
+		</action>
 	</package>
 
 	<package name="ajax" extends="json-default">
@@ -251,6 +253,28 @@
 		<action name="SuperAgentLookAgentYejiAction" method="MyReport"
 			class="com.JES.action.SuperAgentLookAgentYejiAction">
 			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<result type="json">
+			</result>
+		</action>
+		
+		<action name="ManagerLookAgentYejiAction" method="MyReport"
+			class="com.JES.action.ManagerLookAgentYejiAction">
+			<result name="LoginNotYet">/manager/managerOperation/login.jsp</result>
+			<result type="json">
+			</result>
+		</action>
+		
+		<action name="ManagerReportFindAgentByTimeAction" method="MyReport"
+			class="com.JES.action.ManagerReportFindAgentByTimeAction">
+			<result name="LoginNotYet">/manager/managerOperation/login.jsp</result>
+			<result type="json">
+			</result>
+		</action>
+		
+		
+		<action name="ManagerShowAllReportAction" method="AgentReports"
+			class="com.JES.action.ManagerShowAllReportAction">
+			<result name="LoginNotYet">/manager/managerOperation/login.jsp</result>
 			<result type="json">
 			</result>
 		</action>

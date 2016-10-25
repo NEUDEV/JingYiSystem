@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ page import="com.JES.model.Student"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="./agentMemu.jsp"%>
+<%@ include file="../managerMemu.jsp"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -41,7 +41,7 @@
 		var mid=$("#midvalue").val();
 		$.ajax({
 			type : "post",
-			url : "SuperAgentLookAgentYejiAction.action",
+			url : "ManagerLookAgentYejiAction.action",
 			data : {
 				'selecttype' : value,
 				'mid':mid
@@ -102,7 +102,7 @@
 		var mid=$("#midvalue").val();
 		$.ajax({
 			type : "post",
-			url : "SuperReportFindAgentByTimeAction.action",
+			url : "ManagerReportFindAgentByTimeAction.action",
 			data : {
 				'firstY' : fy,
 				'firstM' : fm,
@@ -171,8 +171,7 @@
 					<br>
 					<ul class="breadcrumb">
 						<li><a href="<%=basePath%>agent/agentMemu.jsp">主页</a></li>
-						<li><a href="<%=basePath%>agent/agentreport.jsp">班主任业绩</a></li>
-						<li class="active"><%=request.getParameter("aname")%>的业绩</li>
+						<li class="active">我的业绩</li>
 					</ul>
 					<nav class="navbar navbar-default navbar-static-top"
 						role="navigation">
@@ -192,17 +191,15 @@
 							</div>
 							<div id="YMchose" style="display: none">
 								<br>
-								 <select id=YYYY1 name=YYYY1>
+								<label>起始</label> <select id=YYYY1 name=YYYY1>
 									<option value="">年</option>
 								</select> <select id=MM1 name=MM1>
 									<option value="">月</option>
-								</select><label>(月初)--</label>  <select id=YYYY2 name=YYYY2>
+								</select> <label> - 结束</label> <select id=YYYY2 name=YYYY2>
 									<option value="">年</option>
 								</select> <select id=MM2 name=MM2>
 									<option value="">月</option>
-								</select>
-								<label>(月末)</label> 
-								<input type="button" onclick="getJSONDataBytime()" value="查询">
+								</select> <input type="button" onclick="getJSONDataBytime()" value="查询">
 							</div>
 							<input id="midvalue" type="hidden" value=<%=request.getParameter("mid")%>>
 						</form>

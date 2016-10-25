@@ -26,11 +26,18 @@ public class AgentUpStudentAction extends SuperAction{
     private String weixin;
     private String phone;
     private String class_;
+    private String note;
 	private String fileFileName;
 	private String fileContentType;
 	
 	private AgentService agentservice;
 	
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
+	}
 	public String getQq() {
 		return qq;
 	}
@@ -112,6 +119,7 @@ public class AgentUpStudentAction extends SuperAction{
 	student.setPhone(phone);
 	student.setWeixin(weixin);
 	student.setStuid(qq);
+	student.setNote(note);
 	agentservice.upPhoto(input, (int) file.length(), upstudent,student,session.getAttribute("agentID").toString());
 	return "success";
 	}

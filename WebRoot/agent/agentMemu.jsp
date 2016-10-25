@@ -109,7 +109,7 @@
 									href="<%=basePath%>agent/agentreport.jsp"
 									class="list-group-item">班主任业绩</a><a
 									href="<%=basePath%>agent/all_report.jsp"
-									"
+									
 								class="list-group-item">业绩汇总</a>
 							</div>
 						</div>

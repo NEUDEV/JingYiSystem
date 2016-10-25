@@ -1,19 +1,25 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ page import="com.JES.model.Student"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="./agentMemu.jsp"%>
+<%@ include file="../managerMemu.jsp"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <script type="text/javascript" src="jquery/JS/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">
-	function getJSONData() {
-		var type = $("#searchtype").val();
-		var value = $("#searchvalue").val();
+	function getJSONData(showvalue) {
+		if(showvalue==0){
+			var type = $("#searchtype").val();
+			var value = $("#searchvalue").val();
+		}
+		else {
+			var type = "";
+			var value = "";
+		}
 		$.ajax({
 			type : "post",
-			url : "MyCpReportAction.action",
+			url : "ManagerShowAllReportAction.action",
 			data : {
 				'searchtype' : type,
 				'searchvalue' : value
@@ -21,13 +27,7 @@
 			datatype : "json",
 			//contentType: "application/json",
 			success : function(json) {
-				//alert(typeof(json.jsonResult));
 				var order = $.parseJSON(json.jsonResult);
-				//var mybills = $.parseJSON(json.jsonResult.bills);
-				//alert(typeof(order));
-				//var data=JSON.parse(aa);
-				//alert(order[0].uid);
-				//alert("success:"+order[0].name);
 				var result = "";
 				if (order == null) {
 					//alert('order is null');
@@ -67,7 +67,7 @@
 					result += "<td >" + order[i].onlinestu + "</td>";
 					result += "<td >" + order[i].lifetimestu + "</td>";
 					result += "<td >" + order[i].transrate + "</td>";
-					result += "<td ><a href=\"superagentLookAgentReport.jsp?mid=" + order[i].mid +"&aname=" +order[i].aname+"\""+">查看详细报表</a></td>";
+					result += "<td ><a href=\"managerLookAgentReport.jsp?mid=" + order[i].mid + "\""+">查看详细报表</a></td>";
 					result += "<td >" + order[i].allbills + "</td>";
 					result += "</tr>";
 				}
@@ -106,7 +106,9 @@
 									type="text" />
 							</div>
 							<button type="button" class="btn btn-default"
-								onclick="getJSONData()">Submit</button>
+								onclick="getJSONData(0)">提交</button>
+							<button type="button" class="btn btn-default"
+								onclick="getJSONData(1)">显示全部</button>	
 						</form>
 					</div>
 					</nav>
