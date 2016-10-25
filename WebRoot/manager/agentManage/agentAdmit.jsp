@@ -32,7 +32,7 @@
 					type="number" name="phone" size="11" />
 			</div>
 			<div class="form-group">
-				<label for="role">变更班主任类型:</label> <select name="selectRole"
+				<label for="role">变更班主任类型:</label> <select name="role"
 					class="form-control">
 					<option>班主任</option>
 					<option>超级班主任</option>
