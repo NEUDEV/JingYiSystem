@@ -164,20 +164,12 @@ public class ManagerAgentManageAction extends SuperAction implements
 
 		agent.setUid(request.getParameter("uid"));
 
-		if (managerService.isExistAgent(agent)) {
+		if (managerService.isExistAgent(agent) && !"".equals(agent.getAname())) {
 			request.setAttribute("info", "账号已存在。");
 			return "agentChangeFaild";
 		}
 
-		String role = request.getParameter("selectRole");
-		if ("班主任".equals(role)) {
-			agent.setRole("班主任");
-		} else if ("超级班主任".equals(role)) {
-			agent.setRole("超级班主任");
-		}
-
-		request.setAttribute("agent", agent);
-		managerService.changeAgent(agent);
+		request.setAttribute("agent", managerService.changeAgent(agent));
 		return "agentChangeSuccess";
 	}
 

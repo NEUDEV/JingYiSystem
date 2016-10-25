@@ -98,7 +98,7 @@ public class AgentLoginAndInfoAction extends SuperAction implements
 	}
 
 	/**
-	 * 更改代理商信息。
+	 * 更改班主任信息。
 	 * 
 	 * @return
 	 */

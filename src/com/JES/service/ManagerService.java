@@ -143,13 +143,13 @@ public class ManagerService {
 
 		manager.setUid("");
 
-		if (managerDAO.findByMname(manager.getMname()).size() >0) {
+		if (managerDAO.findByMname(manager.getMname()).size() > 0) {
 			map.put("info", "管理员账号已存在");
 			return JSONObject.fromObject(map).toString();
 		} else if (!manager.getPassword().equals(confirmPassword)) {
 			map.put("info", "两次密码不一致");
 			return JSONObject.fromObject(map).toString();
-		} 
+		}
 
 		manager.setUid(UUID.randomUUID().toString());
 		managerDAO.save(manager);
@@ -335,31 +335,38 @@ public class ManagerService {
 	 * 
 	 * @param agent
 	 */
-	public void changeAgent(Agent agent) {
+	public Agent changeAgent(Agent agent) {
 
 		Agent otherAgent = agentDAO.findById(agent.getUid());
 
-		if (!agent.getAname().equals(otherAgent.getAname())) {
+		if (!agent.getAname().equals(otherAgent.getAname())
+				&& !"".equals(agent.getAname())) {
 			otherAgent.setAname(agent.getAname());
 		}
 
-		if (!agent.getName().equals(otherAgent.getName())) {
+		if (!agent.getName().equals(otherAgent.getName())
+				&& !"".equals(agent.getName())) {
 			otherAgent.setName(agent.getName());
 		}
 
-		if (!agent.getQq().equals(otherAgent.getQq())) {
+		if (!agent.getQq().equals(otherAgent.getQq())
+				&& !"".equals(agent.getQq())) {
 			otherAgent.setQq(agent.getQq());
 		}
 
-		if (!agent.getPhone().equals(otherAgent.getPhone())) {
+		if (!agent.getPhone().equals(otherAgent.getPhone())
+				&& !"".equals(agent.getPhone())) {
 			otherAgent.setPhone(agent.getPhone());
 		}
 
-		if (!agent.getRole().equals(otherAgent.getRole())) {
+		if (!agent.getRole().equals(otherAgent.getRole())
+				&& !"".equals(agent.getRole())) {
 			otherAgent.setRole(agent.getRole());
 		}
 
 		agentDAO.merge(otherAgent);
+		
+		return otherAgent;
 	}
 
 	/**

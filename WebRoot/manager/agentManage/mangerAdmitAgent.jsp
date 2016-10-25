@@ -21,7 +21,7 @@
 			id="form" method="post">
 			<div class="form-group">
 				<label for="aname">账户名</label><input class="form-control" id="aname"
-					type="text" name="aname" value="" placeholder="不修改则不填"/>
+					type="text" name="aname" placeholder="不修改则不填"/>
 			</div>
 			<div class="form-group">
 				<label for="name">姓名</label><input class="form-control" id="name"
@@ -36,7 +36,7 @@
 					type="number" name="phone" size="11" placeholder="不修改则不填"/>
 			</div>
 			<div class="form-group">
-				<label for="role">选择班主任级别:</label> <select name="selectRole"
+				<label for="role">选择班主任级别:</label> <select name="role"
 					class="form-control">
 					<option>班主任</option>
 					<option>超级班主任</option>

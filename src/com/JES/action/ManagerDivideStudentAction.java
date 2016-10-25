@@ -19,6 +19,10 @@ public class ManagerDivideStudentAction extends SuperAction implements
 		this.managerService = managerService;
 	}
 	
+	/**
+	 * 查询学生。
+	 * @return
+	 */
 	public String searchStudent() {
 		request.setAttribute("studentList", managerService.searchStudent(
 				request.getParameter("searchType"),
@@ -27,7 +31,7 @@ public class ManagerDivideStudentAction extends SuperAction implements
 	}
 
 	/**
-	 * 获取鲸艺学员。
+	 * 获取班主任学员。
 	 * @return
 	 */
 	public String selectJingyiStudent() {
@@ -46,7 +50,10 @@ public class ManagerDivideStudentAction extends SuperAction implements
 		return "firstLevelAgentDisplay";
 	}
 	
-	
+	/**
+	 * 搜索班主任。
+	 * @return
+	 */
 	public String searchAgent() {
 		if (session.getAttribute("managerId") == null) {
 			return "LoginNotYet";
@@ -59,6 +66,10 @@ public class ManagerDivideStudentAction extends SuperAction implements
 		return "firstLevelAgentDisplay";
 	}
 	
+	/**
+	 * 将学员划分到班主任。
+	 * @return
+	 */
 	public String divideJingyiToFirstLevelAgent() {
 		if (session.getAttribute("managerId") == null) {
 			return "LoginNotYet";

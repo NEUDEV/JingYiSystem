@@ -17,6 +17,10 @@ public class ManagerStudentManageAction extends SuperAction implements
 		this.managerService = managerService;
 	}
 
+	/**
+	 * 查询学生。
+	 * @return
+	 */
 	public String searchStudent() {
 		if (session.getAttribute("managerId") == null) {
 			return "LoginNotYet";
@@ -28,6 +32,10 @@ public class ManagerStudentManageAction extends SuperAction implements
 		return "searchStudentSuccess";
 	}
 
+	/**
+	 * 通过id查询学生。
+	 * @return
+	 */
 	public String searchStudentById() {
 		if (session.getAttribute("managerId") == null) {
 			return "LoginNotYet";
@@ -40,6 +48,10 @@ public class ManagerStudentManageAction extends SuperAction implements
 		return "returnStudentInfo";
 	}
 
+	/**
+	 * 更改学生信息。
+	 * @return
+	 */
 	public String changeStudentInfo() {
 		if (session.getAttribute("managerId") == null) {
 			return "LoginNotYet";
