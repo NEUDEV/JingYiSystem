@@ -8,37 +8,43 @@
 </head>
 
 <body>
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		<ul class="breadcrumb">
-			<li><a href="<%=basePath%>manager/managerMemu.jsp">主页</a></li>
-			<li class="active">选择班主任学员</li>
-			<li><a href="#">划分</a></li>
-			<li><a href="#">划分成功</a></li>
-		</ul>
-		<a>划分至超级班主任${request.superAgent.name}下的班主任如下：</a>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>序号</th>
-						<th>账户名</th>
-						<th>姓名</th>
-						<th>手机号</th>
-						<th>QQ</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${request.agentList}" var="agent">
-						<tr>
-							<td>${i=i+1}</td>
-							<td>${agent.aname}</td>
-							<td>${agent.name}</td>
-							<td>${agent.phone}</td>
-							<td>${agent.qq}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</table>
+	<div class="body slide">
+		<div class="container-fluid left-border">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<br>
+					<ul class="breadcrumb">
+						<li><a href="<%=basePath%>manager/managerMemu.jsp">主页</a></li>
+						<li class="active">选择班主任学员</li>
+						<li><a href="#">划分</a></li>
+						<li><a href="#">划分成功</a></li>
+					</ul>
+					<a>划分至超级班主任${request.superAgent.name}下的班主任如下：</a>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>序号</th>
+								<th>账户名</th>
+								<th>姓名</th>
+								<th>手机号</th>
+								<th>QQ</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${request.agentList}" var="agent">
+								<tr>
+									<td>${i=i+1}</td>
+									<td>${agent.aname}</td>
+									<td>${agent.name}</td>
+									<td>${agent.phone}</td>
+									<td>${agent.qq}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

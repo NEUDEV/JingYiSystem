@@ -8,20 +8,29 @@
 </head>
 
 <body>
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		<ul class="breadcrumb">
-			<li><a href="<%=basePath%>manager/managerMemu.jsp">主页</a></li>
-			<li><a href="#">班主任管理</a></li>
-			<li><a href="#">删除班主任</a></li>
-			<li class="active">删除成功</li>
-		</ul>
+	<div class="body slide">
+		<div class="container-fluid left-border">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<br>
+					<ul class="breadcrumb">
+						<li><a href="<%=basePath%>manager/managerMemu.jsp">主页</a></li>
+						<li><a href="#">班主任管理</a></li>
+						<li><a href="#">删除班主任</a></li>
+						<li class="active">删除成功</li>
+					</ul>
 
-		<dl>
-			<dd>班主任${agent.aname} 删除成功</dd>
-		</dl>
+					<dl>
+						<dd>班主任${agent.aname} 删除成功</dd>
+					</dl>
 
-		<a class="btn btn-default" href="<%=basePath%>Manager/ManagerAgentManage_display.action">返回</a>
+					<a class="btn btn-default"
+						href="<%=basePath%>Manager/ManagerAgentManage_display.action">返回</a>
+				</div>
+			</div>
+		</div>
 	</div>
+
 </body>
 </html>
 
