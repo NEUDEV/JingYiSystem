@@ -15,7 +15,7 @@
 					<br>
 					<ul class="breadcrumb">
 						<li><a href="<%=basePath%>agent/agentMemu.jsp">主页</a></li>
-						<li class="active">电子表格录入结果</li>
+						<li class="active">操作结果</li>
 					</ul>
 					<nav class="navbar navbar-default navbar-static-top"
 						role="navigation">

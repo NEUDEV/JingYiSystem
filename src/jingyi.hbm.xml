@@ -5,29 +5,29 @@
 <hibernate-mapping>
 	<class name="com.JES.model.Student" table="student">
 		<id name="uid" type="java.lang.String">
-            <column name="uid" />
+            <column name="uid" length="60"/>
             <generator class="assigned" />
         </id>
         <property name="msign" type="java.lang.String">
-            <column name="msign" />
+            <column name="msign" length="45"/>
         </property>
         <property name="name" type="java.lang.String">
-            <column name="name" />
+            <column name="name" length="45"/>
         </property>
         <property name="phone" type="java.lang.String">
-            <column name="phone" />
+            <column name="phone" length="45"/>
         </property>
         <property name="qq" type="java.lang.String">
-            <column name="qq" />
+            <column name="qq" length="45"/>
         </property>
         <property name="weixin" type="java.lang.String">
-            <column name="weixin" />
+            <column name="weixin" length="45"/>
         </property>
         <property name="mid" type="java.lang.String">
-            <column name="mid" />
+            <column name="mid" length="60"/>
         </property>
         <property name="sign" type="java.lang.String">
-            <column name="sign" />
+            <column name="sign" length="45"/>
         </property>
         <property name="stuid" type="java.lang.String">
             <column name="stuid" length="45" />
@@ -46,41 +46,41 @@
         </property>
 	</class>
 	<class name="com.JES.model.Agent" table="agent">
-		<id name="uid" column="uid" type="java.lang.String">
+		<id name="uid" column="uid" length="60" type="java.lang.String">
 			<generator class="assigned"></generator>
 		</id>
-		<property name="aname" column="aname" type="java.lang.String"></property>
-		<property name="name" column="name" type="java.lang.String"></property>
-		<property name="phone" column="phone" type="java.lang.String"></property>
-		<property name="qq" column="qq" type="java.lang.String"></property>
-		<property name="password" column="password" type="java.lang.String"></property>
-		<property name="aid" column="aid" type="java.lang.String"></property>
-		<property name="idcard" column="idcard" type="java.lang.String"></property>
-		<property name="cname" column="cname" type="java.lang.String"></property>
-		<property name="bank" column="bank" type="java.lang.String"></property>
-		<property name="account" column="account" type="java.lang.String"></property>
-		<property name="role" column="role" type="java.lang.String"></property>
-		<property name="mannager" column="mannager" type="java.lang.String"></property>
-		<property name="reportId" column="reportId" type="java.lang.String"></property>
+		<property name="aname" column="aname" length="45" type="java.lang.String"></property>
+		<property name="name" column="name" length="45" type="java.lang.String"></property>
+		<property name="phone" column="phone" length="45" type="java.lang.String"></property>
+		<property name="qq" column="qq" length="45" type="java.lang.String"></property>
+		<property name="password" column="password" length="45" type="java.lang.String"></property>
+		<property name="aid" column="aid" length="60" type="java.lang.String"></property>
+		<property name="idcard" column="idcard" length="45" type="java.lang.String"></property>
+		<property name="cname" column="cname" length="45" type="java.lang.String"></property>
+		<property name="bank" column="bank" length="45" type="java.lang.String"></property>
+		<property name="account" column="account" length="45" type="java.lang.String"></property>
+		<property name="role" column="role" length="45" type="java.lang.String"></property>
+		<property name="mannager" column="mannager" length="60" type="java.lang.String"></property>
+		<property name="reportId" column="reportId" length="60" type="java.lang.String"></property>
 	</class>
 	<class name="com.JES.model.Manager" table="manager">
-		<id name="uid" column="uid" type="java.lang.String">
+		<id name="uid" column="uid" length="60" type="java.lang.String">
 			<generator class="assigned"></generator>
 		</id>
-		<property name="mname" column="mname" type="java.lang.String"></property>
-		<property name="password" column="password" type="java.lang.String"></property>
+		<property name="mname" column="mname" length="45" type="java.lang.String"></property>
+		<property name="password" column="password" length="45" type="java.lang.String"></property>
 	</class>
 
 	<class name="com.JES.model.Selection" table="selection">
 		<id name="id" type="java.lang.String">
-            <column name="id" />
+            <column name="id"  length="60"/>
             <generator class="assigned" />
         </id>
         <property name="uid" type="java.lang.String">
-            <column name="uid" />
+            <column name="uid" length="60"/>
         </property>
         <property name="cname" type="java.lang.String">
-            <column name="cname" />
+            <column name="cname"  length="45"/>
         </property>
         <property name="bill" type="java.lang.Integer">
             <column name="bill" />
@@ -92,20 +92,23 @@
 
 	<class name="com.JES.model.Course" table="course" catalog="jingyieducationsystem">
         <id name="cid" type="java.lang.String">
-            <column name="cid" />
+            <column name="cid" length="45" />
             <generator class="assigned" />
         </id>
         <property name="cname" type="java.lang.String">
-            <column name="cname" />
+            <column name="cname" length="45" />
         </property>
-        <property name="starttime" type="java.util.Date">
-            <column name="starttime" length="10" />
+        <property name="starttime" type="java.sql.Timestamp">
+            <column name="starttime" length="19" />
         </property>
-        <property name="endtime" type="java.util.Date">
-            <column name="endtime" length="10" />
+        <property name="endtime" type="java.sql.Timestamp">
+            <column name="endtime" length="19" />
         </property>
         <property name="referencebill" type="java.lang.Integer">
             <column name="referencebill" />
+        </property>
+        <property name="classname" type="java.lang.String">
+            <column name="classname" length="45" />
         </property>
     </class>
 	<class name="com.JES.model.Agentupstudent" table="agentupstudent"
@@ -131,25 +134,10 @@
 		</property>
 	</class>
 
-	<class name="com.JES.model.AgentNote" table="agent_note"
-		catalog="jingyieducationsystem">
-		<id name="noteid" type="java.lang.String">
-			<column name="noteid" length="45" />
-			<generator class="assigned" />
-		</id>
-		<property name="notetime" type="java.lang.String">
-			<column name="notetime" length="45" />
-		</property>
-		<property name="note" type="java.lang.String">
-			<column name="note" />
-		</property>
-		<property name="agentid" type="java.lang.String">
-			<column name="agentid" length="45" />
-		</property>
-	</class>
+	
 	<class name="com.JES.model.Report" table="report" catalog="jingyieducationsystem">
 		<id name="reportid" type="java.lang.String">
-            <column name="reportid" />
+            <column name="reportid" length="60"/>
             <generator class="assigned" />
         </id>
         <property name="informalstu" type="java.lang.Integer">

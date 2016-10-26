@@ -67,7 +67,7 @@
 					result += "<td >" + order[i].onlinestu + "</td>";
 					result += "<td >" + order[i].lifetimestu + "</td>";
 					result += "<td >" + order[i].transrate + "</td>";
-					result += "<td ><a href=\"managerLookAgentReport.jsp?mid=" + order[i].mid + "\""+">查看详细报表</a></td>";
+					result += "<td ><a href=\"managerLookAgentReport.jsp?mid=" + order[i].mid + "&aname=" + order[i].aname +"\""+">查看详细报表</a></td>";
 					result += "<td >" + order[i].allbills + "</td>";
 					result += "</tr>";
 				}

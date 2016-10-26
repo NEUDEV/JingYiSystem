@@ -137,7 +137,7 @@
 		<action name="AgentUpStudentAction" class="com.JES.action.AgentUpStudentAction"
 			method="execute">
 			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
-			<result name="success">/agent/studentAdmit.jsp</result>
+			<result name="success">/agent/resultOfStudentMsUp.jsp</result>
 			<!-- <result name="error">/error.jsp</result> <result name="input">/index.jsp</result> 
 				<param name="savePath">/upload</param> -->
 		</action>
@@ -165,7 +165,7 @@
 			method="billup">
 			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
 			<!--plaintext用于显示页面原始代码的结果类型 -->
-			<result name="SUCCESS">/agent/agentMemu.jsp</result>
+			<result name="SUCCESS">/agent/resultOfStudentMsUp.jsp</result>
 		</action>
 
 		<action name="downestudents" class="com.JES.action.StudentUpAction"

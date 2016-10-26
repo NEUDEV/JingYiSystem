@@ -1,6 +1,6 @@
 package com.JES.dao;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.hibernate.LockOptions;
@@ -32,6 +32,7 @@ public class CourseDAO {
 	// property constants
 	public static final String CNAME = "cname";
 	public static final String REFERENCEBILL = "referencebill";
+	public static final String CLASSNAME = "classname";
 
 	private SessionFactory sessionFactory;
 
@@ -72,8 +73,8 @@ public class CourseDAO {
 	public Course findById(java.lang.String id) {
 		log.debug("getting Course instance with id: " + id);
 		try {
-			Course instance = (Course) getCurrentSession().get(
-					"com.JES.model.Course", id);
+			Course instance = (Course) getCurrentSession().get("com.JES.model.Course",
+					id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -84,8 +85,7 @@ public class CourseDAO {
 	public List findByExample(Course instance) {
 		log.debug("finding Course instance by example");
 		try {
-			List results = getCurrentSession()
-					.createCriteria("com.JES.model.Course")
+			List results = getCurrentSession().createCriteria("com.JES.model.Course")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -117,6 +117,10 @@ public class CourseDAO {
 
 	public List findByReferencebill(Object referencebill) {
 		return findByProperty(REFERENCEBILL, referencebill);
+	}
+
+	public List findByClassname(Object classname) {
+		return findByProperty(CLASSNAME, classname);
 	}
 
 	public List findAll() {

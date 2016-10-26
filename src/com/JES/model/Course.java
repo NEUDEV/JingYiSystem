@@ -1,6 +1,6 @@
 package com.JES.model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * Course entity. @author MyEclipse Persistence Tools
@@ -12,9 +12,10 @@ public class Course implements java.io.Serializable {
 
 	private String cid;
 	private String cname;
-	private Date starttime;
-	private Date endtime;
+	private Timestamp starttime;
+	private Timestamp endtime;
 	private Integer referencebill;
+	private String classname;
 
 	// Constructors
 
@@ -28,13 +29,14 @@ public class Course implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Course(String cid, String cname, Date starttime, Date endtime,
-			Integer referencebill) {
+	public Course(String cid, String cname, Timestamp starttime,
+			Timestamp endtime, Integer referencebill, String classname) {
 		this.cid = cid;
 		this.cname = cname;
 		this.starttime = starttime;
 		this.endtime = endtime;
 		this.referencebill = referencebill;
+		this.classname = classname;
 	}
 
 	// Property accessors
@@ -55,19 +57,19 @@ public class Course implements java.io.Serializable {
 		this.cname = cname;
 	}
 
-	public Date getStarttime() {
+	public Timestamp getStarttime() {
 		return this.starttime;
 	}
 
-	public void setStarttime(Date starttime) {
+	public void setStarttime(Timestamp starttime) {
 		this.starttime = starttime;
 	}
 
-	public Date getEndtime() {
+	public Timestamp getEndtime() {
 		return this.endtime;
 	}
 
-	public void setEndtime(Date endtime) {
+	public void setEndtime(Timestamp endtime) {
 		this.endtime = endtime;
 	}
 
@@ -77,6 +79,14 @@ public class Course implements java.io.Serializable {
 
 	public void setReferencebill(Integer referencebill) {
 		this.referencebill = referencebill;
+	}
+
+	public String getClassname() {
+		return this.classname;
+	}
+
+	public void setClassname(String classname) {
+		this.classname = classname;
 	}
 
 }

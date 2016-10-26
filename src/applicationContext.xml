@@ -84,11 +84,6 @@
 		</property>
 	</bean>
 
-	<bean id="agentNoteDAO" class="com.JES.dao.AgentNoteDAO">
-		<property name="sessionFactory">
-			<ref bean="sessionFactory" />
-		</property>
-	</bean>
 
 	<!-- service -->
 
@@ -106,7 +101,6 @@
 		<property name="agentDAO" ref="AgentDAO"></property>
 		<property name="agentupstudentDAO" ref="agentupstudentDAO"></property>
 		<property name="studentDAO" ref="studentDAO"></property>
-		<property name="agentnoteDAO" ref="agentNoteDAO"></property>
 		<property name="accountDAO" ref="AccountDAO"></property>
 		<property name="courseDAO" ref="courseDAO"></property>
 		<property name="selectionDAO" ref="SelectionDAO"></property>
@@ -131,12 +125,13 @@
 		scope="prototype">
 		<property name="agentservice" ref="agentservice"></property>
 	</bean>
-	<bean id="agentNoteAction" class="com.JES.action.AgentNoteAction"
-		scope="prototype">
-		<property name="agentservice" ref="agentservice"></property>
-	</bean>
+	
 	<bean id="showviewAction" class="com.JES.action.ShowviewAction"
 		scope="prototype">
 		<property name="agentupstudentDAO" ref="agentupstudentDAO"></property>
 	</bean>
-</beans>
+	<bean id="CourseDAO" class="com.JES.dao.CourseDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean></beans>

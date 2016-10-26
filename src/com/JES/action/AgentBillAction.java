@@ -79,6 +79,7 @@ public class AgentBillAction extends SuperAction{
 			return "LoginNotYet";
 		}
 		agentservice.billUp(uid,phone,weixin,sign,bill,mark,class_,session.getAttribute("agentID").toString());
+		request.setAttribute("studentupms", "提单成功！");
 		return "SUCCESS";
 	}
 }

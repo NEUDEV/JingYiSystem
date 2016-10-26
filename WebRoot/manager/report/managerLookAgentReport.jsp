@@ -170,8 +170,9 @@
 				<div class="col-md-12 col-lg-12">
 					<br>
 					<ul class="breadcrumb">
-						<li><a href="<%=basePath%>agent/agentMemu.jsp">主页</a></li>
-						<li class="active">我的业绩</li>
+						<li><a href="<%=basePath%>manager/managerMemu.jsp">主页</a></li>
+						<li><a href="<%=basePath%>manager/report/manageragentreport.jsp">班主任业绩</a></li>
+						<li class="active"><%=request.getParameter("aname")%>的业绩</li>
 					</ul>
 					<nav class="navbar navbar-default navbar-static-top"
 						role="navigation">

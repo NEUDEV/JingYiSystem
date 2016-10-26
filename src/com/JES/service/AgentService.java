@@ -26,14 +26,12 @@ import org.apache.struts2.ServletActionContext;
 
 import com.JES.dao.AccountDAO;
 import com.JES.dao.AgentDAO;
-import com.JES.dao.AgentNoteDAO;
 import com.JES.dao.AgentupstudentDAO;
 import com.JES.dao.CourseDAO;
 import com.JES.dao.ReportDAO;
 import com.JES.dao.SelectionDAO;
 import com.JES.dao.StudentDAO;
 import com.JES.model.Agent;
-import com.JES.model.AgentNote;
 import com.JES.model.Agentupstudent;
 import com.JES.model.Course;
 import com.JES.model.Manager;
@@ -46,7 +44,6 @@ public class AgentService {
 	private AgentDAO agentDAO;
 	private AgentupstudentDAO agentupstudentDAO;
 	private StudentDAO studentDAO;
-	private AgentNoteDAO agentnoteDAO;
 	private AccountDAO accountDAO;
 	private CourseDAO courseDAO;
 	private SelectionDAO selectionDAO;
@@ -76,13 +73,6 @@ public class AgentService {
 		this.courseDAO = courseDAO;
 	}
 
-	public AgentNoteDAO getAgentnoteDAO() {
-		return agentnoteDAO;
-	}
-
-	public void setAgentnoteDAO(AgentNoteDAO agentnoteDAO) {
-		this.agentnoteDAO = agentnoteDAO;
-	}
 
 	public AgentDAO getAgentDAO() {
 		return agentDAO;
@@ -160,7 +150,7 @@ public class AgentService {
 			return false;
 	}
 
-	public boolean upPhoto(FileInputStream input,Integer length,
+	public boolean upNowStudent(FileInputStream input,Integer length,
 			Agentupstudent upstudent,Student student,String mid){
 		/*Report report=new Report();*/
 		byte[] bFile = new byte[length];
@@ -194,22 +184,11 @@ public class AgentService {
 		Report report=new Report(0);
 		report=reportDAO.findById(agentDAO.findById(mid).getReportId());
 		report.setInformalstu(report.getInformalstu()+1);
+		report.setTransrate(Double.parseDouble(report.getAllinnum().toString())/(report.getInformalstu()+report.getAllinnum()));
 		reportDAO.merge(report);
 	}
 
-	public boolean agentNote(String note) {
-		AgentNote agentnote = new AgentNote();
-		Date nDate = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String sDate = sdf.format(nDate);
-		String noteid = UUID.randomUUID().toString();
-		agentnote.setNote(note);
-		agentnote.setNotetime(sDate);
-		agentnote.setAgentid("¥˙¿Ì…Ã");// getSession
-		agentnote.setNoteid(noteid);
-		agentnoteDAO.save(agentnote);
-		return true;
-	}
+	
 
 	public void shoeView(String qq) {
 		HttpServletResponse response = null;

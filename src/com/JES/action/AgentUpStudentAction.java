@@ -120,7 +120,8 @@ public class AgentUpStudentAction extends SuperAction{
 	student.setWeixin(weixin);
 	student.setStuid(qq);
 	student.setNote(note);
-	agentservice.upPhoto(input, (int) file.length(), upstudent,student,session.getAttribute("agentID").toString());
+	agentservice.upNowStudent(input, (int) file.length(), upstudent,student,session.getAttribute("agentID").toString());
+	request.setAttribute("studentupms", "信息录入成功！");
 	return "success";
 	}
 }
