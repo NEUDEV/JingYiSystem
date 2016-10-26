@@ -417,12 +417,14 @@ public class ManagerService {
 			report.setAllinnum(report.getAllinnum() + item.getAllinnum());
 			report.setAllbills(report.getAllbills() + item.getAllbills());
 			report.setTransrate((report.getAllinnum())
-					/ (double) report.getAllinnum() + report.getInformalstu());
+					/ (double) (report.getAllinnum() + report.getInformalstu()));
 		}
 
 		reports.add(report);
 
-		return reports;
+		ArrayList<Report> reportList = new ArrayList<Report>();
+		reportList.add(report);
+		return reportList;
 	}
 
 	/********************************* øŒ≥Ãπ‹¿Ì *****************************/

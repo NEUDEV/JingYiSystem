@@ -33,25 +33,28 @@
 							<div class="form-group">
 								<input class="form-control" name="searchValue" type="text" />
 							</div>
-							<button type="submit" class="btn btn-default">查找</button>
+							<button type="submit" class="btn btn-default">查找具体班主任业绩</button>
 						</form>
 					</div>
 					</nav>
-
+					<div class="row clearfix">
+						<div class="col-md-12 column"><strong>${request.info}</strong></div>
+					</div>
+					<br>
 					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
 								<th>序号</th>
-								<th>新增非正式学员</th>
-								<th>正式学员</th>
-								<th>板式学员</th>
-								<th>字体学员</th>
-								<th>品牌学员</th>
-								<th>全科班学员</th>
-								<th>插画学员</th>
-								<th>电商学员</th>
-								<th>终身学员</th>
-								<th>金额</th>
+								<th>新增非正式学员（人）</th>
+								<th>正式学员（人）</th>
+								<th>板式学员（人）</th>
+								<th>字体学员（人）</th>
+								<th>品牌学员（人）</th>
+								<th>全科班学员（人）</th>
+								<th>插画学员（人）</th>
+								<th>电商学员（人）</th>
+								<th>终身学员（人）</th>
+								<th>金额（元）</th>
 								<th>转化率</th>
 							</tr>
 						</thead>
