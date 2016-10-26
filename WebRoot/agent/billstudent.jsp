@@ -39,11 +39,10 @@
 				result += "<label for='class_'>报名科目</label>";
 				result += "<select name='class_' class='form-control'>";
 				for (var i = 0; i < order.length; i++) {
-					result += "<option>" + order[i].cname + "</option>";
+					result += "<option value='"+order[i].cname+"'>" + order[i].classname + "</option>";
 				}
 				result += "</select>";
 				$("#courseshow").html(result);
-				$("#courseshow").innerHTML = "123";
 			},
 			error : function(text) {
 				alert("erro");

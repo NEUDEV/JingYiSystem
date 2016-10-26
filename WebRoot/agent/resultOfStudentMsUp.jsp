@@ -28,8 +28,8 @@
 
 								<td style="padding-left:30;padding-top:10;color:black;">
 
-									提示：<br> <textarea readonly="readonly" name="fileinfo2"
-										style="border:1px solid black;height: 500pt;width: 700pt"><%=request.getAttribute("studentupms")%>>
+									提示：<br><br> <textarea readonly="readonly" name="fileinfo2"
+										style="font-size:30px;border:1px solid black;height: 500pt;width: 745pt"><%=request.getAttribute("studentupms")%>>
 								</textarea><br>
 								</td>
 							</tr>

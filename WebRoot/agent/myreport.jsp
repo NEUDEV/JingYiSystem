@@ -186,15 +186,17 @@
 									onclick="showmyselect()" />自定义业绩查询<br />
 							</div>
 							<div id="YMchose" style="display: none">
-								<label>起始</label> <select id=YYYY1 name=YYYY1>
+								 <select id=YYYY1 name=YYYY1>
 									<option value="">年</option>
 								</select> <select id=MM1 name=MM1>
 									<option value="">月</option>
-								</select> <label> - 结束</label> <select id=YYYY2 name=YYYY2>
+								</select> <label>(月初)--</label>
+								 <select id=YYYY2 name=YYYY2>
 									<option value="">年</option>
 								</select> <select id=MM2 name=MM2>
 									<option value="">月</option>
-								</select> <input type="button" onclick="getJSONDataBytime()" value="查询">
+								</select> <label>(月末)</label>
+								<input type="button" onclick="getJSONDataBytime()" value="查询">
 							</div>
 						</form>
 					</div>
