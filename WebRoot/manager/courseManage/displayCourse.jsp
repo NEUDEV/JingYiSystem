@@ -22,6 +22,7 @@
 						<thead>
 							<tr>
 								<th>序号</th>
+								<th>课程类别</th>
 								<th>课程名</th>
 								<th>开课时间</th>
 								<th>结束时间</th>
@@ -34,6 +35,7 @@
 								<tr>
 									<td>${i = i + 1}</td>
 									<td>${course.cname}</td>
+									<td>${course.classname}</td>
 									<td>${course.starttime.toString().substring(0,10)}</td>
 									<td>${course.endtime.toString().substring(0,10)}</td>
 									<td>${course.referencebill}元</td>

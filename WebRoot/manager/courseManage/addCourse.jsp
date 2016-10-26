@@ -16,8 +16,8 @@
 <script type="text/javascript">
 	$(function() {
 		$("#commit").click(function() {
-			if ($("#cname").val() == "") {
-				alert("账户不能为空");
+			if ($("#classname").val() == "") {
+				alert("课程名不能为空");
 			} else if ($("#starttime").val() == "") {
 				alert("开课时间不能为空");
 			} else if ($("#endtime").val() == "") {
@@ -48,8 +48,19 @@
 						action="<%=basePath%>Manager/ManagerCourseManage_addCourse.action"
 						id="form" method="post">
 						<div class="form-group">
-							<label for="cname">课程名：</label><input class="form-control"
-								id="cname" type="text" name="cname" value="" />
+							<label for="cname">选择课程类别</label> <select name="cname"
+								class="form-control">
+								<option>板式学员</option>
+								<option>字体学员</option>
+								<option>品牌学员</option>
+								<option>全科班学员</option>
+								<option>插画学员</option>
+								<option>电商学员</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="classname">课程名：</label><input class="form-control"
+								id="classname" type="text" name="classname" value="" />
 						</div>
 						<div class="form-group">
 							<label for="starttime">开课时间：</label>

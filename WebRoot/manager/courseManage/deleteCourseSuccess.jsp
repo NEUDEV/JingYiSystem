@@ -26,7 +26,11 @@
 						</dt>
 						<br>
 						<dd>
-							<font size="3">课程名：${course.cname}</font>
+							<font size="3">课程类别：${course.cname}</font>
+						</dd>
+						<br>
+						<dd>
+							<font size="3">课程名：${course.classname}</font>
 						</dd>
 						<br>
 						<dd>
