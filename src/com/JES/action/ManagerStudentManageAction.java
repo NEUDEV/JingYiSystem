@@ -4,6 +4,11 @@ import com.JES.model.Student;
 import com.JES.service.ManagerService;
 import com.opensymphony.xwork2.ModelDriven;
 
+/**
+ * 管理员-学生管理类。
+ * @author 刘鑫伟
+ *
+ */
 public class ManagerStudentManageAction extends SuperAction implements
 		ModelDriven<Student> {
 	/**

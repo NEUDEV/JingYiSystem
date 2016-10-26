@@ -6,6 +6,11 @@ import com.JES.model.Agent;
 import com.JES.model.Report;
 import com.JES.service.ManagerService;
 
+/**
+ * 管理员-查看报表类。
+ * @author 刘鑫伟
+ *
+ */
 public class ManagerViewReportAction extends SuperAction {
 
 	/**
