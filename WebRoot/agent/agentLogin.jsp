@@ -18,7 +18,7 @@
 					<h3 class="form-signin-heading">班主任登录</h3>
 
 					<input class="form-control" placeholder="账号名" required=""
-						autofocus="" type="text" name="aname"> <input
+						autofocus="" type="text" name="aname"> <br><input
 						class="form-control" placeholder="密码" required="" type="password"
 						name="password">
 					<div class="checkbox">

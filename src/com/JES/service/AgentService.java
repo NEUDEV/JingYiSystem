@@ -348,18 +348,7 @@ public class AgentService {
 		List<Agent> agentList=new ArrayList<Agent>();
 		List<ReportShowItem> rItemList=new ArrayList<ReportShowItem>();
 		Integer len;
-		if(mid.equals("")){
-			agentList.addAll((List<Agent>)agentDAO.findAll());
-			len=agentList.size();
-			for(int i=0;i<len;i++){
-				ReportShowItem rItem=new ReportShowItem();
-				rItem.setReportShowITEM(reportDAO.findById(agentList.get(i).getReportId()),agentList.get(i));
-				rItemList.add(rItem);
-			}
-			return rItemList;
-		}else{
 		if(value.equals("")||value==null) {
-			
 			agentList.addAll((List<Agent>)agentDAO.findByMannager(mid));
 			len=agentList.size();
 			for(int i=0;i<len;i++){
@@ -398,10 +387,55 @@ public class AgentService {
 			}
 			return rItemList;
 		}
-		}
 		return null;
 	}
 	
+	
+	public List<ReportShowItem> managerLookReports(String type,String value){
+		List<Agent> agentList=new ArrayList<Agent>();
+		List<ReportShowItem> rItemList=new ArrayList<ReportShowItem>();
+		Integer len;
+		if(value.equals("")||value==null){
+			agentList.addAll((List<Agent>)agentDAO.findAll());
+			len=agentList.size();
+			for(int i=0;i<len;i++){
+				ReportShowItem rItem=new ReportShowItem();
+				rItem.setReportShowITEM(reportDAO.findById(agentList.get(i).getReportId()),agentList.get(i));
+				rItemList.add(rItem);
+			}
+			return rItemList;
+		}
+		else switch (type) {
+		case "班主任姓名":
+			agentList.addAll((List<Agent>)agentDAO.findByName(value));
+			len=agentList.size();
+			for(int i=0;i<len;i++){
+				ReportShowItem rItem=new ReportShowItem();
+				rItem.setReportShowITEM(reportDAO.findById(agentList.get(i).getReportId()),agentList.get(i));
+				rItemList.add(rItem);
+			}
+			return rItemList;
+		case "班主任QQ":
+			agentList.addAll((List<Agent>)agentDAO.findByQq(value));
+			len=agentList.size();
+			for(int i=0;i<len;i++){
+				ReportShowItem rItem=new ReportShowItem();
+				rItem.setReportShowITEM(reportDAO.findById(agentList.get(i).getReportId()),agentList.get(i));
+				rItemList.add(rItem);
+			}
+			return rItemList;
+		case "班主任手机号":
+			agentList.addAll((List<Agent>)agentDAO.findByPhone(value));
+			len=agentList.size();
+			for(int i=0;i<len;i++){
+				ReportShowItem rItem=new ReportShowItem();
+				rItem.setReportShowITEM(reportDAO.findById(agentList.get(i).getReportId()),agentList.get(i));
+				rItemList.add(rItem);
+			}
+			return rItemList;
+		}
+		return null;
+	}
 	
 	public List<Report> MyReports(String selecttype,String mid){
 		List<Report> reportList=new ArrayList<Report>();

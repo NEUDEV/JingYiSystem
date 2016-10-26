@@ -48,7 +48,7 @@ public class ManagerShowAllReportAction extends SuperAction{
 		}
 		try{
 		List<ReportShowItem> reportItemList = new ArrayList<ReportShowItem>();
-		reportItemList=agentservice.MyCpReports(searchtype,searchvalue,"");
+		reportItemList=agentservice.managerLookReports(searchtype,searchvalue);
 		jsonResult = JsonUtil.listToJson(reportItemList); 
         ServletActionContext.getResponse().setContentType("text/xml");  
         }catch(Exception e){    

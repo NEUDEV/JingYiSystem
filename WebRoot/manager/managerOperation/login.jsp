@@ -18,7 +18,7 @@
 					<h3 class="form-signin-heading">管理员登录</h3>
 					
 					<input class="form-control" placeholder="账号名" required=""
-						autofocus="" type="text" name="mname"> <input
+						autofocus="" type="text" name="mname"> <br><input
 						class="form-control" placeholder="密码" required="" type="password"
 						name="password">
 					<div class="checkbox">

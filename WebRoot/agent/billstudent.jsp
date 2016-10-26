@@ -11,8 +11,9 @@
 <script type="text/javascript">
 	function cheackblock() {
 		var bill = $("#bill").val();
+		var s = /^[0-9]*$/;
 		//alert(name+qq+s);
-		if (bill == "") {
+		if (bill == ""||!s.test(bill)) {
 			$("#submit1").attr("disabled", "true");
 			$('#billms').html("(请输入学费)");
 		} else {
@@ -110,7 +111,7 @@
 							<label for="bill">学费</label><label style="color:red">*</label> <label
 								id="billms" style="color:red"></label> <input
 								class="form-control" id="bill" type="number" name="bill"
-								onblur="cheackblock()" />
+								onblur="cheackblock()"  />
 						</div>
 						<div>
 							<label id="billms"></label>
