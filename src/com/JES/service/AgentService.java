@@ -106,10 +106,18 @@ public class AgentService {
 		this.accountDAO = accountDAO;
 	}
 
+	/**
+	 * 查找学员
+	 * @param type  
+	 * @param value
+	 * @param mid
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public List<Student> searchStudents(String type, String value,String mid) {
+		
 		if(value.equals("")||value==null) 
-			return (List<Student>) studentDAO.findByMid(mid);
+			return (List<Student>) studentDAO.findByMiddesc(mid);
 		switch (type) {
 		case "真实姓名":
 			return (List<Student>) studentDAO.findByNameWithMid(value,mid);
@@ -123,6 +131,14 @@ public class AgentService {
 		return null;
 	}
 	
+	
+	/**
+	 * 查询下级班主任
+	 * @param type
+	 * @param value
+	 * @param mannager超级班主任ID
+	 * @return
+	 */
 	public List<Agent> searchAgents(String type, String value,String mannager){
 		if(value.equals("")||value==null) 
 			return (List<Agent>) agentDAO.findByMannager(mannager);
@@ -141,6 +157,7 @@ public class AgentService {
 		return (List<Student>) studentDAO.findAll();
 	}
 */
+	
 	public boolean addStudent(Student student) {
 		Student stu = studentDAO.findById(student.getUid());
 		if (stu == null) {
@@ -149,7 +166,17 @@ public class AgentService {
 		} else
 			return false;
 	}
-
+	
+	
+	/**
+	 * 录入新学员
+	 * @param input
+	 * @param length
+	 * @param upstudent
+	 * @param student
+	 * @param mid
+	 * @return
+	 */
 	public boolean upNowStudent(FileInputStream input,Integer length,
 			Agentupstudent upstudent,Student student,String mid){
 		/*Report report=new Report();*/
@@ -180,6 +207,10 @@ public class AgentService {
 		return true;
 	}
 	
+	/**
+	 * 添加学员更新报表
+	 * @param mid
+	 */
 	public void updateReportAddNewOne(String mid){
 		Report report=new Report(0);
 		report=reportDAO.findById(agentDAO.findById(mid).getReportId());
@@ -189,7 +220,10 @@ public class AgentService {
 	}
 
 	
-
+	/**
+	 * 获取学员信息截图
+	 * @param qq
+	 */
 	public void shoeView(String qq) {
 		HttpServletResponse response = null;
 		ServletOutputStream out = null;
@@ -213,7 +247,8 @@ public class AgentService {
 			}
 		}
 	}
-
+	
+	
 	public boolean isLoginSuccess(Agent agent) {
 		List resultList = agentDAO.findByAname(agent.getAname());
 
@@ -245,6 +280,11 @@ public class AgentService {
 		return false;
 	}
 	
+	/**
+	 * 检测数据库是否存在该QQ
+	 * @param qq
+	 * @return
+	 */
 	public boolean cheakQq(String qq){
 		List<Student> student =studentDAO.findByQq(qq);
 		if(student.size()!=0)
@@ -252,20 +292,37 @@ public class AgentService {
 		else return false;
 	}
 	
+	/**
+	 * 检测班主任级别
+	 * @param mid
+	 * @return
+	 */
 	public boolean cheackPower(String mid){
 		if(agentDAO.findById(mid).getRole().equals("超级班主任"))
 			return true;
 		else return false;
 	}
 	
+	/**
+	 * 更新学员信息
+	 */
 	public void updateorsaveStudent(Student student){
 		studentDAO.merge(student);
 	}
 	
+	/**
+	 * 所有课程
+	 * @return
+	 */
 	public List<Course> allcourse(){
 		return (List<Course>)courseDAO.findAll();
 	}
 	
+	/**
+	 * 超级班主任获取总业绩
+	 * @param mid
+	 * @return
+	 */
 	public List<Report> allreport(String mid){
 		List<Report> reportList=new ArrayList<Report>();
 		Report report=new Report(0);
@@ -289,6 +346,18 @@ public class AgentService {
 		return reportList;
 	}
 	
+	/**
+	 * 提单
+	 * @param uid
+	 * @param phone
+	 * @param weixin
+	 * @param sign
+	 * @param bill
+	 * @param mark
+	 * @param class_
+	 * @param mid
+	 * @return
+	 */
 	public boolean billUp(String uid,String phone,String weixin,String sign,Integer bill,Integer mark,String class_,String mid){
 		Student student=(Student)studentDAO.findById(uid);
 		Selection selection=new Selection();
@@ -343,7 +412,13 @@ public class AgentService {
 		return true;
 	}
 	
-	
+	/**
+	 * 获取班主任报表
+	 * @param type
+	 * @param value
+	 * @param mid
+	 * @return
+	 */
 	public List<ReportShowItem> MyCpReports(String type,String value,String mid){
 		List<Agent> agentList=new ArrayList<Agent>();
 		List<ReportShowItem> rItemList=new ArrayList<ReportShowItem>();
@@ -390,7 +465,12 @@ public class AgentService {
 		return null;
 	}
 	
-	
+	/**
+	 * 管理员查看班主任报表
+	 * @param type
+	 * @param value
+	 * @return
+	 */
 	public List<ReportShowItem> managerLookReports(String type,String value){
 		List<Agent> agentList=new ArrayList<Agent>();
 		List<ReportShowItem> rItemList=new ArrayList<ReportShowItem>();
@@ -437,6 +517,12 @@ public class AgentService {
 		return null;
 	}
 	
+	/**
+	 * 按时间查询我的业绩
+	 * @param selecttype
+	 * @param mid
+	 * @return
+	 */
 	public List<Report> MyReports(String selecttype,String mid){
 		List<Report> reportList=new ArrayList<Report>();
 		switch (selecttype) {
@@ -451,7 +537,14 @@ public class AgentService {
 		return null;
 	}
 	
-	
+	/**
+	 * 按时间查询报表
+	 * @param subday
+	 * @param mid
+	 * @param sTime
+	 * @param eTime
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public List<Report> FindByTime(Integer subday,String mid,String sTime,String eTime){
 		List<Report> reportList=new ArrayList<Report>();
@@ -522,7 +615,12 @@ public class AgentService {
 		reportList.add(report);
 		return reportList;
 	}
-
+	
+	/**
+	 * 导出学员
+	 * @return
+	 * @throws Exception
+	 */
 	@SuppressWarnings("unchecked")
 	public String studentmsout() throws Exception {
 		List<Student> studentList = new ArrayList<Student>();

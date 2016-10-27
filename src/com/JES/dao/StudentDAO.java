@@ -121,7 +121,7 @@ public class StudentDAO {
 	public List findByPropertyWithMid(String propertyName, Object value, String mid){
 		try {
 			String queryString = "from Student as model where model."
-					+ propertyName + "= ? and model.mid='"+mid+"'";
+					+ propertyName + "= ? and model.mid='"+mid+"' order by cast(model.intime as date) desc";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
 			return queryObject.list();
@@ -199,6 +199,18 @@ public class StudentDAO {
 
 	public List findByMid(Object mid) {
 		return findByProperty(MID, mid);
+	}
+	
+	public List findByMiddesc(Object mid) {
+		try {
+			String queryString = "from Student as model where model.mid= ? order by cast(model.intime as date) desc";
+			Query queryObject = getCurrentSession().createQuery(queryString);
+			queryObject.setParameter(0, mid);
+			return queryObject.list();
+		} catch (RuntimeException re) {
+			log.error("find by property name failed", re);
+			throw re;
+		}
 	}
 
 	public List findBySign(Object sign) {

@@ -39,7 +39,8 @@
 				result += "<label for='class_'>报名科目</label>";
 				result += "<select name='class_' class='form-control'>";
 				for (var i = 0; i < order.length; i++) {
-					result += "<option value='"+order[i].cname+"'>" + order[i].classname + "</option>";
+					result += "<option value='"+order[i].cname+"'>" + order[i].classname + "(参考："+
+						order[i].referencebill+"元)</option>";
 				}
 				result += "</select>";
 				$("#courseshow").html(result);

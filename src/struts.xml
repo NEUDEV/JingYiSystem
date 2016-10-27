@@ -170,11 +170,11 @@
 
 		<action name="downestudents" class="com.JES.action.StudentUpAction"
 			method="download">
-			<param name="inputPath">/WEB-INF/downloadfile/StudentModel.xlsx</param>
+			<param name="inputPath">/WEB-INF/downloadfile/StudentModel.xls</param>
 			<result name="success" type="stream">
-				<param name="contentType">application/xlsx</param>
+				<param name="contentType">application/xls</param>
 				<param name="inputName">inputStream</param>
-				<param name="contentDisposition">filename="StudentModel.xlsx"</param>
+				<param name="contentDisposition">filename="StudentModel.xls"</param>
 				<param name="bufferSize">2048</param>
 			</result>
 		</action>

@@ -104,10 +104,10 @@ public class StudentUpAction extends SuperAction{
         File target = new File(targetDirectory,uploadFileFileName);
         String errstudentms="以下学员信息中QQ信息数据库已存在，导致信息录入失败：&#13;&#10;";
         Integer errmsnum=0;
-        try{  
-            FileInputStream fi = new FileInputStream(target);  
-            HSSFWorkbook wb = new HSSFWorkbook(fi);  
-            HSSFSheet sheet = wb.getSheetAt(0);    
+        try{
+            FileInputStream fi = new FileInputStream(target); 
+            HSSFWorkbook wb = new HSSFWorkbook(fi); 
+            HSSFSheet sheet = wb.getSheetAt(0);   
             int rowNum = sheet.getLastRowNum()+1;  
             for(int i=1;i<rowNum;i++){  
                 Student student = new Student();
@@ -142,7 +142,7 @@ public class StudentUpAction extends SuperAction{
                 }   
                 	if(isenabel){
                 		Date nDate = new Date();
-                		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                 		String sDate = sdf.format(nDate);
                 		student.setMid(mid);
                 		student.setIntime(sDate);

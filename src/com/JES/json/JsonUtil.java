@@ -1,9 +1,10 @@
 
     package com.JES.json;  
     import java.beans.IntrospectionException;  
-    import java.beans.Introspector;  
-    import java.beans.PropertyDescriptor;  
-    import java.util.List;  
+import java.beans.Introspector;  
+import java.beans.PropertyDescriptor;  
+import java.sql.Timestamp;
+import java.util.List;  
     public class JsonUtil {  
         /** 
          * @param object 
@@ -14,7 +15,7 @@
             StringBuilder json = new StringBuilder();  
             if (object == null) {  
                 json.append("\"\"");  
-            } else if (object instanceof String || object instanceof Integer || object instanceof Double) {  
+            } else if (object instanceof String || object instanceof Integer || object instanceof Double||object instanceof Timestamp) {  
                 json.append("\"").append(object.toString()).append("\"");  
             } else {  
                 json.append(beanToJson(object));  
