@@ -6,6 +6,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+
 <script type="text/javascript" src="jquery/JS/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="jquery/JS/jQuery.js"></script>
 <script type="text/javascript">
@@ -39,7 +40,7 @@
 				result += "<label for='class_'>报名科目</label>";
 				result += "<select name='class_' class='form-control'>";
 				for (var i = 0; i < order.length; i++) {
-					result += "<option value='"+order[i].cname+"'>" + order[i].classname + "(参考："+
+					result += "<option value='"+order[i].cname+"'>" + order[i].classname + "  (参考："+
 						order[i].referencebill+"元)</option>";
 				}
 				result += "</select>";

@@ -104,8 +104,12 @@
 							<div class="form-group">
 								<label for="name">备注：</label>
 							</div>
+
+
 							<div class="form-group">
-								<textarea name="note" id="note" style="height:80px;width: 500px" maxlength=200 draggable=false></textarea>
+								<textarea name="note" id="note" style="width: 100%; height: 100%" 
+										maxlength=200 draggable=false>
+								</textarea>
 							</div>
 							<div class="form-group">
 								<label for="class_">上传截图*</label> <input type="file" name="file"
