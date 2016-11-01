@@ -25,7 +25,7 @@
 						class="icon-bar"></span>
 				</button>
 				<img class="navbar-brand img-thumbnail"
-					src="<%=basePath%>image/logo.jpg" />
+					src="<%=basePath%>image/logo.png" />
 			</div>
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
