@@ -15,7 +15,7 @@
 			$('#submit').attr("disabled", "true");
 		} else {
 			if ($("#name").val() != "" && $("#qq").val() != ""
-					&& document.form.file.value != "")
+					&& document.form.file.value != ""&&$("#stuid").val() != "")
 				$('#submit').removeAttr("disabled");
 		}
 
@@ -79,6 +79,12 @@
 						</div>
 						<div>
 							<label>手动录入</label><br>
+							<div class="form-group">
+								<label for="stuid">学号*</label><input class="form-control"
+									id="stuid" type="text" name="stuid"
+									onblur="cheackblock(this.value)" />
+							</div>
+							
 							<div class="form-group">
 								<label for="name">姓名*</label><input class="form-control"
 									id="name" type="text" name="name"

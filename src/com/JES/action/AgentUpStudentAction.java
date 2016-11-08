@@ -26,12 +26,20 @@ public class AgentUpStudentAction extends SuperAction{
     private String weixin;
     private String phone;
     private String class_;
+    private String stuid;
     private String note;
 	private String fileFileName;
 	private String fileContentType;
 	
 	private AgentService agentservice;
 	
+	
+	public String getStuid() {
+		return stuid;
+	}
+	public void setStuid(String stuid) {
+		this.stuid = stuid;
+	}
 	public String getNote() {
 		return note;
 	}
@@ -118,7 +126,7 @@ public class AgentUpStudentAction extends SuperAction{
 	student.setName(name);
 	student.setPhone(phone);
 	student.setWeixin(weixin);
-	student.setStuid(qq);
+	student.setStuid(stuid);
 	student.setNote(note);
 	agentservice.upNowStudent(input, (int) file.length(), upstudent,student,session.getAttribute("agentID").toString());
 	request.setAttribute("studentupms", "信息录入成功！");
