@@ -114,8 +114,7 @@
 
 							<div class="form-group">
 								<textarea name="note" id="note" style="width: 100%; height: 100%" 
-										maxlength=200 draggable=false>
-								</textarea>
+										maxlength=200 draggable=false wrap="physical"></textarea>
 							</div>
 							<div class="form-group">
 								<label for="class_">上传截图*</label> <input type="file" name="file"

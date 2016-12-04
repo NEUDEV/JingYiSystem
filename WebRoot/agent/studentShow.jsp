@@ -6,8 +6,39 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+<style type="text/css">
+.styled-select {
+
+   width: 90px;
+
+   height: 23px;
+
+   overflow: hidden;
+
+   background: url(new_arrow.png) no-repeat right #ddd;
+
+}
+</style>
+
+
 <script type="text/javascript" src="jquery/JS/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">
+	function changemark(uid,value){
+		$.ajax({
+			type : "post",
+			url : "changemark.action",
+			data : {
+				'uid' : uid,
+				'mark':value
+			},
+			dataType : "json",
+			error : function(data) {
+				alert("修改转化指数失败");
+				return false;
+			}
+		});
+	}
+
 	function getJSONData(value) {
 		if(value==0){
 			var type = $("#searchtype").val();
@@ -29,6 +60,7 @@
 			success : function(json) {
 				//alert(typeof(json.jsonResult));
 				var order = $.parseJSON(json.jsonResult);
+				var max=6;
 				//alert(typeof(order));
 				//var data=JSON.parse(aa);
 				//alert(order[0].uid);
@@ -77,11 +109,21 @@
 							+ "&name=" + order[i].name + "&qq=" + order[i].qq
 							+ "&weixin=" + order[i].weixin + "&phone="
 							+ order[i].phone + "\">提单</a></td>";
-					result += "<td >" + order[i].mark + "</td>";
+					/* result += "<td >" + order[i].mark + "</td>"; */
+					result += "<td >";
+					result +="<select class='styled-select' onchange=\"changemark('"+order[i].uid
+					+"',this.value)\">"
+					for (var j = 1; j < max; j++) {
+					result += "<option value='"+j;
+					if(order[i].mark==j) result +="' selected = 'selected"; 
+					result +="'>" + j + "星</option>";
+				}
+					result +="</select></td>"; 
 					result += "</tr>";
 				}
 				result += "</tbody>";
 				$("#courseList").html(result);
+				
 			},
 			error : function(text) {
 				alert("erro");
@@ -112,10 +154,10 @@
 								<option>学号</option>
 							</select>
 							<div class="form-group">
-								<input class="form-control" name="searchvalue" id="searchvalue"
+								<input class="form-control"  name="searchvalue" id="searchvalue"
 									type="text" />
 							</div>
-							<button type="button" class="btn btn-default"
+							<button type="button"  class="btn btn-default"
 								onclick="getJSONData(0)">提交</button>
 							<button type="button" class="btn btn-default"
 								onclick="getJSONData(1)">显示全部</button>

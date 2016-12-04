@@ -107,8 +107,12 @@
 							role="tabpanel" aria-labelledby="heading4">
 							<div>
 								<a
+									href="#"
+									class="list-group-item">学员审核</a>
+								<a
 									href="<%=basePath%>manager/studentManage/divideStudent/divideStudent.jsp"
-									class="list-group-item">学员划分</a> <a
+									class="list-group-item">学员划分</a> 
+								<a
 									href="<%=basePath%>manager/studentManage/studentManager.jsp"
 									class="list-group-item">学员管理</a>
 							</div>

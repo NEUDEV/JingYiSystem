@@ -115,20 +115,21 @@ public class AgentUpStudentAction extends SuperAction{
     	}
 	FileInputStream input=new FileInputStream(file);
 	Agentupstudent upstudent=new Agentupstudent();
-	Student student =new Student();
-	upstudent.setClass_(class_);
+	/*Student student =new Student();*/
+	/*upstudent.setClass_(class_);*/
 	upstudent.setName(name);
 	upstudent.setPhone(phone);
 	upstudent.setQq(qq);
 	upstudent.setWeixin(weixin);
-	student.setUid(UUID.randomUUID().toString());
+	upstudent.setNote(note);
+	/*student.setUid(UUID.randomUUID().toString());
 	student.setQq(qq);
 	student.setName(name);
 	student.setPhone(phone);
 	student.setWeixin(weixin);
 	student.setStuid(stuid);
-	student.setNote(note);
-	agentservice.upNowStudent(input, (int) file.length(), upstudent,student,session.getAttribute("agentID").toString());
+	student.setNote(note);*/
+	agentservice.upNowStudent(input, (int) file.length(), upstudent,session.getAttribute("agentID").toString());
 	request.setAttribute("studentupms", "信息录入成功！");
 	return "success";
 	}

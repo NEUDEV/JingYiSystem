@@ -24,6 +24,18 @@
 		}
 
 	}
+	
+	function clickWeixinFunctino(input) {
+		//var bill=input.val();
+		//alert(name+qq+s);
+		if (input == "") {
+			$('#submit1').attr("disabled", "true");
+		} else {
+			if ($("#weixin").val() != "" && $("#bill").val() != "")
+				$('#submit1').removeAttr("disabled");
+		}
+
+	}
 
 	function course() {
 		$.ajax({
@@ -51,6 +63,35 @@
 			}
 		});
 	}
+	
+	function clickWeixinFunctino() {
+		//alert($("#xm").val());  
+		var params = $("#weixin").val();
+
+		$.ajax({
+			type : "post",
+			url : "cheakqq.action",
+			data : {
+				'qq' : params
+			},
+			dataType : "json",
+			success : function(data) {
+				//alert(data);  
+				//var obj = $.parseJSON(json);  //使用这个方法解析字符串json result  
+				if (data.result == "true") {
+					$("#weixin").val("");
+					$('#weixinms').html("微信号已存在");
+				} else if (data.result == "false") {
+					$('#weixinms').html("");
+				}
+				cheackblock($("#weixin").val());
+			},
+			error : function(data) {
+				alert("后台验证微信号失败");
+				return false;
+			}
+		});
+	}
 </script>
 </head>
 <body onload="course()">
@@ -69,12 +110,12 @@
 							value=<%=request.getParameter("uid")%>></input>
 						<div class="form-group">
 							<label for="stuid">学号*</label><input class="form-control"
-								id="stuid" type="text" name="stuid" disabled=true
+								id="stuid" type="text" name="stuid" 
 								value=<%=request.getParameter("stuid")%>></input>
 						</div>
 						<div class="form-group">
 							<label for="name">姓名*</label><input class="form-control"
-								id="name" type="text" name="name" disabled=true
+								id="name" type="text" name="name" 
 								value=<%=request.getParameter("name")%>></input>
 						</div>
 						<div class="form-group">
@@ -88,12 +129,16 @@
 								value=<%=request.getParameter("qq")%>></input>
 
 						</div>
-
+						
 						<div class="form-group">
 							<label for="weixin">微信</label> <input class="form-control"
 								id="weixin" type="text" name="weixin"
-								value=<%=request.getParameter("weixin")%>></input>
+								value=<%=request.getParameter("weixin")%>
+								onblur="clickWeixinFunctino(this.value)"></input>
 						</div>
+						<div>
+								<label id="weixinms"></label>
+							</div>
 						<div class="form-group">
 							<label for="sign">状态</label> <select name="sign"
 								class="form-control">

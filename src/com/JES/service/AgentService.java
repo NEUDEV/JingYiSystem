@@ -105,6 +105,14 @@ public class AgentService {
 	public void setAccountDAO(AccountDAO accountDAO) {
 		this.accountDAO = accountDAO;
 	}
+	
+	
+	public void changemark(String uid,Integer mark){
+		Student stu=new Student();
+		stu=studentDAO.findById(uid);
+		stu.setMark(mark);
+		studentDAO.merge(stu);
+	}
 
 	/**
 	 * 查找学员
@@ -178,7 +186,7 @@ public class AgentService {
 	 * @return
 	 */
 	public boolean upNowStudent(FileInputStream input,Integer length,
-			Agentupstudent upstudent,Student student,String mid){
+			Agentupstudent upstudent,String mid){
 		/*Report report=new Report();*/
 		byte[] bFile = new byte[length];
 		try {
@@ -191,20 +199,25 @@ public class AgentService {
 		Date intime = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String sDate = sdf.format(intime);
-		student.setIntime(sDate);
+		/*student.setIntime(sDate);
 		student.setMark(1);   //设置转化指数
 		student.setMid(mid); //设置代理商ID
 		student.setMsign("");
 		student.setSfrom("");
-		student.setSign("非正式学员");
+		student.setSign("非正式学员");*/
 		upstudent.setPhoto(bFile);
 		agentupstudentDAO.save(upstudent);
-		studentDAO.save(student);
+		/*studentDAO.save(student);*/
 		/*report=reportDAO.findById(agentDAO.findById(mid).getReportId());
 		report.setInformalstu(report.getInformalstu()+1);
 		reportDAO.merge(report);*/
 		updateReportAddNewOne(mid);
 		return true;
+	}
+	
+	
+	public void savaupstudent(Agentupstudent upstudent){
+		agentupstudentDAO.save(upstudent);
 	}
 	
 	/**
@@ -290,6 +303,20 @@ public class AgentService {
 		if(student.size()!=0)
 			return true;
 		else return false;
+	}
+	
+	public boolean cheakWeixin(String weixin){
+		List<Student> student =studentDAO.findByWeixin(weixin);
+		if(student.size()!=0)
+			return true;
+		else return false;
+	}
+	
+	public boolean cheakUpQq(String qq){
+		Agentupstudent student =agentupstudentDAO.findById(qq);
+		if(student==null)
+			return false;
+		else return true;
 	}
 	
 	/**

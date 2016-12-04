@@ -200,6 +200,15 @@
 			<result name="success" type="json">
 			</result>
 		</action>
+		
+		<action name="changemark" class="com.JES.action.ChangeMarkAction"
+			method="execute">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<!-- <result>/agent/studentAdmit.jsp</result> -->
+			<result name="success" type="json">
+			</result>
+		</action>
+		
 		<action name="AgentStudentsAction1" class="com.JES.action.AgentStudentsAction"
 			method="Mystudents">
 			<result name="LoginNotYet">/agent/agentLogin.jsp</result>

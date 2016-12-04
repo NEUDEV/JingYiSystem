@@ -33,8 +33,10 @@ public class AgentupstudentDAO {
 	public static final String NAME = "name";
 	public static final String WEIXIN = "weixin";
 	public static final String PHONE = "phone";
-	public static final String CLASS_ = "class_";
+	public static final String STUID = "stuid";
 	public static final String PHOTO = "photo";
+	public static final String NOTE = "note";
+	public static final String MID = "mid";
 
 	private SessionFactory sessionFactory;
 
@@ -126,12 +128,20 @@ public class AgentupstudentDAO {
 		return findByProperty(PHONE, phone);
 	}
 
-	public List findByClass_(Object class_) {
-		return findByProperty(CLASS_, class_);
+	public List findByStuid(Object stuid) {
+		return findByProperty(STUID, stuid);
 	}
 
 	public List findByPhoto(Object photo) {
 		return findByProperty(PHOTO, photo);
+	}
+
+	public List findByNote(Object note) {
+		return findByProperty(NOTE, note);
+	}
+
+	public List findByMid(Object mid) {
+		return findByProperty(MID, mid);
 	}
 
 	public List findAll() {
