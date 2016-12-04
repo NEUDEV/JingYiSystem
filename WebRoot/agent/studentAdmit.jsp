@@ -15,7 +15,8 @@
 			$('#submit').attr("disabled", "true");
 		} else {
 			if ($("#name").val() != "" && $("#qq").val() != ""
-					&& document.form.file.value != ""&&$("#stuid").val() != "")
+					&& document.form.file.value != ""
+					&& $("#stuid").val() != "")
 				$('#submit').removeAttr("disabled");
 		}
 
@@ -47,7 +48,7 @@
 				//var obj = $.parseJSON(json);  //使用这个方法解析字符串json result  
 				if (data.result == "true") {
 					$("#qq").val("");
-					$('#qqms').html("qq号已存在");
+					$('#qqms').html("qq信息已存在数据库或未审核列表");
 				} else if (data.result == "false") {
 					$('#qqms').html("");
 				}
@@ -59,6 +60,27 @@
 			}
 		});
 	};
+
+	function cheakfile() {
+		var fileInput = $('#file')[0];
+		var byteSize  = fileInput.files[0].size;
+		var filename=fileInput.files[0].name;
+		var file = $("#file")
+		$('#filems').html("");
+		if(!/.(jpg|jpeg|png)$/.test(filename)){   
+			$('#filems').html("图片格式出错！格式必须为.jpg .jpeg .png"); 
+			file.after(file.clone().val(""));
+			file.remove(); 
+			$('#submit').attr("disabled", "true");
+			}
+		else if (byteSize > 1024*2048) {
+				$('#filems').html("图片大小必须小于2M！");
+				file.after(file.clone().val(""));
+				file.remove();
+				$('#submit').attr("disabled", "true");
+			}
+			else cheackfileblock();
+	}
 </script>
 </head>
 <body>
@@ -84,7 +106,7 @@
 									id="stuid" type="text" name="stuid"
 									onblur="cheackblock(this.value)" />
 							</div>
-							
+
 							<div class="form-group">
 								<label for="name">姓名*</label><input class="form-control"
 									id="name" type="text" name="name"
@@ -113,15 +135,19 @@
 
 
 							<div class="form-group">
-								<textarea name="note" id="note" style="width: 100%; height: 100%" 
-										maxlength=200 draggable=false wrap="physical"></textarea>
+								<textarea name="note" id="note"
+									style="width: 100%; height: 100%" maxlength=200 draggable=false
+									wrap="physical"></textarea>
 							</div>
 							<div class="form-group">
-								<label for="class_">上传截图*</label> <input type="file" name="file"
-									id="file" onblur="cheackfileblock()">
+								<label for="class_">上传截图*(图片格式：.jpg .jpeg .png ， 大小小于2M)</label> <input type="file"
+									name="file" id="file" onchange="cheakfile()">
+							</div>
+							<div>
+								<label id="filems" style="color:red"></label>
 							</div>
 							<button type="submit" disabled="disabled" class="btn btn-default"
-								id="submit" onclick="cheackblock()">提交</button>
+								id="submit">提交</button>
 						</div>
 					</form>
 				</div>

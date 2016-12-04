@@ -135,6 +135,8 @@ public class AgentService {
 			return (List<Student>) studentDAO.findByQqWithMid(value,mid);
 		case "Ñ§ºÅ":
 			return (List<Student>) studentDAO.findByStuidWithMid(value,mid);
+		case "Î¢ÐÅ":
+			return (List<Student>) studentDAO.findByWeixinWithMid(value,mid);
 		}
 		return null;
 	}
@@ -300,7 +302,8 @@ public class AgentService {
 	 */
 	public boolean cheakQq(String qq){
 		List<Student> student =studentDAO.findByQq(qq);
-		if(student.size()!=0)
+		Agentupstudent astu=agentupstudentDAO.findById(qq);
+		if(student.size()!=0||astu!=null)
 			return true;
 		else return false;
 	}

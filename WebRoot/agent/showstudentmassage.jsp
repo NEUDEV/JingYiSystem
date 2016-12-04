@@ -51,10 +51,10 @@
 						<div class="form-group">
 							<label for="intime">录入时间：</label> <label id="intime" name="intime"><%=request.getParameter("intime")%></label>
 						</div>
-						<div class="form-group">
+						<%-- <div class="form-group">
 							<img alt="显示图片" style="height:200px;width: 300px "
 								src="ShowviewAction.action?qq=<%=request.getParameter("qq")%>"></img>
-						</div>
+						</div> --%>
 						<div class="form-group">
 							<label for="note">备注：</label> <label id="note" name="note"><%=request.getParameter("note")%></label>
 						</div>

@@ -257,6 +257,10 @@ public class StudentDAO {
 		return findByPropertyWithMid(STUID, stuid,mid);
 	}
 	
+	public List findByWeixinWithMid(Object weixin,String mid){
+		return findByPropertyWithMid(WEIXIN, weixin,mid);
+	}
+	
 	public List findJingYiByName(String name) {
 		try {
 			String queryString = "from Student student where(student.name='" + name +"') and (student.msign='鲸艺代理商')"; 

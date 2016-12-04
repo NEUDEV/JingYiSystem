@@ -151,6 +151,7 @@
 								<option>真实姓名</option>
 								<option>手机号</option>
 								<option>QQ</option>
+								<option>微信</option>
 								<option>学号</option>
 							</select>
 							<div class="form-group">
