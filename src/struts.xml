@@ -72,7 +72,13 @@
 			</result>
 			<result name="selectJingyiStudent">/manager/studentManage/divideStudent/divideStudent.jsp
 			</result>
-
+			
+			<!-- upstudent -->
+			<result name="upStudentsDisplay">/manager/studentManage/auditStudent/auditStudent.jsp
+			</result>
+			<result name="showUpStudent">/manager/studentManage/auditStudent/showUpStudentInfo.jsp</result>
+			<result name="auditStudent">/manager/studentManage/auditStudent/auditStudentSuccess.jsp</result>
+			
 
 
 			<!-- ManagerStudentManage -->
@@ -80,7 +86,7 @@
 			</result>
 			<result name="returnStudentInfo">/manager/studentManage/studentInfoUpdate.jsp
 			</result>
-			<result name="changeStudentInfoSuccess">/manager/managerMemu.jsp
+			<result name="changeStudentInfoSuccess">/manager/studentManage/changeStudentInfoSuccess.jsp
 			</result>
 
 			<!-- ManagerViewReport -->

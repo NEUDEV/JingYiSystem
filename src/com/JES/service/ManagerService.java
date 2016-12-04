@@ -11,11 +11,13 @@ import javax.servlet.http.HttpSession;
 import net.sf.json.JSONObject;
 
 import com.JES.dao.AgentDAO;
+import com.JES.dao.AgentupstudentDAO;
 import com.JES.dao.CourseDAO;
 import com.JES.dao.ManagerDAO;
 import com.JES.dao.ReportDAO;
 import com.JES.dao.StudentDAO;
 import com.JES.model.Agent;
+import com.JES.model.Agentupstudent;
 import com.JES.model.Course;
 import com.JES.model.Manager;
 import com.JES.model.Report;
@@ -33,6 +35,7 @@ public class ManagerService {
 	private StudentDAO studentDAO;
 	private ReportDAO reportDAO;
 	private CourseDAO courseDAO;
+	private AgentupstudentDAO agentupstudentDAO;
 
 	/**
 	 * @return the managerDAO
@@ -107,6 +110,20 @@ public class ManagerService {
 	 */
 	public void setCourseDAO(CourseDAO courseDAO) {
 		this.courseDAO = courseDAO;
+	}
+
+	/**
+	 * @return the agentupstudentDAO
+	 */
+	public AgentupstudentDAO getAgentupstudentDAO() {
+		return agentupstudentDAO;
+	}
+
+	/**
+	 * @param agentupstudentDAO the agentupstudentDAO to set
+	 */
+	public void setAgentupstudentDAO(AgentupstudentDAO agentupstudentDAO) {
+		this.agentupstudentDAO = agentupstudentDAO;
 	}
 
 	/**
@@ -328,6 +345,26 @@ public class ManagerService {
 		}
 
 		return new ArrayList<Student>();
+	}
+	
+	public ArrayList<Agentupstudent> searchUpStudent(String searchType,
+			String searchValue) {
+		if ("QQ".equals(searchType)) {
+			ArrayList<Agentupstudent> agentupstudents = new ArrayList<Agentupstudent>();
+			Agentupstudent agentupstudent = agentupstudentDAO.findById(searchValue);
+			if (agentupstudent != null) {
+				agentupstudents.add(agentupstudent);
+			}
+			return agentupstudents;
+		} else if ("姓名".equals(searchType)) {
+			return (ArrayList<Agentupstudent>) agentupstudentDAO.findByName(searchValue);
+		} else if ("手机号".equals(searchType)) {
+			return (ArrayList<Agentupstudent>) agentupstudentDAO.findByPhone(searchValue);
+		} else if ("学号".equals(searchType)) {
+			return (ArrayList<Agentupstudent>) agentupstudentDAO.findByStuid(searchValue);
+		}
+
+		return new ArrayList<Agentupstudent>();
 	}
 
 	/**

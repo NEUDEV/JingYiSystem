@@ -74,6 +74,7 @@ public class ManagerStudentManageAction extends SuperAction implements
 		
 		managerService.getStudentDAO().merge(oldStudent);
 		
+		request.setAttribute("student", oldStudent);
 		return "changeStudentInfoSuccess";
 	}
 

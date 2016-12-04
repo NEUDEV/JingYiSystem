@@ -7,7 +7,7 @@ import com.JES.service.ManagerService;
 import com.opensymphony.xwork2.ModelDriven;
 
 /**
- * 管理员-学院划分。
+ * 管理员-学员划分。
  * @author 刘鑫伟
  *
  */

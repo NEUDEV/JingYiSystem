@@ -94,6 +94,7 @@
 		<property name="studentDAO" ref="studentDAO"></property>
 		<property name="reportDAO" ref="ReportDAO"></property>
 		<property name="courseDAO" ref="courseDAO"></property>
+		<property name="agentupstudentDAO" ref="agentupstudentDAO"></property>
 	</bean>
 
 	<bean id="agentservice" class="com.JES.service.AgentService"
