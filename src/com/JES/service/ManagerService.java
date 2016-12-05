@@ -477,5 +477,13 @@ public class ManagerService {
 		courseDAO.save(course);
 		return courseDAO.findById(cid);
 	}
+	
+	public void auditReport(String mid,Integer sum){
+		String reportid=agentDAO.findById(mid).getReportId().toString();
+		Report report=reportDAO.findById(reportid);
+		report.setInformalstu(report.getInformalstu()+sum);
+		report.setTransrate(Double.parseDouble(report.getAllinnum().toString())/(report.getInformalstu()+report.getAllinnum()));
+		reportDAO.merge(report);
+	}
 
 }

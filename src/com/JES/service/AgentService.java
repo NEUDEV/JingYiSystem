@@ -315,6 +315,13 @@ public class AgentService {
 		else return false;
 	}
 	
+	public boolean cheakUpWeixin(String weixin){
+		List<Agentupstudent> astu=agentupstudentDAO.findByWeixin(weixin);
+		if(astu.size()!=0)
+			return true;
+		else return false;
+	}
+	
 	public boolean cheakUpQq(String qq){
 		Agentupstudent student =agentupstudentDAO.findById(qq);
 		if(student==null)

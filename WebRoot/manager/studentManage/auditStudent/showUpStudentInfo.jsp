@@ -45,13 +45,19 @@
 						</dd>
 						<br>
 						<dd>
-							<font size="3">照片： ${upStudent.photo}</font>
+							<font size="3">图片：</font>
+						</dd>
+						<dd>
+							<img alt="显示图片" style="height:200px;width: 300px "
+								src="<%=basePath%>agent/ShowviewAction.action?qq=${upStudent.qq}"></img>
 						</dd>
 						<br>
 					</dl>
 
 					<a class="btn btn-default"
-						href="<%=basePath%>Manager/ManagerAuditStudent_auditStudent.action">确认审核</a>
+						href="<%=basePath%>Manager/ManagerAuditStudent_auditStudent.action">审核通过</a>
+					<a class="btn btn-default"
+						href="<%=basePath%>Manager/ManagerAuditStudent_deletUpStudent.action?stuqq=${upStudent.qq}">未通过删除</a>
 				</div>
 			</div>
 		</div>

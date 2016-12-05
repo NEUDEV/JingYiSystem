@@ -78,7 +78,7 @@
 			</result>
 			<result name="showUpStudent">/manager/studentManage/auditStudent/showUpStudentInfo.jsp</result>
 			<result name="auditStudent">/manager/studentManage/auditStudent/auditStudentSuccess.jsp</result>
-			
+			<result name="deletUpStudent">/manager/studentManage/auditStudent/auditStudentDelete.jsp</result>
 
 
 			<!-- ManagerStudentManage -->
@@ -200,6 +200,14 @@
 
 	<package name="ajax" extends="json-default">
 		<action name="cheakqq" class="com.JES.action.CheakQqAction"
+			method="execute">
+			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
+			<!-- <result>/agent/studentAdmit.jsp</result> -->
+			<result name="success" type="json">
+			</result>
+		</action>
+		
+		<action name="cheakweixin" class="com.JES.action.CheakWeixinAction"
 			method="execute">
 			<result name="LoginNotYet">/agent/agentLogin.jsp</result>
 			<!-- <result>/agent/studentAdmit.jsp</result> -->

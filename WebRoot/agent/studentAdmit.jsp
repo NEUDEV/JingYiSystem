@@ -32,7 +32,7 @@
 		}
 	}
 
-	function clickQqFunctino() {
+	function clickQqFunction() {
 		//alert($("#xm").val());  
 		var params = $("#qq").val();
 
@@ -56,6 +56,35 @@
 			},
 			error : function(data) {
 				alert("后台验证QQ号失败");
+				return false;
+			}
+		});
+	};
+	
+	function clickWeixinFunction() {
+		//alert($("#xm").val());  
+		var params = $("#weixin").val();
+
+		$.ajax({
+			type : "post",
+			url : "cheakweixin.action",
+			data : {
+				'weixin' : params
+			},
+			dataType : "json",
+			success : function(data) {
+				//alert(data);  
+				//var obj = $.parseJSON(json);  //使用这个方法解析字符串json result  
+				if (data.result == "true") {
+					$("#weixin").val("");
+					$('#weixinms').html("微信信息已存在数据库或未审核列表");
+				} else if (data.result == "false") {
+					$('#weixinms').html("");
+				}
+				cheackblock($("#weixin").val());
+			},
+			error : function(data) {
+				alert("后台验证weixin号失败");
 				return false;
 			}
 		});
@@ -115,15 +144,16 @@
 							<div class="form-group">
 								<label for="qq">QQ*</label><label id="qqms" style="color:red"></label>
 								<input class="form-control" id="qq" type="text" name="qq"
-									onblur="clickQqFunctino()" />
+									onblur="clickQqFunction()" />
 
 							</div>
 							<div>
 								<label id="qqms"></label>
 							</div>
 							<div class="form-group">
-								<label for="weixin">微信</label> <input class="form-control"
-									id="weixin" type="text" name="weixin" />
+								<label for="weixin">微信</label> <label id="weixinms" style="color:red"></label>
+								<input class="form-control" id="weixin" type="text" name="weixin"
+								 onblur="clickWeixinFunction()"/>
 							</div>
 							<div class="form-group">
 								<label for="phone">电话</label> <input class="form-control"

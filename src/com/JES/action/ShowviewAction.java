@@ -33,9 +33,7 @@ public class ShowviewAction extends SuperAction{
 
 
 	public String viewImages() {
-		if (session.getAttribute("agentID") == null) {
-			return "LoginNotYet";
-		}
+		
         HttpServletResponse response = null;
         ServletOutputStream out = null;
         Agentupstudent agentupstudent=new Agentupstudent();

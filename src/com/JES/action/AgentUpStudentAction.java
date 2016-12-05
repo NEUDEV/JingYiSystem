@@ -122,6 +122,8 @@ public class AgentUpStudentAction extends SuperAction{
 	upstudent.setQq(qq);
 	upstudent.setWeixin(weixin);
 	upstudent.setNote(note);
+	upstudent.setMid(session.getAttribute("agentID").toString());
+	upstudent.setStuid(stuid);
 	/*student.setUid(UUID.randomUUID().toString());
 	student.setQq(qq);
 	student.setName(name);

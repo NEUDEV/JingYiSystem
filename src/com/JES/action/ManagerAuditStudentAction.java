@@ -22,6 +22,16 @@ public class ManagerAuditStudentAction extends SuperAction implements
 	private static final long serialVersionUID = 1L;
 	private Agentupstudent agentupstudent;
 	private ManagerService managerService;
+	private String stuqq;
+
+	
+	public String getStuqq() {
+		return stuqq;
+	}
+
+	public void setStuqq(String stuqq) {
+		this.stuqq = stuqq;
+	}
 
 	public void setManagerService(ManagerService managerService) {
 		this.managerService = managerService;
@@ -45,6 +55,13 @@ public class ManagerAuditStudentAction extends SuperAction implements
 				request.getParameter("searchType"),
 				request.getParameter("searchValue")));
 		return "upStudentsDisplay";
+	}
+	
+	public String deletUpStudent(){
+		Agentupstudent astu=managerService.getAgentupstudentDAO().findById(stuqq);
+		if(astu!=null)
+		managerService.getAgentupstudentDAO().delete(astu);
+		return "deletUpStudent";
 	}
 	
 	public String showUpStudent() {
@@ -74,7 +91,9 @@ public class ManagerAuditStudentAction extends SuperAction implements
 		student.setWeixin(agentupstudent.getWeixin());
 		student.setMid(agentupstudent.getMid());
 		student.setMark(1);
-		student.setSign("正式学员");		
+		student.setSign("非正式学员");
+		managerService.auditReport(agentupstudent.getMid(),1);
+		
 		managerService.getAgentupstudentDAO().delete(agentupstudent);
 		managerService.getStudentDAO().save(student);
 		
