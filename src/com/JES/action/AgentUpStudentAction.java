@@ -117,13 +117,13 @@ public class AgentUpStudentAction extends SuperAction{
 	Agentupstudent upstudent=new Agentupstudent();
 	/*Student student =new Student();*/
 	/*upstudent.setClass_(class_);*/
-	upstudent.setName(name);
-	upstudent.setPhone(phone);
-	upstudent.setQq(qq);
-	upstudent.setWeixin(weixin);
-	upstudent.setNote(note);
+	upstudent.setName(name.replaceAll("\\s*", ""));
+	upstudent.setPhone(phone.replaceAll("\\s*", ""));
+	upstudent.setQq(qq.replaceAll("\\s*", ""));
+	upstudent.setWeixin(weixin.replaceAll("\\s*", ""));
+	upstudent.setNote(note.replaceAll("\\s*", ""));
 	upstudent.setMid(session.getAttribute("agentID").toString());
-	upstudent.setStuid(stuid);
+	upstudent.setStuid(stuid.replaceAll("\\s*", ""));
 	/*student.setUid(UUID.randomUUID().toString());
 	student.setQq(qq);
 	student.setName(name);

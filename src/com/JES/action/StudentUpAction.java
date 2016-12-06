@@ -162,7 +162,7 @@ public class StudentUpAction extends SuperAction{
                         		isenabel=false;
                         		len=cellNum;
                         	}
-                        	else student.setQq(cellValue);
+                        	else student.setQq(cellValue.replaceAll("\\s*", ""));
                         	break;
                        /* case 1 : student.setStuid(cellValue);break;
                         case 2 : student.setName(cellValue);break;
@@ -182,7 +182,7 @@ public class StudentUpAction extends SuperAction{
                         		isenabel=false;
                         		len=cellNum;
                         	}
-                        	else student.setName(cellValue);
+                        	else student.setName(cellValue.replaceAll("\\s*", ""));
                         	break;
                         case 3 : 
                         	if(!cellValue.equals("")&&agentservice.cheakWeixin(cellValue)){
@@ -196,10 +196,10 @@ public class StudentUpAction extends SuperAction{
                     		isenabel=false;
                     		len=cellNum;
                         	}
-                        	else student.setWeixin(cellValue);
+                        	else student.setWeixin(cellValue.replaceAll("\\s*", ""));
                         	break;
-                        case 4 : student.setPhone(cellValue);break;
-                        case 5 : student.setNote(cellValue);break;
+                        case 4 : student.setPhone(cellValue.replaceAll("\\s*", ""));break;
+                        case 5 : student.setNote(cellValue.replaceAll("\\s*", ""));break;
                     }
                 }   
                 	if(isenabel){
