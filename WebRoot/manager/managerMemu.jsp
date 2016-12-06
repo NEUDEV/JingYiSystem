@@ -113,7 +113,7 @@
 									href="<%=basePath%>Manager/ManagerAuditStudent_displayUpStudent.action"
 									class="list-group-item">学员审核</a> 
 								<a
-									href="<%=basePath%>manager/studentManage/divideStudent/divideStudent.jsp"
+									href="<%=basePath%>Manager/ManagerDivideStudent_displayAngentStudents.action"
 									class="list-group-item">学员划分</a> 
 								
 							</div>

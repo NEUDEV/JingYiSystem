@@ -25,10 +25,27 @@ public class ManagerDivideStudentAction extends SuperAction implements
 	}
 	
 	/**
+	 * 显示班主任学员。
+	 * @return
+	 */
+	public String displayAngentStudents() {
+		if (session.getAttribute("managerId") == null) {
+			return "LoginNotYet";
+		}
+		
+		request.setAttribute("studentList", managerService.getStudentDAO().findBySign("正式学员"));
+		return "studentsDisplay";
+	}
+	
+	/**
 	 * 查询学生。
 	 * @return
 	 */
 	public String searchStudent() {
+		if (session.getAttribute("managerId") == null) {
+			return "LoginNotYet";
+		}
+		
 		request.setAttribute("studentList", managerService.searchStudent(
 				request.getParameter("searchType"),
 				request.getParameter("searchValue")));
