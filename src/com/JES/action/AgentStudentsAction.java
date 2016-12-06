@@ -13,9 +13,17 @@ import com.JES.service.AgentService;
 public class AgentStudentsAction extends SuperAction{
 	private String searchtype;
 	private String searchvalue;
+	private Integer chose;
 	private AgentService agentservice;
 	private String jsonResult;
 	
+	
+	public Integer getChose() {
+		return chose;
+	}
+	public void setChose(Integer chose) {
+		this.chose = chose;
+	}
 	public String getJsonResult() {
 		return jsonResult;
 	}
@@ -49,7 +57,7 @@ public class AgentStudentsAction extends SuperAction{
 		List<Student> studentList = new ArrayList<Student>();
 		
 		String mid=session.getAttribute("agentID").toString();
-		studentList=agentservice.searchStudents(searchtype,searchvalue,mid);
+		studentList=agentservice.searchStudents(searchtype,searchvalue,mid,chose);
 		jsonResult = JsonUtil.listToJson(studentList);  
 		System.out.println();
             ServletActionContext.getResponse().setContentType("text/xml");  

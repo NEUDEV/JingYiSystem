@@ -103,9 +103,9 @@ public class StudentUpAction extends SuperAction{
 	public void loadstudentsecxel(String uploadFileFileName,String mid){  
         String targetDirectory = ServletActionContext.getServletContext().getRealPath("/students");  
         File target = new File(targetDirectory,uploadFileFileName);
-        String errstudentms="以下学员信息中QQ信息数据库已存在，导致信息录入失败：&#13;&#10;";
+        String errstudentms="以下学员信息中QQ信息已存在数据库或未审核列表，导致信息录入失败：&#13;&#10;";
         String blockms="以下学员信息中QQ为空，导致信息录入失败：&#13;&#10;";
-        String errupstudentms="以下学员QQ信息已存在未审核列表，导致信息录入失败：&#13;&#10;";
+        String errupstudentms="以下学员信息中QQ信息已存在数据库或未审核列表，导致信息录入失败：&#13;&#10;";
         String errweixinms="以下学员信息中微信号信息数据库已存在，导致信息录入失败：&#13;&#10;";
         String errnamems="以下学员信息中姓名为空，导致信息录入失败：&#13;&#10;";
         Integer errmsnum=0;
@@ -126,7 +126,7 @@ public class StudentUpAction extends SuperAction{
                 boolean isenabel=true;
                 for(int len=0;len<cellNum;len++){  
                 	HSSFCell cell = row.getCell((short)len);
-                    String cellValue = cheakCellBlock(cell);      
+                    String cellValue = cheakCellBlock(cell).toString().replaceAll("\\s*", "");     
                     switch(len){//通过列数来判断对应插如的字段   
                         case 0 :
                         	if(cellValue.equals("")){
@@ -162,7 +162,7 @@ public class StudentUpAction extends SuperAction{
                         		isenabel=false;
                         		len=cellNum;
                         	}
-                        	else student.setQq(cellValue.replaceAll("\\s*", ""));
+                        	else student.setQq(cellValue);
                         	break;
                        /* case 1 : student.setStuid(cellValue);break;
                         case 2 : student.setName(cellValue);break;
@@ -182,7 +182,7 @@ public class StudentUpAction extends SuperAction{
                         		isenabel=false;
                         		len=cellNum;
                         	}
-                        	else student.setName(cellValue.replaceAll("\\s*", ""));
+                        	else student.setName(cellValue);
                         	break;
                         case 3 : 
                         	if(!cellValue.equals("")&&agentservice.cheakWeixin(cellValue)){
@@ -196,10 +196,10 @@ public class StudentUpAction extends SuperAction{
                     		isenabel=false;
                     		len=cellNum;
                         	}
-                        	else student.setWeixin(cellValue.replaceAll("\\s*", ""));
+                        	else student.setWeixin(cellValue);
                         	break;
-                        case 4 : student.setPhone(cellValue.replaceAll("\\s*", ""));break;
-                        case 5 : student.setNote(cellValue.replaceAll("\\s*", ""));break;
+                        case 4 : student.setPhone(cellValue);break;
+                        case 5 : student.setNote(cellValue);break;
                     }
                 }   
                 	if(isenabel){
@@ -237,6 +237,16 @@ public class StudentUpAction extends SuperAction{
 	
 	public String cheakCellBlock(HSSFCell cell){
 		if(cell==null) return "";
-		else return cell.getRichStringCellValue().toString();
+		switch (cell.getCellType()) {
+	    case HSSFCell.CELL_TYPE_STRING:
+	        return cell.getRichStringCellValue().getString();
+	    case HSSFCell.CELL_TYPE_NUMERIC:
+	    	java.text.NumberFormat nf = java.text.NumberFormat.getInstance();   
+	    	nf.setGroupingUsed(false);
+	        return nf.format(cell.getNumericCellValue()).toString();
+	    default:
+	        return "";
+	    }
+		/*else return cell.getRichStringCellValue().toString();*/
 	}
 }

@@ -25,7 +25,7 @@
 
 	}
 	
-	function clickWeixinFunctino(input) {
+	/* function clickWeixinFunction(input) {
 		//var bill=input.val();
 		//alert(name+qq+s);
 		if (input == "") {
@@ -36,7 +36,7 @@
 		}
 
 	}
-
+ */
 	function course() {
 		$.ajax({
 			type : "post",
@@ -64,15 +64,15 @@
 		});
 	}
 	
-	function clickWeixinFunctino() {
+	function cheakWeixinFunction(params) {
 		//alert($("#xm").val());  
-		var params = $("#weixin").val();
+		var weixin = params.replace(/\s+/g,"");
 
 		$.ajax({
 			type : "post",
-			url : "cheakqq.action",
+			url : "cheakweixin.action",
 			data : {
-				'qq' : params
+				'weixin' : weixin
 			},
 			dataType : "json",
 			success : function(data) {
@@ -80,11 +80,11 @@
 				//var obj = $.parseJSON(json);  //使用这个方法解析字符串json result  
 				if (data.result == "true") {
 					$("#weixin").val("");
-					$('#weixinms').html("微信号已存在");
+					$('#weixinms').html("(微信号已存在数据库或未审核列表！)");
 				} else if (data.result == "false") {
 					$('#weixinms').html("");
 				}
-				cheackblock($("#weixin").val());
+				/* cheackblock($("#weixin").val()); */
 			},
 			error : function(data) {
 				alert("后台验证微信号失败");
@@ -131,13 +131,12 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="weixin">微信</label> <input class="form-control"
+							<label for="weixin">微信</label><label style="color:red" id="weixinms"></label> <input class="form-control"
 								id="weixin" type="text" name="weixin"
-								value=<%=request.getParameter("weixin")%>
-								onblur="clickWeixinFunctino(this.value)"></input>
+								value="<%=request.getParameter("weixin")%>" onblur="cheakWeixinFunction(this.value)"></input>
 						</div>
 						<div>
-								<label id="weixinms"></label>
+								
 							</div>
 						<div class="form-group">
 							<label for="sign">状态</label> <select name="sign"

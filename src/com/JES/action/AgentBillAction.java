@@ -26,7 +26,7 @@ public class AgentBillAction extends SuperAction{
 		return sqq;
 	}
 	public void setSqq(String sqq) {
-		this.sqq = sqq;
+		this.sqq = sqq.replaceAll("\\s*", "");
 	}
 	public String getClass_() {
 		return class_;
@@ -47,13 +47,13 @@ public class AgentBillAction extends SuperAction{
 		return phone;
 	}
 	public void setPhone(String phone) {
-		this.phone = phone;
+		this.phone = phone.replaceAll("\\s*", "");
 	}
 	public String getWeixin() {
 		return weixin;
 	}
 	public void setWeixin(String weixin) {
-		this.weixin = weixin;
+		this.weixin = weixin.replaceAll("\\s*", "");
 	}
 	public String getSign() {
 		return sign;

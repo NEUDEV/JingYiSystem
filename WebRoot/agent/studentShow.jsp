@@ -39,8 +39,8 @@
 		});
 	}
 
-	function getJSONData(value) {
-		if(value==0){
+	function getJSONData(chose) {
+		if(chose==0){
 			var type = $("#searchtype").val();
 			var value = $("#searchvalue").val();
 		}
@@ -53,7 +53,8 @@
 			url : "AgentStudentsAction1.action",
 			data : {
 				'searchtype' : type,
-				'searchvalue' : value
+				'searchvalue' : value,
+				'chose':chose
 			},
 			datatype : "json",
 			//contentType: "application/json",
@@ -132,7 +133,7 @@
 	}
 </script>
 </head>
-<body onload="getJSONData()">
+<body onload="getJSONData(1)">
 	<div class="body slide">
 		<div class="container-fluid left-border">
 			<div class="row">
@@ -160,8 +161,12 @@
 							</div>
 							<button type="button"  class="btn btn-default"
 								onclick="getJSONData(0)">提交</button>
+							<button type="button"  class="btn btn-default"
+								onclick="getJSONData(2)">提交(按指数排序)</button>
 							<button type="button" class="btn btn-default"
 								onclick="getJSONData(1)">显示全部</button>
+							<button type="button" class="btn btn-default"
+								onclick="getJSONData(3)">显示全部(按指数排序)</button>
 						</form>
 					</div>
 					</nav>

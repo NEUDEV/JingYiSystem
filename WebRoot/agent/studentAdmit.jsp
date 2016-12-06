@@ -34,7 +34,7 @@
 
 	function clickQqFunction() {
 		//alert($("#xm").val());  
-		var params = $("#qq").val();
+		var params = $("#qq").val().replace(/\s+/g,"");
 
 		$.ajax({
 			type : "post",
@@ -63,8 +63,11 @@
 	
 	function clickWeixinFunction() {
 		//alert($("#xm").val());  
-		var params = $("#weixin").val();
-
+		var params = $("#weixin").val().replace(/\s+/g,"");
+		if(params=="") {
+			$('#weixinms').html("");
+			return true;
+			}
 		$.ajax({
 			type : "post",
 			url : "cheakweixin.action",

@@ -122,20 +122,27 @@ public class AgentService {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Student> searchStudents(String type, String value,String mid) {
-		
-		if(value.equals("")||value==null) 
+	public List<Student> searchStudents(String type, String value,String mid,Integer chose) {
+		if(chose.equals(3)) return (List<Student>) studentDAO.findByMidMarkdesc(mid);
+		if(value.equals("")||value==null){
+			if(chose.equals(2)) return (List<Student>) studentDAO.findByMidMarkdesc(mid);
 			return (List<Student>) studentDAO.findByMiddesc(mid);
+		}
 		switch (type) {
 		case "真实姓名":
+			if(chose.equals(2)) return (List<Student>) studentDAO.findByNameWithMidMark(value,mid);
 			return (List<Student>) studentDAO.findByNameWithMid(value,mid);
 		case "手机号":
+			if(chose.equals(2)) return (List<Student>) studentDAO.findByPhoneWithMidMark(value,mid);
 			return (List<Student>) studentDAO.findByPhoneWithMid(value,mid);
 		case "QQ":
+			if(chose.equals(2)) return (List<Student>) studentDAO.findByQqWithMidMark(value,mid);
 			return (List<Student>) studentDAO.findByQqWithMid(value,mid);
 		case "学号":
+			if(chose.equals(2)) return (List<Student>) studentDAO.findByStuidWithMidMark(value,mid);
 			return (List<Student>) studentDAO.findByStuidWithMid(value,mid);
 		case "微信":
+			if(chose.equals(2)) return (List<Student>) studentDAO.findByWeixinWithMidMark(value,mid);
 			return (List<Student>) studentDAO.findByWeixinWithMid(value,mid);
 		}
 		return null;

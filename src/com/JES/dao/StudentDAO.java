@@ -131,6 +131,19 @@ public class StudentDAO {
 		}
 	}
 	
+	public List findByPropertyWithMidMark(String propertyName, Object value, String mid){
+		try {
+			String queryString = "from Student as model where model."
+					+ propertyName + "= ? and model.mid='"+mid+"' order by model.mark desc";
+			Query queryObject = getCurrentSession().createQuery(queryString);
+			queryObject.setParameter(0, value);
+			return queryObject.list();
+		} catch (RuntimeException re) {
+			log.error("find by property name failed", re);
+			throw re;
+		}
+	}
+	
 	/*public Integer countunifStudent(String mid){
 		try {
 			String queryString = "select count(*) from Student as model where model.sign='非正式学员' and model.mid= ?";
@@ -212,6 +225,18 @@ public class StudentDAO {
 			throw re;
 		}
 	}
+	
+	public List findByMidMarkdesc(Object mid) {
+		try {
+			String queryString = "from Student as model where model.mid= ? order by model.mark desc";
+			Query queryObject = getCurrentSession().createQuery(queryString);
+			queryObject.setParameter(0, mid);
+			return queryObject.list();
+		} catch (RuntimeException re) {
+			log.error("find by property name failed", re);
+			throw re;
+		}
+	}
 
 	public List findBySign(Object sign) {
 		return findByProperty(SIGN, sign);
@@ -245,20 +270,40 @@ public class StudentDAO {
 		return findByPropertyWithMid(NAME, name,mid);
 	}
 	
+	public List findByNameWithMidMark(Object name,String mid){
+		return findByPropertyWithMidMark(NAME, name,mid);
+	}
+	
 	public List findByPhoneWithMid(Object phone,String mid){
 		return findByPropertyWithMid(PHONE, phone,mid);
+	}
+	
+	public List findByPhoneWithMidMark(Object phone,String mid){
+		return findByPropertyWithMidMark(PHONE, phone,mid);
 	}
 	
 	public List findByQqWithMid(Object Qq,String mid){
 		return findByPropertyWithMid(QQ, Qq,mid);
 	}
 	
+	public List findByQqWithMidMark(Object Qq,String mid){
+		return findByPropertyWithMidMark(QQ, Qq,mid);
+	}
+	
 	public List findByStuidWithMid(Object stuid,String mid){
 		return findByPropertyWithMid(STUID, stuid,mid);
 	}
 	
+	public List findByStuidWithMidMark(Object stuid,String mid){
+		return findByPropertyWithMidMark(STUID, stuid,mid);
+	}
+	
 	public List findByWeixinWithMid(Object weixin,String mid){
 		return findByPropertyWithMid(WEIXIN, weixin,mid);
+	}
+	
+	public List findByWeixinWithMidMark(Object weixin,String mid){
+		return findByPropertyWithMidMark(WEIXIN, weixin,mid);
 	}
 	
 	public List findJingYiByName(String name) {
