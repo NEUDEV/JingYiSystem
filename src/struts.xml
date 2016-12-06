@@ -79,6 +79,8 @@
 			<result name="showUpStudent">/manager/studentManage/auditStudent/showUpStudentInfo.jsp</result>
 			<result name="auditStudent">/manager/studentManage/auditStudent/auditStudentSuccess.jsp</result>
 			<result name="deletUpStudent">/manager/studentManage/auditStudent/auditStudentDelete.jsp</result>
+			<result name="auditAllStudent">/manager/studentManage/auditStudent/auditAllStudentSuccess.jsp</result>
+			
 
 
 			<!-- ManagerStudentManage -->
