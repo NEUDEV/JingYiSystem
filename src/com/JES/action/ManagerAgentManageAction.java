@@ -334,6 +334,14 @@ public class ManagerAgentManageAction extends SuperAction implements
 		if (agent == null) {
 			agent = new Agent();
 		}
+		
+//		agent.setAname(agent.getAname().replaceAll("\\s*", ""));
+//		agent.setName(agent.getName().replaceAll("\\s*", ""));
+//		agent.setPhone(agent.getPhone().replaceAll("\\s*", ""));
+//		agent.setIdcard(agent.getIdcard().replaceAll("\\s*", ""));
+//		agent.setQq(agent.getQq().replaceAll("\\s*", ""));
+//		agent.setPassword(agent.getPassword().replaceAll("\\s*", ""));
+		
 
 		return agent;
 	}

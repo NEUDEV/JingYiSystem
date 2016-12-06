@@ -23,6 +23,19 @@ public class ManagerStudentManageAction extends SuperAction implements
 	}
 
 	/**
+	 * 显示所有学员。
+	 * @return
+	 */
+	public String displayAllStudent() {
+		if (session.getAttribute("managerId") == null) {
+			return "LoginNotYet";
+		}
+		
+		request.setAttribute("studentList", managerService.getStudentDAO().findAll());
+		return "displayAllStudent";
+	}
+	
+	/**
 	 * 查询学生。
 	 * @return
 	 */

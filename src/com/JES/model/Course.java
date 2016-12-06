@@ -32,11 +32,11 @@ public class Course implements java.io.Serializable {
 	public Course(String cid, String cname, Timestamp starttime,
 			Timestamp endtime, Integer referencebill, String classname) {
 		this.cid = cid;
-		this.cname = cname;
+		this.cname = cname.trim();
 		this.starttime = starttime;
 		this.endtime = endtime;
 		this.referencebill = referencebill;
-		this.classname = classname;
+		this.classname = classname.trim();
 	}
 
 	// Property accessors
@@ -54,7 +54,7 @@ public class Course implements java.io.Serializable {
 	}
 
 	public void setCname(String cname) {
-		this.cname = cname;
+		this.cname = cname.trim();
 	}
 
 	public Timestamp getStarttime() {
@@ -86,7 +86,7 @@ public class Course implements java.io.Serializable {
 	}
 
 	public void setClassname(String classname) {
-		this.classname = classname;
+		this.classname = classname.trim();
 	}
 
 }

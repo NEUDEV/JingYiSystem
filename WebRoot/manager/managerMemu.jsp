@@ -107,14 +107,15 @@
 							role="tabpanel" aria-labelledby="heading4">
 							<div>
 								<a
+									href="<%=basePath%>Manager/ManagerStudentManage_displayAllStudent.action"
+									class="list-group-item">学员管理</a>
+								<a
 									href="<%=basePath%>Manager/ManagerAuditStudent_displayUpStudent.action"
 									class="list-group-item">学员审核</a> 
 								<a
 									href="<%=basePath%>manager/studentManage/divideStudent/divideStudent.jsp"
 									class="list-group-item">学员划分</a> 
-								<a
-									href="<%=basePath%>manager/studentManage/studentManager.jsp"
-									class="list-group-item">学员管理</a>
+								
 							</div>
 						</div>
 					</div>

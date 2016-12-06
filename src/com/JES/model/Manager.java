@@ -16,12 +16,12 @@ public class Manager {
 		return mname;
 	}
 	public void setMname(String mname) {
-		this.mname = mname;
+		this.mname = mname.trim();
 	}
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = password.trim();
 	}
 }

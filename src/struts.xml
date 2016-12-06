@@ -88,6 +88,9 @@
 			</result>
 			<result name="changeStudentInfoSuccess">/manager/studentManage/changeStudentInfoSuccess.jsp
 			</result>
+			<result name="displayAllStudent">/manager/studentManage/studentManager.jsp
+			</result>
+			
 
 			<!-- ManagerViewReport -->
 			<result name="displayReport">/manager/report/displayReport.jsp</result>

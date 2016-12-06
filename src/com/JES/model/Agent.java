@@ -26,13 +26,13 @@ public class Agent {
 		return aname;
 	}
 	public void setAname(String aname) {
-		this.aname = aname;
+		this.aname = aname.trim();
 	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.name = name.trim();
 	}
 	public String getAid() {
 		return aid;
@@ -44,25 +44,25 @@ public class Agent {
 		return password;
 	}
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = password.trim();
 	}
 	public String getQq() {
 		return qq;
 	}
 	public void setQq(String qq) {
-		this.qq = qq;
+		this.qq = qq.trim();
 	}
 	public String getPhone() {
 		return phone;
 	}
 	public void setPhone(String phone) {
-		this.phone = phone;
+		this.phone = phone.trim();
 	}
 	public String getIdcard() {
 		return idcard;
 	}
 	public void setIdcard(String idcard) {
-		this.idcard = idcard;
+		this.idcard = idcard.trim();
 	}
 	public String getCname() {
 		return cname;
