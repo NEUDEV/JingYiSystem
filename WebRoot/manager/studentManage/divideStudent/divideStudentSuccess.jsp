@@ -44,6 +44,8 @@
 					</table>
 				</div>
 			</div>
+			<a class="btn btn-default"
+						href="<%=basePath%>Manager/ManagerDivideStudent_displayAngentStudents.action">返回学员划分页面</a>
 		</div>
 	</div>
 </body>
