@@ -48,7 +48,7 @@
 					</dl>
 
 					<a class="btn btn-default"
-						href="<%=basePath%>manager/managerMemu.jsp">返回管理员主页</a>
+						href="<%=basePath%>Manager/ManagerStudentManage_displayAllStudent.action">返回学员管理页面</a>
 				</div>
 			</div>
 		</div>
