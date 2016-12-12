@@ -13,8 +13,15 @@ public class AgentBillAction extends SuperAction{
 	private Integer mark;
 	private String class_;
 	private String uid;
+	private String name;
 	
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name.replaceAll("\\s*", "");
+	}
 	public String getUid() {
 		return uid;
 	}
@@ -78,7 +85,7 @@ public class AgentBillAction extends SuperAction{
 		if (session.getAttribute("agentID") == null) {
 			return "LoginNotYet";
 		}
-		agentservice.billUp(uid,phone,weixin,sign,bill,mark,class_,session.getAttribute("agentID").toString());
+		agentservice.billUp(uid,phone,name,weixin,sign,bill,mark,class_,session.getAttribute("agentID").toString());
 		request.setAttribute("studentupms", "提单成功！");
 		return "SUCCESS";
 	}

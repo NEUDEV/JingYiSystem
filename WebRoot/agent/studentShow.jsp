@@ -81,6 +81,7 @@
 				result += "<th>来源</th>";
 				result += "<th>状态</th>";
 				result += "<th>录入时间</th>";
+				result += "<th>报名时间</th>";
 				result += "<th>操作</th>";
 				result += "<th>学员转化指数</th>";
 				result += "</tr>";
@@ -97,19 +98,20 @@
 					result += "<td >" + order[i].sfrom + "</td>";
 					result += "<td >" + order[i].sign + "</td>";
 					result += "<td >" + order[i].intime + "</td>";
-					result += "<td ><a href=\"showstudentmassage.jsp?stuid="
+					result += "<td >" + order[i].subtime + "</td>";
+					/* result += "<td ><a href=\"showstudentmassage.jsp?stuid="
 							+ order[i].stuid + "&uid=" + order[i].uid
 							+ "&name=" + order[i].name + "&qq=" + order[i].qq
 							+ "&weixin=" + order[i].weixin + "&phone="
 							+ order[i].phone + "&note=" + order[i].note
 							+ "&sfrom=" + order[i].sfrom + "&intime="
 							+ order[i].intime + "&sign=" + order[i].sign
-							+ "\">查看|</a>";
-					result += "<a href=\"billstudent.jsp?stuid="
+							+ "\">查看|</a>"; */
+					result += "<td ><a href=\"billstudent.jsp?stuid="
 							+ order[i].stuid + "&uid=" + order[i].uid
 							+ "&name=" + order[i].name + "&qq=" + order[i].qq
 							+ "&weixin=" + order[i].weixin + "&phone="
-							+ order[i].phone + "\">提单</a></td>";
+							+ order[i].phone + "\">修改</a></td>";
 					/* result += "<td >" + order[i].mark + "</td>"; */
 					result += "<td >";
 					result +="<select class='styled-select' onchange=\"changemark('"+order[i].uid

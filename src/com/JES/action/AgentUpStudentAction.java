@@ -25,8 +25,8 @@ public class AgentUpStudentAction extends SuperAction{
     private String name;
     private String weixin;
     private String phone;
-    private String class_;
     private String stuid;
+    private String sfrom;
     private String note;
 	private String fileFileName;
 	private String fileContentType;
@@ -34,6 +34,12 @@ public class AgentUpStudentAction extends SuperAction{
 	private AgentService agentservice;
 	
 	
+	public String getSfrom() {
+		return sfrom;
+	}
+	public void setSfrom(String sfrom) {
+		this.sfrom = sfrom;
+	}
 	public String getStuid() {
 		return stuid;
 	}
@@ -69,12 +75,6 @@ public class AgentUpStudentAction extends SuperAction{
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-	public String getClass_() {
-		return class_;
-	}
-	public void setClass_(String class_) {
-		this.class_ = class_;
 	}
 	public File getFile() {
 		return file;
@@ -122,6 +122,7 @@ public class AgentUpStudentAction extends SuperAction{
 	upstudent.setQq(qq.replaceAll("\\s*", ""));
 	upstudent.setWeixin(weixin.replaceAll("\\s*", ""));
 	upstudent.setNote(note.replaceAll("\\s*", ""));
+	upstudent.setSfrom(sfrom.replaceAll("\\s*", ""));
 	upstudent.setMid(session.getAttribute("agentID").toString());
 	upstudent.setStuid(stuid.replaceAll("\\s*", ""));
 	/*student.setUid(UUID.randomUUID().toString());

@@ -39,6 +39,7 @@ import com.JES.model.Report;
 import com.JES.model.ReportShowItem;
 import com.JES.model.Selection;
 import com.JES.model.Student;
+import com.JES.model.Studentmasage;
 
 public class AgentService {
 	private AgentDAO agentDAO;
@@ -122,32 +123,89 @@ public class AgentService {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Student> searchStudents(String type, String value,String mid,Integer chose) {
-		if(chose.equals(3)) return (List<Student>) studentDAO.findByMidMarkdesc(mid);
+	public List<Studentmasage> searchStudents(String type, String value,String mid,Integer chose) {
+		if(chose.equals(3)){ 
+			
+			List<Student> stulist= (List<Student>) studentDAO.findByMidMarkdesc(mid);
+			/*List<Studentmasage> stumslist=new ArrayList<Studentmasage>();
+			for(int i=0;i<stulist.size();i++){
+				Studentmasage stums=new Studentmasage(stulist.get(i));
+				stums.setSubtime(((List<Selection>)selectionDAO.findByUid(stums.getUid())).get(0).getSelecttime());
+				stumslist.add(stums);
+			}
+			return stumslist;*/
+			return studentTostumslist(stulist);
+		}
 		if(value.equals("")||value==null){
-			if(chose.equals(2)) return (List<Student>) studentDAO.findByMidMarkdesc(mid);
-			return (List<Student>) studentDAO.findByMiddesc(mid);
+			if(chose.equals(2)) {
+				List<Student> stulist= (List<Student>) studentDAO.findByMidMarkdesc(mid);
+				return studentTostumslist(stulist);
+			}
+			List<Student> stulist=(List<Student>) studentDAO.findByMiddesc(mid);
+			return studentTostumslist(stulist);
 		}
 		switch (type) {
 		case "真实姓名":
-			if(chose.equals(2)) return (List<Student>) studentDAO.findByNameWithMidMark(value,mid);
-			return (List<Student>) studentDAO.findByNameWithMid(value,mid);
+			if(chose.equals(2)) {
+				List<Student> stulist=(List<Student>) studentDAO.findByNameWithMidMark(value,mid);
+				return studentTostumslist(stulist);
+			}else{
+			List<Student> stulist=(List<Student>) studentDAO.findByNameWithMid(value,mid);
+			return studentTostumslist(stulist);
+			}
 		case "手机号":
-			if(chose.equals(2)) return (List<Student>) studentDAO.findByPhoneWithMidMark(value,mid);
-			return (List<Student>) studentDAO.findByPhoneWithMid(value,mid);
+			if(chose.equals(2)) {
+				List<Student> stulist=(List<Student>) studentDAO.findByPhoneWithMidMark(value,mid);
+				return studentTostumslist(stulist);
+			}else{
+			 List<Student> stulist=(List<Student>) studentDAO.findByPhoneWithMid(value,mid);
+			return studentTostumslist(stulist);
+			}
 		case "QQ":
-			if(chose.equals(2)) return (List<Student>) studentDAO.findByQqWithMidMark(value,mid);
-			return (List<Student>) studentDAO.findByQqWithMid(value,mid);
+			if(chose.equals(2)) {
+				List<Student> stulist=(List<Student>) studentDAO.findByQqWithMidMark(value,mid);
+				return studentTostumslist(stulist);
+			}
+			else{
+				List<Student> stulist=(List<Student>) studentDAO.findByQqWithMid(value,mid);
+				return studentTostumslist(stulist);
+			}
 		case "学号":
-			if(chose.equals(2)) return (List<Student>) studentDAO.findByStuidWithMidMark(value,mid);
-			return (List<Student>) studentDAO.findByStuidWithMid(value,mid);
+			if(chose.equals(2)){
+				List<Student> stulist=(List<Student>) studentDAO.findByStuidWithMidMark(value,mid);
+				return studentTostumslist(stulist);
+			}else{
+				List<Student> stulist=(List<Student>) studentDAO.findByStuidWithMid(value,mid);
+				return studentTostumslist(stulist);
+			}
 		case "微信":
-			if(chose.equals(2)) return (List<Student>) studentDAO.findByWeixinWithMidMark(value,mid);
-			return (List<Student>) studentDAO.findByWeixinWithMid(value,mid);
+			if(chose.equals(2)) {
+				List<Student> stulist=(List<Student>) studentDAO.findByWeixinWithMidMark(value,mid);
+				return studentTostumslist(stulist);
+			}else{
+				List<Student> stulist=(List<Student>) studentDAO.findByWeixinWithMid(value,mid);
+				return studentTostumslist(stulist);
+			}
 		}
 		return null;
 	}
 	
+	public List<Studentmasage> studentTostumslist(List<Student> stulist){
+		List<Studentmasage> stumslist=new ArrayList<Studentmasage>();
+		for(int i=0;i<stulist.size();i++){
+			Studentmasage stums=new Studentmasage(stulist.get(i));
+			List<Selection> selist=(List<Selection>)selectionDAO.findByUid(stums.getUid());
+			String maxdate="0";
+			for(int j=0;j<selist.size();j++){
+				if(maxdate.compareTo(selist.get(j).getSelecttime())<0)
+					maxdate=selist.get(j).getSelecttime();
+			}
+			if(!maxdate.equals("0")) 
+				stums.setSubtime(maxdate);
+			stumslist.add(stums);
+		}
+		return stumslist;
+	}
 	
 	/**
 	 * 查询下级班主任
@@ -402,7 +460,7 @@ public class AgentService {
 	 * @param mid
 	 * @return
 	 */
-	public boolean billUp(String uid,String phone,String weixin,String sign,Integer bill,Integer mark,String class_,String mid){
+	public boolean billUp(String uid,String phone,String name,String weixin,String sign,Integer bill,Integer mark,String class_,String mid){
 		Student student=(Student)studentDAO.findById(uid);
 		Selection selection=new Selection();
 		Date nDate = new Date();
@@ -412,6 +470,7 @@ public class AgentService {
 		student.setPhone(phone);
 		student.setMark(mark);
 		student.setSign(sign);
+		student.setName(name);
 		student.setWeixin(weixin);
 		studentDAO.merge(student);
 		selection.setUid(student.getUid());

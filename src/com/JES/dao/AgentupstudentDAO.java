@@ -22,7 +22,7 @@ import com.JES.model.Agentupstudent;
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see com.JES.model.Agentupstudent
+ * @see com.JES.dao.Agentupstudent
  * @author MyEclipse Persistence Tools
  */
 @Transactional
@@ -37,6 +37,7 @@ public class AgentupstudentDAO {
 	public static final String PHOTO = "photo";
 	public static final String NOTE = "note";
 	public static final String MID = "mid";
+	public static final String SFROM = "sfrom";
 
 	private SessionFactory sessionFactory;
 
@@ -78,7 +79,7 @@ public class AgentupstudentDAO {
 		log.debug("getting Agentupstudent instance with id: " + id);
 		try {
 			Agentupstudent instance = (Agentupstudent) getCurrentSession().get(
-					"com.JES.model.Agentupstudent", id);
+					"com.JES.dao.Agentupstudent", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -90,7 +91,7 @@ public class AgentupstudentDAO {
 		log.debug("finding Agentupstudent instance by example");
 		try {
 			List results = getCurrentSession()
-					.createCriteria("com.JES.model.Agentupstudent")
+					.createCriteria("com.JES.dao.Agentupstudent")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -142,6 +143,10 @@ public class AgentupstudentDAO {
 
 	public List findByMid(Object mid) {
 		return findByProperty(MID, mid);
+	}
+
+	public List findBySfrom(Object sfrom) {
+		return findByProperty(SFROM, sfrom);
 	}
 
 	public List findAll() {

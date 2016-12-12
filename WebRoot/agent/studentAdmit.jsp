@@ -134,9 +134,9 @@
 						<div>
 							<label>手动录入</label><br>
 							<div class="form-group">
-								<label for="stuid">学号*</label><input class="form-control"
+								<label for="stuid">学号</label><input class="form-control"
 									id="stuid" type="text" name="stuid"
-									onblur="cheackblock(this.value)" />
+									 />
 							</div>
 
 							<div class="form-group">
@@ -161,6 +161,10 @@
 							<div class="form-group">
 								<label for="phone">电话</label> <input class="form-control"
 									id="phone" type="text" name="phone" />
+							</div>
+							<div class="form-group">
+								<label for="phone">来源</label> <input class="form-control"
+									id="sfrom" type="text" name="sfrom" />
 							</div>
 							<div class="form-group">
 								<label for="name">备注：</label>

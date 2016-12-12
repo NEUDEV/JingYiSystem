@@ -7,6 +7,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.JES.json.JsonUtil;
 import com.JES.model.Student;
+import com.JES.model.Studentmasage;
 import com.JES.service.AgentService;
 
 @SuppressWarnings("serial")
@@ -16,8 +17,15 @@ public class AgentStudentsAction extends SuperAction{
 	private Integer chose;
 	private AgentService agentservice;
 	private String jsonResult;
+	private String resultintime;
 	
 	
+	public String getResultintime() {
+		return resultintime;
+	}
+	public void setResultintime(String resultintime) {
+		this.resultintime = resultintime;
+	}
 	public Integer getChose() {
 		return chose;
 	}
@@ -54,7 +62,7 @@ public class AgentStudentsAction extends SuperAction{
 			return "LoginNotYet";
 		}
 		try{
-		List<Student> studentList = new ArrayList<Student>();
+		List<Studentmasage> studentList = new ArrayList<Studentmasage>();
 		
 		String mid=session.getAttribute("agentID").toString();
 		studentList=agentservice.searchStudents(searchtype,searchvalue,mid,chose);

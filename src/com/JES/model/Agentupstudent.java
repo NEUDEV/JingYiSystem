@@ -16,6 +16,7 @@ public class Agentupstudent implements java.io.Serializable {
 	private byte[] photo;
 	private String note;
 	private String mid;
+	private String sfrom;
 
 	// Constructors
 
@@ -30,7 +31,7 @@ public class Agentupstudent implements java.io.Serializable {
 
 	/** full constructor */
 	public Agentupstudent(String qq, String name, String weixin, String phone,
-			String stuid, byte[] photo, String note, String mid) {
+			String stuid, byte[] photo, String note, String mid,String sfrom) {
 		this.qq = qq;
 		this.name = name;
 		this.weixin = weixin;
@@ -39,12 +40,21 @@ public class Agentupstudent implements java.io.Serializable {
 		this.photo = photo;
 		this.note = note;
 		this.mid = mid;
+		this.sfrom=sfrom;
 	}
 
 	// Property accessors
-
+	
 	public String getQq() {
 		return this.qq;
+	}
+
+	public String getSfrom() {
+		return sfrom;
+	}
+
+	public void setSfrom(String sfrom) {
+		this.sfrom = sfrom;
 	}
 
 	public void setQq(String qq) {

@@ -138,6 +138,9 @@
         <property name="mid" type="java.lang.String">
             <column name="mid" length="45" />
         </property>
+        <property name="sfrom" type="java.lang.String">
+            <column name="sfrom" length="45" />
+        </property>
 	</class>
 
 	
