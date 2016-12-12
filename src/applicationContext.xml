@@ -14,7 +14,7 @@
 			value="jdbc:mysql://localhost:3306/jingyieducationsystem?autoReconnect=true">
 		</property>
 		<property name="username" value="root"></property>
-		<property name="password" value="root"></property>
+		<property name="password" value="zxc705706"></property>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">

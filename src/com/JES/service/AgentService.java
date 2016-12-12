@@ -220,7 +220,7 @@ public class AgentService {
 		/*report=reportDAO.findById(agentDAO.findById(mid).getReportId());
 		report.setInformalstu(report.getInformalstu()+1);
 		reportDAO.merge(report);*/
-		updateReportAddNewOne(mid);
+		/*updateReportAddNewOne(mid);*/
 		return true;
 	}
 	

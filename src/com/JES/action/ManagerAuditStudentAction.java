@@ -1,6 +1,8 @@
 package com.JES.action;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 import antlr.collections.List;
@@ -64,6 +66,10 @@ public class ManagerAuditStudentAction extends SuperAction implements
 			student.setMid(upstudent.getMid());
 			student.setMark(1);
 			student.setSign("非正式学员");
+			Date intime = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			String sDate = sdf.format(intime);
+			student.setIntime(sDate);
 			managerService.auditReport(upstudent.getMid(), 1);
 
 			managerService.getAgentupstudentDAO().delete(upstudent);
@@ -131,6 +137,10 @@ public class ManagerAuditStudentAction extends SuperAction implements
 		student.setMid(agentupstudent.getMid());
 		student.setMark(1);
 		student.setSign("非正式学员");
+		Date intime = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		String sDate = sdf.format(intime);
+		student.setIntime(sDate);
 		managerService.auditReport(agentupstudent.getMid(), 1);
 
 		managerService.getAgentupstudentDAO().delete(agentupstudent);
